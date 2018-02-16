@@ -27,7 +27,7 @@ bool Identification::checkIdentification()
 {
     // The variable 'check' is initialized to 'false' to test the QMessageBox.
 
-    bool check = false;
+    bool check = true;
 
     if (!check)
     {
