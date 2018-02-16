@@ -23,6 +23,25 @@ Identification::~Identification()
 
 
 
+bool Identification::checkIdentification()
+{
+    // The variable 'check' is initialized to 'false' to test the QMessageBox.
+
+    bool check = false;
+
+    if (!check)
+    {
+        QMessageBox::warning(this, "Warning !", "Incorrect login or password !");
+
+        ui->passwordField->clear();
+    }
+
+    return check;
+}
+
+
+
+
 void Identification::on_cancel_clicked()
 {
     close();
@@ -33,5 +52,8 @@ void Identification::on_cancel_clicked()
 
 void Identification::on_connect_clicked()
 {
-
+    if (checkIdentification())
+    {
+        accept();
+    }
 }

@@ -2,7 +2,7 @@
 #define IDENTIFICATION_H
 
 #include <QDialog>
-#include <QCloseEvent>
+#include <QMessageBox>
 #include <QDesktopWidget>
 
 namespace Ui
@@ -19,6 +19,7 @@ class Identification : public QDialog
         ~Identification();
 
     private slots:
+        bool checkIdentification();
         void on_cancel_clicked();
         void on_connect_clicked();
 
