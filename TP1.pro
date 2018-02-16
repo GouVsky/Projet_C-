@@ -26,13 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    identification.cpp \
-    apropos.cpp
+        identification.cpp \
+        apropos.cpp \
+        client.cpp \
 
 HEADERS += \
         mainwindow.h \
     identification.h \
-    apropos.h
+    apropos.h \
+    client.h \
 
 FORMS += \
         mainwindow.ui \
