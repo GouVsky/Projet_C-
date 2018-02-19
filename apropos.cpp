@@ -12,3 +12,8 @@ apropos::~apropos()
 {
     delete ui;
 }
+
+void apropos::on_pushButton_clicked()
+{
+    close() ;
+}
