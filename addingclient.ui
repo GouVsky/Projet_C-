@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>AddingClient</class>
  <widget class="QDialog" name="AddingClient">
@@ -5,13 +6,257 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>696</width>
+    <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>291</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="layoutCivilStatus" rowstretch="0,0,0,0,0" columnstretch="0,0" columnminimumwidth="100,0">
+    <item row="4" column="0">
+     <widget class="QLabel" name="phoneNumber">
+      <property name="text">
+       <string>Phone Number</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="editFirstName"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="editName"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="firstName">
+      <property name="text">
+       <string>First Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="name">
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="editPhoneNumber"/>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="civilStatus">
+      <property name="text">
+       <string>&lt;b&gt; Civil status &lt;/b&gt;</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <zorder>name</zorder>
+   <zorder>firstName</zorder>
+   <zorder>line</zorder>
+   <zorder>editFirstName</zorder>
+   <zorder>civilStatus</zorder>
+   <zorder>phoneNumber</zorder>
+   <zorder>editPhoneNumber</zorder>
+   <zorder>editName</zorder>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>20</y>
+     <width>311</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="layoutAddress" columnminimumwidth="100,0">
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="editPostalCode"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="editAddress"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="adress">
+      <property name="text">
+       <string>Address</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="postalCode">
+      <property name="text">
+       <string>Postal Code</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="city">
+      <property name="text">
+       <string>City</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="editCity"/>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="homeAddress">
+      <property name="text">
+       <string>&lt;b&gt; Home address &lt;/b&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>210</y>
+     <width>291</width>
+     <height>128</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="layoutRendezVous">
+    <item row="1" column="0" colspan="2">
+     <widget class="Line" name="line_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="priority">
+      <property name="text">
+       <string>Priority</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="priorityList">
+      <property name="minimumContentsLength">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="dayRendezVous">
+      <property name="text">
+       <string>Day</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QDateEdit" name="editDate"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="rendezVous">
+      <property name="text">
+       <string>&lt;b&gt; Rendez-vous &lt;/b&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="consultingTime">
+      <property name="text">
+       <string>Consulting Time</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="editConsultingTime">
+      <property name="text">
+       <string>60</string>
+      </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>210</y>
+     <width>311</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="layoutComments">
+    <item row="0" column="0">
+     <widget class="QLabel" name="comments">
+      <property name="text">
+       <string>&lt;b&gt; Comments &lt;/b&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="Line" name="line_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QTextEdit" name="textEdit"/>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>
