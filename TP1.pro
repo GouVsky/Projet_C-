@@ -29,14 +29,17 @@ SOURCES += \
         identification.cpp \
         apropos.cpp \
         client.cpp \
+    addingclient.cpp
 
 HEADERS += \
         mainwindow.h \
     identification.h \
     apropos.h \
     client.h \
+    addingclient.h
 
 FORMS += \
         mainwindow.ui \
     identification.ui \
-    apropos.ui
+    apropos.ui \
+    addingclient.ui

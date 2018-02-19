@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 
-#include "identification.h"
 #include "apropos.h"
+#include "addingclient.h"
+#include "identification.h"
 
 namespace Ui
 {
@@ -22,10 +23,13 @@ class MainWindow : public QMainWindow
 private slots:
     void on_actionA_propos_triggered();
 
-private:
+    void on_actionClient_triggered();
+
+    private:
         Ui::MainWindow * ui;
         Identification * identificationDialog;
         apropos * aPropoDialog;
+        AddingClient * addingClientDialog;
 };
 
 #endif // MAINWINDOW_H
