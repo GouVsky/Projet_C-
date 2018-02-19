@@ -15,6 +15,11 @@ class AddingClient : public QDialog
         explicit AddingClient(QWidget *parent = 0);
         ~AddingClient();
 
+    private slots:
+        void on_cancel_clicked();
+
+        void on_add_clicked();
+
     private:
         Ui::AddingClient *ui;
 };

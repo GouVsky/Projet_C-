@@ -12,3 +12,13 @@ AddingClient::~AddingClient()
 {
     delete ui;
 }
+
+void AddingClient::on_cancel_clicked()
+{
+    close();
+}
+
+void AddingClient::on_add_clicked()
+{
+
+}
