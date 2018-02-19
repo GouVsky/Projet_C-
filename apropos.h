@@ -15,6 +15,10 @@ public:
     explicit apropos(QWidget *parent = 0);
     ~apropos();
 
+
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::apropos *ui;
 };
