@@ -29,14 +29,16 @@ SOURCES += \
         identification.cpp \
         apropos.cpp \
         client.cpp \
-    addingclient.cpp
+    addingclient.cpp \
+    searchclientcontroller.cpp
 
 HEADERS += \
         mainwindow.h \
     identification.h \
     apropos.h \
     client.h \
-    addingclient.h
+    addingclient.h \
+    searchclientcontroller.h
 
 FORMS += \
         mainwindow.ui \

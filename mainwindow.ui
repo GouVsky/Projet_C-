@@ -7,13 +7,165 @@
     <x>0</x>
     <y>0</y>
     <width>666</width>
-    <height>486</height>
+    <height>557</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>641</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="customerSearch">
+     <attribute name="title">
+      <string>Search customer</string>
+     </attribute>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>130</y>
+        <width>601</width>
+        <height>271</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="customerIDSearch">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>30</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="customerID">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Customer ID</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="customerName">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>60</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="customerFirstName">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>First Name</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="customerNameSearch">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>60</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="customerFirstNameSearch">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>90</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="datesInterval">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>30</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select time interval</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateBeginning">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>60</y>
+        <width>110</width>
+        <height>24</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEnding">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>60</y>
+        <width>110</width>
+        <height>24</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="to">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>60</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>To</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="planning">
+     <attribute name="title">
+      <string>Schedule</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -28,11 +180,11 @@
    </property>
    <widget class="QMenu" name="menuFichier">
     <property name="title">
-     <string>Fichier</string>
+     <string>File</string>
     </property>
     <widget class="QMenu" name="menuAdd">
      <property name="title">
-      <string>Ajouter</string>
+      <string>Add</string>
      </property>
      <addaction name="actionClient"/>
      <addaction name="actionPersonnel"/>
@@ -74,7 +226,7 @@
      <normaloff>:/images/personnel.png</normaloff>:/images/personnel.png</iconset>
    </property>
    <property name="text">
-    <string>Personnel</string>
+    <string>Employee</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -86,7 +238,7 @@
      <normaloff>:/images/client.png</normaloff>:/images/client.png</iconset>
    </property>
    <property name="text">
-    <string>Client</string>
+    <string>Customer</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -94,12 +246,12 @@
   </action>
   <action name="actionQuitter">
    <property name="text">
-    <string>Quitter</string>
+    <string>Quit</string>
    </property>
   </action>
   <action name="actionA_propos">
    <property name="text">
-    <string>A propos</string>
+    <string>About</string>
    </property>
   </action>
  </widget>
