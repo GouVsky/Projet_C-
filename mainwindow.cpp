@@ -24,5 +24,10 @@ void MainWindow::on_actionA_propos_triggered()
 void MainWindow::on_actionClient_triggered()
 {
     addingClientDialog = new AddingClient(this);
-    addingClientDialog->show();
+    addingClientDialog->exec();
+}
+
+void MainWindow::on_actionQuitter_triggered()
+{
+    close();
 }

@@ -43,3 +43,8 @@ FORMS += \
     identification.ui \
     apropos.ui \
     addingclient.ui
+
+RESOURCES += \
+    resources.qrc
+
+DISTFILES +=

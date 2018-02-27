@@ -25,6 +25,8 @@ private slots:
 
     void on_actionClient_triggered();
 
+    void on_actionQuitter_triggered();
+
     private:
         Ui::MainWindow * ui;
         Identification * identificationDialog;

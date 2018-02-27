@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>New Client</string>
   </property>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
@@ -253,7 +253,7 @@
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QTextEdit" name="textEdit"/>
+     <widget class="QTextEdit" name="editComments"/>
     </item>
    </layout>
   </widget>
@@ -284,6 +284,20 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>editName</tabstop>
+  <tabstop>editFirstName</tabstop>
+  <tabstop>editPhoneNumber</tabstop>
+  <tabstop>editAddress</tabstop>
+  <tabstop>editPostalCode</tabstop>
+  <tabstop>editCity</tabstop>
+  <tabstop>editDate</tabstop>
+  <tabstop>priorityList</tabstop>
+  <tabstop>editConsultingTime</tabstop>
+  <tabstop>editComments</tabstop>
+  <tabstop>cancel</tabstop>
+  <tabstop>add</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
