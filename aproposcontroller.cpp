@@ -1,4 +1,4 @@
-#include "apropos.h"
+#include "aproposcontroller.h"
 #include "ui_apropos.h"
 
 apropos::apropos(QWidget *parent) :

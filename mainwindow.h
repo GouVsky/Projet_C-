@@ -3,9 +3,10 @@
 
 #include <QMainWindow>
 
-#include "apropos.h"
-#include "addingclient.h"
-#include "identification.h"
+#include "aproposcontroller.h"
+#include "addingclientcontroller.h"
+#include "identificationcontroller.h"
+#include "searchclientcontroller.h"
 
 namespace Ui
 {
@@ -27,11 +28,14 @@ private slots:
 
     void on_actionQuitter_triggered();
 
+    void on_searchCustomerButton_clicked();
+
     private:
         Ui::MainWindow * ui;
         Identification * identificationDialog;
-        apropos * aPropoDialog;
+        apropos * aProposDialog;
         AddingClient * addingClientDialog;
+        searchClientController * searchCustomerController;
 };
 
 #endif // MAINWINDOW_H

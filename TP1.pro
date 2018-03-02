@@ -25,20 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-        identification.cpp \
-        apropos.cpp \
         client.cpp \
-    addingclient.cpp \
-    searchclientcontroller.cpp
+    searchclientcontroller.cpp \
+    identificationcontroller.cpp \
+    addingclientcontroller.cpp \
+    aproposcontroller.cpp \
+    mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    identification.h \
-    apropos.h \
     client.h \
-    addingclient.h \
-    searchclientcontroller.h
+    searchclientcontroller.h \
+    identificationcontroller.h \
+    addingclientcontroller.h \
+    aproposcontroller.h \
+    mainwindow.h
 
 FORMS += \
         mainwindow.ui \

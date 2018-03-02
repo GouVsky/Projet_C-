@@ -34,9 +34,9 @@
       <property name="geometry">
        <rect>
         <x>15</x>
-        <y>130</y>
+        <y>150</y>
         <width>601</width>
-        <height>271</height>
+        <height>251</height>
        </rect>
       </property>
      </widget>
@@ -115,7 +115,7 @@
      <widget class="QLabel" name="datesInterval">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>350</x>
         <y>30</y>
         <width>121</width>
         <height>16</height>
@@ -128,7 +128,7 @@
      <widget class="QDateEdit" name="dateBeginning">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>350</x>
         <y>60</y>
         <width>110</width>
         <height>24</height>
@@ -138,7 +138,7 @@
      <widget class="QDateEdit" name="dateEnding">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>500</x>
         <y>60</y>
         <width>110</width>
         <height>24</height>
@@ -148,7 +148,7 @@
      <widget class="QLabel" name="to">
       <property name="geometry">
        <rect>
-        <x>450</x>
+        <x>470</x>
         <y>60</y>
         <width>21</width>
         <height>21</height>
@@ -156,6 +156,19 @@
       </property>
       <property name="text">
        <string>To</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="searchCustomerButton">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>110</y>
+        <width>113</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Search</string>
       </property>
      </widget>
     </widget>

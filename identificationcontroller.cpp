@@ -1,27 +1,15 @@
-#include "identification.h"
+#include "identificationcontroller.h"
 #include "ui_identification.h"
 
 Identification::Identification(QWidget *parent) : QDialog(parent), ui(new Ui::Identification)
 {
     ui->setupUi(this);
-
-    // We center the window.
-
-    const QRect screen = QApplication::desktop()->screenGeometry();
-
-    this->move(screen.center() - this->rect().center());
 }
-
-
-
 
 Identification::~Identification()
 {
     delete ui;
 }
-
-
-
 
 bool Identification::checkIdentification()
 {
@@ -39,16 +27,10 @@ bool Identification::checkIdentification()
     return check;
 }
 
-
-
-
 void Identification::on_cancel_clicked()
 {
     close();
 }
-
-
-
 
 void Identification::on_connect_clicked()
 {
