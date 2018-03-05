@@ -6,6 +6,7 @@
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
 #include "identificationcontroller.h"
+#include "addingemployee.h"
 
 namespace Ui
 {
@@ -30,11 +31,14 @@ class MainWindow : public QMainWindow
 
         void on_searchCustomerButton_clicked();
 
-    private:
+        void on_actionPersonnel_triggered();
+
+private:
         Ui::MainWindow * ui;
         Identification * identificationDialog;
         apropos * aProposDialog;
         AddingClient * addingClientDialog;
+        addingEmployee * addingEmployeeDialog;
 };
 
 #endif // MAINWINDOW_H

@@ -30,7 +30,8 @@ SOURCES += \
     addingclientcontroller.cpp \
     aproposcontroller.cpp \
     mainwindow.cpp \
-    c_init_bd.cpp
+    c_init_bd.cpp \
+    addingemployee.cpp
 
 HEADERS += \
     client.h \
@@ -38,13 +39,15 @@ HEADERS += \
     addingclientcontroller.h \
     aproposcontroller.h \
     mainwindow.h \
-    c_init_bd.h
+    c_init_bd.h \
+    addingemployee.h
 
 FORMS += \
         mainwindow.ui \
     identification.ui \
     apropos.ui \
-    addingclient.ui
+    addingclient.ui \
+    addingemployee.ui
 
 RESOURCES += \
     resources.qrc

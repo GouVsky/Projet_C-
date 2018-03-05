@@ -1,7 +1,5 @@
 <RCC>
     <qresource prefix="/images">
-        <file>POLYTECH_RVB.jpg</file>
-        <file>POLYTECH_RVB.png</file>
         <file>personnel.png</file>
         <file>client.png</file>
     </qresource>
