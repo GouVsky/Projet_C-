@@ -6,7 +6,7 @@
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
 #include "identificationcontroller.h"
-#include "searchclientcontroller.h"
+//#include "searchclientcontroller.h"
 
 namespace Ui
 {
