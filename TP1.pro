@@ -33,7 +33,8 @@ SOURCES += \
     c_init_bd.cpp \
     databasecommunicator.cpp \
     searchcustomercontroller.cpp \
-    resource.cpp
+    resource.cpp \
+    addingemployee.cpp
 
 HEADERS += \
     client.h \
@@ -44,13 +45,15 @@ HEADERS += \
     c_init_bd.h \
     databasecommunicator.h \
     searchcustomercontroller.h \
-    resource.h
+    resource.h \
+    addingemployee.h
 
 FORMS += \
         mainwindow.ui \
     identification.ui \
     apropos.ui \
-    addingclient.ui
+    addingclient.ui \
+    addingemployee.ui
 
 RESOURCES += \
     resources.qrc
