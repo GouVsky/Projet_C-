@@ -6,7 +6,6 @@
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
 #include "identificationcontroller.h"
-#include "searchclientcontroller.h"
 
 namespace Ui
 {
@@ -20,22 +19,22 @@ class MainWindow : public QMainWindow
     public:
         explicit MainWindow(QWidget * parent = 0);
         ~MainWindow();
+        bool checkOneFieldSearchCustomerFullAtLeast();
 
-private slots:
-    void on_actionA_propos_triggered();
+    private slots:
+        void on_actionA_propos_triggered();
 
-    void on_actionClient_triggered();
+        void on_actionClient_triggered();
 
-    void on_actionQuitter_triggered();
+        void on_actionQuitter_triggered();
 
-    void on_searchCustomerButton_clicked();
+        void on_searchCustomerButton_clicked();
 
     private:
         Ui::MainWindow * ui;
         Identification * identificationDialog;
         apropos * aProposDialog;
         AddingClient * addingClientDialog;
-        searchClientController * searchCustomerController;
 };
 
 #endif // MAINWINDOW_H

@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
 
     identificationDialog = new Identification(this);
-    searchCustomerController = new searchClientController(this);
 }
 
 MainWindow::~MainWindow()
@@ -31,7 +30,24 @@ void MainWindow::on_actionQuitter_triggered()
     close();
 }
 
+bool MainWindow::checkOneFieldSearchCustomerFullAtLeast()
+{
+    bool oneFieldIsFull = true;
+
+    if (ui->customerIDSearch->text().isEmpty() &&
+        ui->customerNameSearch->text().isEmpty() &&
+        ui->customerFirstNameSearch->text().isEmpty())
+    {
+        oneFieldIsFull = false;
+    }
+
+    return oneFieldIsFull;
+}
+
 void MainWindow::on_searchCustomerButton_clicked()
 {
-    searchCustomerController->checkOneFieldFullAtLeast(ui);
+    if (checkOneFieldSearchCustomerFullAtLeast())
+    {
+
+    }
 }

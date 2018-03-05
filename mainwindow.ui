@@ -39,6 +39,15 @@
         <height>251</height>
        </rect>
       </property>
+      <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
      </widget>
      <widget class="QLineEdit" name="customerIDSearch">
       <property name="geometry">
@@ -263,6 +272,9 @@
    </property>
   </action>
   <action name="actionA_propos">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>About</string>
    </property>

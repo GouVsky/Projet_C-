@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,19 +26,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         client.cpp \
-    searchclientcontroller.cpp \
     identificationcontroller.cpp \
     addingclientcontroller.cpp \
     aproposcontroller.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    c_init_bd.cpp
 
 HEADERS += \
     client.h \
-    searchclientcontroller.h \
     identificationcontroller.h \
     addingclientcontroller.h \
     aproposcontroller.h \
-    mainwindow.h
+    mainwindow.h \
+    c_init_bd.h
 
 FORMS += \
         mainwindow.ui \

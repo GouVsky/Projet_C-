@@ -5,6 +5,9 @@ AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::Adding
 {
     ui->setupUi(this);
 
+    ui->editDate->setDate(QDate::currentDate());
+    ui->editDate->setMinimumDate(QDate::currentDate());
+
     QRegExp regPhone("[0-9]{10}");
     phoneValidator = new QRegExpValidator(regPhone, this);
     ui->editPhoneNumber->setValidator(phoneValidator);
@@ -17,6 +20,37 @@ AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::Adding
 AddingClient::~AddingClient()
 {
     delete ui;
+}
+
+bool AddingClient::checkRequiredInputs()
+{
+    bool requiredInputs = true;
+
+    if (ui->editName->text().isEmpty() ||
+        ui->editFirstName->text().isEmpty() ||
+        ui->editAddress->text().isEmpty() ||
+        ui->editPostalCode->text().isEmpty() ||
+        ui->editCity->text().isEmpty())
+    {
+        requiredInputs = false;
+
+        QMessageBox::warning(this, "Warning", "Some information is missing.");
+    }
+
+    return requiredInputs;
+}
+
+void AddingClient::on_cancel_clicked()
+{
+    close();
+}
+
+void AddingClient::on_add_clicked()
+{
+    if (checkRequiredInputs())
+    {
+        accept();
+    }
 }
 
 void AddingClient::capitalize(const QString &str, QLineEdit *lineEdit)
@@ -32,16 +66,6 @@ void AddingClient::capitalize(const QString &str, QLineEdit *lineEdit)
     lineEdit->setText(text);
 
     lineEdit->setCursorPosition(position);
-}
-
-void AddingClient::on_cancel_clicked()
-{
-    close();
-}
-
-void AddingClient::on_add_clicked()
-{
-
 }
 
 void AddingClient::on_editName_textChanged(const QString &arg1)
