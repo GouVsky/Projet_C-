@@ -10,23 +10,26 @@ class Client : public QObject
     Q_OBJECT
 
     public:
-        explicit Client(QObject *parent = nullptr);
+        Client(QString name, QString firstName, QObject *parent = nullptr);
+        void addAddress(QString address, QString postalCode, QString city);
+        void addPhoneNumber(QString phoneNumber);
+        void addComments(QString comments);
 
     private:
-        QString * name,
-                * firstName,
-                * address,
-                * postalCode,
-                * city,
-                * comments,
-                * phoneNumber;
+        QString name,
+                firstName,
+                address,
+                postalCode,
+                city,
+                comments,
+                phoneNumber;
 
         int static id;
 
         int priority,
             totalConsultingTime;
 
-        QDateTime * consultingDay;
+        QDateTime consultingDay;
 };
 
 #endif // CLIENT_H

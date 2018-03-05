@@ -30,7 +30,10 @@ SOURCES += \
     addingclientcontroller.cpp \
     aproposcontroller.cpp \
     mainwindow.cpp \
-    c_init_bd.cpp
+    c_init_bd.cpp \
+    databasecommunicator.cpp \
+    searchcustomercontroller.cpp \
+    resource.cpp
 
 HEADERS += \
     client.h \
@@ -38,7 +41,10 @@ HEADERS += \
     addingclientcontroller.h \
     aproposcontroller.h \
     mainwindow.h \
-    c_init_bd.h
+    c_init_bd.h \
+    databasecommunicator.h \
+    searchcustomercontroller.h \
+    resource.h
 
 FORMS += \
         mainwindow.ui \

@@ -3,11 +3,15 @@
 int Client::id = 0;
 
 
-Client::Client(QObject *parent) : QObject(parent)
+Client::Client(QString name, QString firstName, QObject *parent) : QObject(parent)
 {
     id++;
 
     priority = 1;
 
     totalConsultingTime = 60;
+
+    this->name = name;
+
+    this->firstName = firstName;
 }
