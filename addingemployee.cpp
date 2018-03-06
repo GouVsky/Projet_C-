@@ -12,3 +12,8 @@ addingEmployee::~addingEmployee()
 {
     delete ui;
 }
+
+void addingEmployee::on_QuitButton_clicked()
+{
+    close();
+}

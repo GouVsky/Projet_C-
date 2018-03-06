@@ -19,7 +19,7 @@
      <x>40</x>
      <y>20</y>
      <width>241</width>
-     <height>91</height>
+     <height>95</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="NameInforation">
@@ -29,7 +29,7 @@
     <item row="2" column="0">
      <widget class="QLabel" name="Nom">
       <property name="text">
-       <string>Nom</string>
+       <string>Name</string>
       </property>
      </widget>
     </item>
@@ -39,7 +39,7 @@
     <item row="3" column="0">
      <widget class="QLabel" name="Prenom">
       <property name="text">
-       <string>Prenom</string>
+       <string>First Name</string>
       </property>
      </widget>
     </item>
@@ -74,7 +74,7 @@
      <x>40</x>
      <y>150</y>
      <width>241</width>
-     <height>57</height>
+     <height>66</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -140,7 +140,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>230</y>
+     <y>250</y>
      <width>241</width>
      <height>101</height>
     </rect>
@@ -148,6 +148,9 @@
    <layout class="QGridLayout" name="InformaticienLoginGrid">
     <item row="2" column="0">
      <widget class="QLabel" name="InformaticienLogin">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Login</string>
       </property>
@@ -155,16 +158,26 @@
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="InformaticienPassword">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Password</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="editInformaticienLogin">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
     <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="informaticienIdentification">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Authentification informaticien</string>
       </property>
@@ -181,7 +194,11 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
+     <widget class="QLineEdit" name="editInformaticienPassword">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -208,7 +225,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QWidget" name="gridLayoutWidget_3">
@@ -216,8 +233,8 @@
     <rect>
      <x>359</x>
      <y>20</y>
-     <width>291</width>
-     <height>311</height>
+     <width>311</width>
+     <height>371</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -272,6 +289,18 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>NomInput</tabstop>
+  <tabstop>PrenomInput</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>editInformaticienLogin</tabstop>
+  <tabstop>editInformaticienPassword</tabstop>
+  <tabstop>treeWidget</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>AddButton</tabstop>
+  <tabstop>QuitButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
