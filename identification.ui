@@ -19,7 +19,7 @@
      <x>50</x>
      <y>100</y>
      <width>291</width>
-     <height>51</height>
+     <height>54</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -36,7 +36,7 @@
     <item row="0" column="0">
      <widget class="QLabel" name="login">
       <property name="text">
-       <string>Identifiant</string>
+       <string>Login</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -46,7 +46,7 @@
     <item row="1" column="0">
      <widget class="QLabel" name="password">
       <property name="text">
-       <string>Mot de passe</string>
+       <string>Password</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
