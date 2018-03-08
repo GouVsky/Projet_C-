@@ -48,6 +48,7 @@ HEADERS += \
     resource.h \
     addingemployee.h
 
+
 FORMS += \
         mainwindow.ui \
     identification.ui \

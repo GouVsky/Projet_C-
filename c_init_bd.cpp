@@ -15,6 +15,8 @@ bool C_INIT_BD::Creation_BD()
     bool b_test;
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
+    db.open();
+
     if(db.isValid())
     {
         db.setHostName("localhost");
@@ -176,8 +178,8 @@ bool C_INIT_BD::Creation_BD()
             return false;
         }
 
-        db.close();
-        db.removeDatabase("QSQLITE");
+        //db.close();
+        //db.removeDatabase("QSQLITE");
         return true;
 
     }

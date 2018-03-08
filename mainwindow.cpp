@@ -42,5 +42,5 @@ void MainWindow::on_searchCustomerButton_clicked()
 void MainWindow::on_actionPersonnel_triggered()
 {
     addingEmployeeDialog = new addingEmployee(this);
-    addingEmployeeDialog->show();
+    addingEmployeeDialog->exec();
 }

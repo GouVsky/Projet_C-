@@ -1,6 +1,8 @@
 #include "identificationcontroller.h"
 #include "ui_identification.h"
 
+#include "databasecommunicator.h"
+
 Identification::Identification(QWidget *parent) : QDialog(parent), ui(new Ui::Identification)
 {
     ui->setupUi(this);
@@ -17,8 +19,12 @@ bool Identification::checkIdentification()
 
     bool check = true;
 
-    if (!check)
+    DataBaseCommunicator *dbc = new DataBaseCommunicator(this);
+
+    if (!dbc->checkLoginPassword(ui->loginField->text(), ui->passwordField->text()))
     {
+        check = false;
+
         QMessageBox::warning(this, "Warning !", "Incorrect login or password !");
 
         ui->passwordField->clear();

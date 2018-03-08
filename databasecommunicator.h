@@ -2,16 +2,22 @@
 #define DATABASECOMMUNICATOR_H
 
 #include <QObject>
-#include <QSqlDatabase>
+#include <QVariant>
 #include <QSqlQuery>
+#include <QSqlDatabase>
 
 #include "c_init_bd.h"
 
-class dataBaseCommunicator : public QObject
+class DataBaseCommunicator : public QObject
 {
         Q_OBJECT
     public:
-        explicit dataBaseCommunicator(QObject *parent = nullptr);
+        explicit DataBaseCommunicator(QObject *parent = nullptr);
+        ~DataBaseCommunicator();
+        bool checkLoginPassword(const QString &login, const QString &password);
+
+    private:
+        QSqlDatabase db;
 
     signals:
 
