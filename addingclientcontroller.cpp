@@ -1,5 +1,8 @@
 #include "addingclientcontroller.h"
 #include "ui_addingclient.h"
+#include "databasecommunicator.h"
+#include <iostream>
+#include <QtSql>
 
 AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::AddingClient)
 {
@@ -49,6 +52,9 @@ void AddingClient::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
+        DataBaseCommunicator * dtbc= new DataBaseCommunicator();
+        // modele de base pour chercher les edit: ui->editFirstName->text().toStdString();
+        dtbc->addClientToDatabase(ui);
         accept();
     }
 }
