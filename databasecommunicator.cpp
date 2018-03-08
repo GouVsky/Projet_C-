@@ -52,9 +52,4 @@ bool DataBaseCommunicator::checkLoginPassword(const QString &login, const QStrin
              qDebug() << db.lastError().text();
              qDebug() << "Erreur à l'insersion de donnees client !\n";
          }
-     else
-     {
-         qDebug() << db.lastError().text();
-         qDebug() << "Erreur à louverture de la base !\n";
-     }
  }
