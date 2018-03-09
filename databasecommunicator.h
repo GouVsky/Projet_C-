@@ -15,13 +15,18 @@ class DataBaseCommunicator : public QObject
 {
         Q_OBJECT
     public:
-        explicit DataBaseCommunicator(QObject *parent = nullptr);
-        ~DataBaseCommunicator();
+        static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
-        bool addClientToDatabase(Ui::AddingClient * ui);
+        void addCustomerToDatabase(Ui::AddingClient * ui);
+        void searchCustomerFromDatabase();
 
     private:
+
+        explicit DataBaseCommunicator(QObject *parent = nullptr);
+        ~DataBaseCommunicator();
+
         QSqlDatabase db;
+        static DataBaseCommunicator *instance;
 
     signals:
 

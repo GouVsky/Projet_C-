@@ -1,4 +1,4 @@
-#include "addingemployee.h"
+#include "addingemployeecontroller.h"
 #include "ui_addingemployee.h"
 
 addingEmployee::addingEmployee(QWidget *parent) :

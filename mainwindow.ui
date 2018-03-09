@@ -30,7 +30,7 @@
      <attribute name="title">
       <string>Search customer</string>
      </attribute>
-     <widget class="QTableView" name="tableView">
+     <widget class="QTableView" name="customerView">
       <property name="geometry">
        <rect>
         <x>15</x>

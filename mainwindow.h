@@ -7,7 +7,8 @@
 #include "addingclientcontroller.h"
 #include "identificationcontroller.h"
 #include "searchcustomercontroller.h"
-#include "addingemployee.h"
+#include "addingemployeecontroller.h"
+#include "databasecommunicator.h"
 
 namespace Ui
 {

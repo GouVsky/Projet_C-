@@ -15,11 +15,9 @@ Identification::~Identification()
 
 bool Identification::checkIdentification()
 {
-    // The variable 'check' is initialized to 'false' to test the QMessageBox.
-
     bool check = true;
 
-    DataBaseCommunicator *dbc = new DataBaseCommunicator(this);
+    DataBaseCommunicator *dbc = DataBaseCommunicator::getInstance();
 
     if (!dbc->checkLoginPassword(ui->loginField->text(), ui->passwordField->text()))
     {

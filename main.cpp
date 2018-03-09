@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 
     C_INIT_BD::Creation_BD();
 
+    DataBaseCommunicator::getInstance(&a);
+
     MainWindow w;
 
     Identification identification;

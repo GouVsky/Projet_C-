@@ -36,7 +36,8 @@ class AddingClient : public QDialog
     private:
         Ui::AddingClient *ui;
         QRegExpValidator *phoneValidator,
-                         *postalCodeValidator;
+                         *postalCodeValidator,
+                         *stringWithoutNumbersValidator;
 };
 
 #endif // ADDINGCLIENT_H

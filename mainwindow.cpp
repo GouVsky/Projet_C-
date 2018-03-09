@@ -35,7 +35,9 @@ void MainWindow::on_searchCustomerButton_clicked()
 {
     if (searchCustomerController->checkOneFieldSearchCustomerFullAtLeast(ui))
     {
+        DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
+        db->searchCustomerFromDatabase();
     }
 }
 

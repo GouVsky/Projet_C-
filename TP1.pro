@@ -4,12 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql widgets uiplugin designer
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += core gui sql widgets uiplugin designer
 
 TARGET = TP1
-TEMPLATE = app
+TEMPLATE += app lib
+CONFIG += plugin
+
+target.path = $$[QT_INSTALL_PLUGINS]/designer
+INSTALLS += target
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -34,7 +38,8 @@ SOURCES += \
     databasecommunicator.cpp \
     searchcustomercontroller.cpp \
     resource.cpp \
-    addingemployee.cpp
+    addingemployeecontroller.cpp \
+    qlineeditcapitalizestring.cpp
 
 HEADERS += \
     client.h \
@@ -46,7 +51,8 @@ HEADERS += \
     databasecommunicator.h \
     searchcustomercontroller.h \
     resource.h \
-    addingemployee.h
+    addingemployeecontroller.h \
+    qlineeditcapitalizestring.h
 
 
 FORMS += \

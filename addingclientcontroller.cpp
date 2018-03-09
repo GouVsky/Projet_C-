@@ -1,8 +1,6 @@
 #include "addingclientcontroller.h"
 #include "ui_addingclient.h"
 #include "databasecommunicator.h"
-#include <iostream>
-#include <QtSql>
 
 AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::AddingClient)
 {
@@ -18,6 +16,12 @@ AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::Adding
     QRegExp regPostalCode("[0-9]{5}");
     postalCodeValidator = new QRegExpValidator(regPostalCode, this);
     ui->editPostalCode->setValidator(postalCodeValidator);
+
+    QRegExp withoutNumbers("[A-Za-z]+");
+    stringWithoutNumbersValidator = new QRegExpValidator(withoutNumbers, this);
+    ui->editName->setValidator(stringWithoutNumbersValidator);
+    ui->editFirstName->setValidator(stringWithoutNumbersValidator);
+    ui->editCity->setValidator(stringWithoutNumbersValidator);
 }
 
 AddingClient::~AddingClient()
@@ -52,9 +56,10 @@ void AddingClient::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
-        DataBaseCommunicator * dtbc= new DataBaseCommunicator();
-        // modele de base pour chercher les edit: ui->editFirstName->text().toStdString();
-        dtbc->addClientToDatabase(ui);
+        DataBaseCommunicator * dtbc= DataBaseCommunicator::getInstance();
+
+        dtbc->addCustomerToDatabase(ui);
+
         accept();
     }
 }
