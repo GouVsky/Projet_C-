@@ -67,7 +67,19 @@ void DataBaseCommunicator::addCustomerToDatabase(Ui::AddingClient * ui)
      }
  }
 
-void DataBaseCommunicator::searchCustomerFromDatabase()
+void DataBaseCommunicator::searchCustomerFromDatabase(int id, const QString &name, const QString &firstname)
 {
+    QSqlQuery query(db);
 
+    query.prepare("SELECT Id, Nom, Prenom FROM TClient WHERE Id == :id OR Nom LIKE :name OR Prenom == :firstname;");
+
+    query.bindValue(":id", id);
+    query.bindValue(":name", name);
+    query.bindValue(":firstName", firstname);
+
+    query.exec();
+
+    while (query.next())
+    {
+    }
 }

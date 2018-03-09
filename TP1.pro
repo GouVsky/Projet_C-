@@ -4,13 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql widgets uiplugin designer
+QT       += core gui sql designer
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += core gui sql widgets uiplugin designer
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = TP1
 TEMPLATE += app lib
-CONFIG += plugin
+CONFIG += plugin release
 
 target.path = $$[QT_INSTALL_PLUGINS]/designer
 INSTALLS += target
