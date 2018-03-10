@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>New Client</string>
+   <string>New Customer</string>
   </property>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">

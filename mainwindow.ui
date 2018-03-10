@@ -23,6 +23,12 @@
       <height>441</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>641</width>
+      <height>441</height>
+     </size>
+    </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
@@ -181,6 +187,54 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="employees">
+     <attribute name="title">
+      <string>Employees</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>601</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Delete</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QTreeWidget" name="treeWidget">
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Type</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <widget class="QWidget" name="planning">
      <attribute name="title">
       <string>Schedule</string>
@@ -281,6 +335,19 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>customerView</tabstop>
+  <tabstop>customerIDSearch</tabstop>
+  <tabstop>customerNameSearch</tabstop>
+  <tabstop>customerFirstNameSearch</tabstop>
+  <tabstop>dateBeginning</tabstop>
+  <tabstop>dateEnding</tabstop>
+  <tabstop>searchCustomerButton</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>treeWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

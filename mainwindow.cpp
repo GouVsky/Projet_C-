@@ -37,7 +37,7 @@ void MainWindow::on_searchCustomerButton_clicked()
     {
         DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
-        db->searchCustomerFromDatabase(ui);
+        db->searchCustomerFromDatabase(ui->customerIDSearch->text().toInt(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text());
     }
 }
 
