@@ -2,26 +2,19 @@
 #include "ui_addingclient.h"
 #include "databasecommunicator.h"
 
-AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::AddingClient)
+AddingClient::AddingClient(QWidget *parent) : AddingPerson(parent), ui(new Ui::AddingClient)
 {
     ui->setupUi(this);
 
     ui->editDate->setDate(QDate::currentDate());
     ui->editDate->setMinimumDate(QDate::currentDate());
 
-    QRegExp regPhone("[0-9]{10}");
-    phoneValidator = new QRegExpValidator(regPhone, this);
-    ui->editPhoneNumber->setValidator(phoneValidator);
+    forbidAlphaCaracteres(ui->editPhoneNumber, 10);
+    forbidAlphaCaracteres(ui->editPostalCode, 5);
 
-    QRegExp regPostalCode("[0-9]{5}");
-    postalCodeValidator = new QRegExpValidator(regPostalCode, this);
-    ui->editPostalCode->setValidator(postalCodeValidator);
-
-    QRegExp withoutNumbers("[A-Za-z]+");
-    stringWithoutNumbersValidator = new QRegExpValidator(withoutNumbers, this);
-    ui->editName->setValidator(stringWithoutNumbersValidator);
-    ui->editFirstName->setValidator(stringWithoutNumbersValidator);
-    ui->editCity->setValidator(stringWithoutNumbersValidator);
+    forbidNumericCaracteres(ui->editName);
+    forbidNumericCaracteres(ui->editFirstName);
+    forbidNumericCaracteres(ui->editCity);
 }
 
 AddingClient::~AddingClient()
@@ -62,21 +55,6 @@ void AddingClient::on_add_clicked()
 
         accept();
     }
-}
-
-void AddingClient::capitalize(const QString &str, QLineEdit *lineEdit)
-{
-    int position = lineEdit->cursorPosition();
-
-    QString text = str;
-
-    text = text.toLower();
-
-    text[0] = text[0].toUpper();
-
-    lineEdit->setText(text);
-
-    lineEdit->setCursorPosition(position);
 }
 
 void AddingClient::on_editName_textChanged(const QString &arg1)

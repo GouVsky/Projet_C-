@@ -1,17 +1,17 @@
 #ifndef ADDINGCLIENT_H
 #define ADDINGCLIENT_H
 
-#include <QDialog>
-#include <QRegExp>
+#include <QObject>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QRegExpValidator>
+
+#include "addingpersoncontroller.h"
 
 namespace Ui {
     class AddingClient;
 }
 
-class AddingClient : public QDialog
+class AddingClient : public AddingPerson
 {
         Q_OBJECT
 
@@ -25,8 +25,6 @@ class AddingClient : public QDialog
 
         void on_add_clicked();
 
-        void capitalize(const QString &str, QLineEdit *lineEdit);
-
         void on_editName_textChanged(const QString &arg1);
 
         void on_editFirstName_textChanged(const QString &arg1);
@@ -35,9 +33,6 @@ class AddingClient : public QDialog
 
     private:
         Ui::AddingClient *ui;
-        QRegExpValidator *phoneValidator,
-                         *postalCodeValidator,
-                         *stringWithoutNumbersValidator;
 };
 
 #endif // ADDINGCLIENT_H

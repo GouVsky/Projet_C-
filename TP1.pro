@@ -35,7 +35,8 @@ SOURCES += \
     databasecommunicator.cpp \
     searchcustomercontroller.cpp \
     resource.cpp \
-    addingemployeecontroller.cpp
+    addingemployeecontroller.cpp \
+    addingpersoncontroller.cpp
 
 HEADERS += \
     client.h \
@@ -47,7 +48,8 @@ HEADERS += \
     databasecommunicator.h \
     searchcustomercontroller.h \
     resource.h \
-    addingemployeecontroller.h
+    addingemployeecontroller.h \
+    addingpersoncontroller.h
 
 
 FORMS += \

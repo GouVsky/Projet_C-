@@ -1,13 +1,15 @@
 #ifndef ADDINGEMPLOYEE_H
 #define ADDINGEMPLOYEE_H
 
-#include <QDialog>
+#include <QObject>
+
+#include "addingpersoncontroller.h"
 
 namespace Ui {
 class addingEmployee;
 }
 
-class addingEmployee : public QDialog
+class addingEmployee : public AddingPerson
 {
     Q_OBJECT
 
@@ -23,8 +25,12 @@ class addingEmployee : public QDialog
 
         void on_comboBox_currentIndexChanged(int index);
 
+        void on_NomInput_textChanged(const QString &arg1);
+
+        void on_PrenomInput_textChanged(const QString &arg1);
+
     private:
-    Ui::addingEmployee *ui;
+        Ui::addingEmployee *ui;
 };
 
 #endif // ADDINGEMPLOYEE_H
