@@ -7,7 +7,6 @@
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
 #include "identificationcontroller.h"
-#include "searchcustomercontroller.h"
 #include "addingemployeecontroller.h"
 #include "databasecommunicator.h"
 

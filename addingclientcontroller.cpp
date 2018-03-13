@@ -1,6 +1,8 @@
 #include "addingclientcontroller.h"
 #include "ui_addingclient.h"
 #include "databasecommunicator.h"
+#include "customer.h"
+#include <iostream>
 
 AddingClient::AddingClient(QWidget *parent) : AddingPerson(parent), ui(new Ui::AddingClient)
 {
@@ -49,9 +51,22 @@ void AddingClient::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
+        Customer client;
+        client.setAddress(ui->editAddress->text());
+        client.setCity(ui->editCity->text());
+        client.setComments(ui->editComments->toPlainText());
+        client.setConsultingDay(ui->editDate->dateTime());
+        client.setDureeRDV(ui->editConsultingTime->text().toInt());
+        client.setFirstName(ui->editFirstName->text());
+        client.setName(ui->editName->text());
+        client.setPhoneNumber(ui->editPhoneNumber->text().toInt());
+        client.setPostalCode(ui->editPostalCode->text());
+        client.setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
+
         DataBaseCommunicator * dtbc= DataBaseCommunicator::getInstance();
 
-        dtbc->addCustomerToDatabase(ui);
+        dtbc->addCustomerToDatabase(&client);
+        std::cout << "super, le client " << client.getName().toStdString() <<  " a bien été ajouté";
 
         accept();
     }
