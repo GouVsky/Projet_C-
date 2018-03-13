@@ -33,7 +33,6 @@ SOURCES += \
     mainwindow.cpp \
     c_init_bd.cpp \
     databasecommunicator.cpp \
-    searchcustomercontroller.cpp \
     resource.cpp \
     addingemployeecontroller.cpp \
     addingpersoncontroller.cpp
@@ -46,7 +45,6 @@ HEADERS += \
     mainwindow.h \
     c_init_bd.h \
     databasecommunicator.h \
-    searchcustomercontroller.h \
     resource.h \
     addingemployeecontroller.h \
     addingpersoncontroller.h

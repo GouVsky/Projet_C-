@@ -23,7 +23,6 @@ class MainWindow : public QMainWindow
     public:
         explicit MainWindow(QWidget * parent = 0);
         ~MainWindow();
-        QLineEdit * getCustomerId();
 
     private slots:
         void on_actionA_propos_triggered();
@@ -42,7 +41,6 @@ private:
         apropos * aProposDialog;
         AddingClient * addingClientDialog;
         addingEmployee * addingEmployeeDialog;
-        SearchCustomerController * searchCustomerController;
 };
 
 #endif // MAINWINDOW_H

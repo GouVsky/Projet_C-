@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
 
     identificationDialog = new Identification(this);
-    searchCustomerController = new SearchCustomerController(this);
 }
 
 MainWindow::~MainWindow()
@@ -33,21 +32,18 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_searchCustomerButton_clicked()
 {
-    /*if (searchCustomerController->checkOneFieldSearchCustomerFullAtLeast(ui))
+    if (ui->customerIDSearch->text().isEmpty() &&
+        ui->customerNameSearch->text().isEmpty() &&
+        ui->customerFirstNameSearch->text().isEmpty())
     {
         DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
         db->searchCustomerFromDatabase(ui->customerIDSearch->text().toInt(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text());
-    }*/
+    }
 }
 
 void MainWindow::on_actionPersonnel_triggered()
 {
     addingEmployeeDialog = new addingEmployee(this);
     addingEmployeeDialog->exec();
-}
-
-QLineEdit * MainWindow::getCustomerId()
-{
-    return ui->customerIDSearch;
 }
