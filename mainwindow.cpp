@@ -59,3 +59,14 @@ void MainWindow::on_DeleteButton_clicked()
 
 }
 
+
+
+void MainWindow::on_RefreshButon_clicked()
+{
+
+     DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
+     db->displayEmployeeList(ui->treeView);
+
+
+
+}

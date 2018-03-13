@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QTreeWidget>
 
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
@@ -38,6 +39,8 @@ class MainWindow : public QMainWindow
         void on_EditButton_clicked();
 
         void on_DeleteButton_clicked();
+
+        void on_RefreshButon_clicked();
 
 private:
         Ui::MainWindow * ui;
