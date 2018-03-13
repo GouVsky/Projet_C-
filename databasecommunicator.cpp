@@ -67,9 +67,11 @@ void DataBaseCommunicator::addCustomerToDatabase(Ui::AddingClient * ui)
         qDebug() << "Erreur à l'insersion de donnees client !\n";
     }
 }
-#include <iostream>
+//#include <iostream>
 void DataBaseCommunicator::searchCustomerFromDatabase(int id, const QString &name, const QString &firstname)
 {
+    QSqlTableModel model(db);
+
     QSqlQuery query(db);
 
     query.prepare("SELECT Id, Nom, Prenom FROM TClient WHERE Id == :id OR Nom LIKE ':name%' OR Prenom LIKE ':firstname%';");
@@ -82,8 +84,13 @@ void DataBaseCommunicator::searchCustomerFromDatabase(int id, const QString &nam
 
     while (query.next())
     {
-        std::cout << query.value(1).toString().toStdString();
+        //std::cout << query.value(1).toString().toStdString();
 
-
+        model.setTable("TClient");
+        model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        model->select();
+        model->setHeaderData(0, Qt::Horizontal, tr("Id"));
+        model->setHeaderData(0, Qt::Horizontal, tr("Nom"));
+        model->setHeaderData(0, Qt::Horizontal, tr("Prenom"));
     }
 }

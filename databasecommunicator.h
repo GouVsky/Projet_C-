@@ -7,6 +7,7 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlError>
+#include <QSqlTableModel>
 #include "ui_addingclient.h"
 
 #include "c_init_bd.h"
