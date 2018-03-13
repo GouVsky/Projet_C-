@@ -32,9 +32,9 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_searchCustomerButton_clicked()
 {
-    if (ui->customerIDSearch->text().isEmpty() &&
-        ui->customerNameSearch->text().isEmpty() &&
-        ui->customerFirstNameSearch->text().isEmpty())
+    if (!ui->customerIDSearch->text().isEmpty() ||
+        !ui->customerNameSearch->text().isEmpty() ||
+        !ui->customerFirstNameSearch->text().isEmpty())
     {
         DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
@@ -47,3 +47,15 @@ void MainWindow::on_actionPersonnel_triggered()
     addingEmployeeDialog = new addingEmployee(this);
     addingEmployeeDialog->exec();
 }
+
+void MainWindow::on_EditButton_clicked()
+{
+    EditEmployeeDialog = new editemployee(this);
+    EditEmployeeDialog->exec();
+}
+
+void MainWindow::on_DeleteButton_clicked()
+{
+
+}
+

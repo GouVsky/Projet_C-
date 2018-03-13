@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="customerSearch">
      <attribute name="title">
@@ -202,14 +202,14 @@
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="DeleteButton">
          <property name="text">
           <string>Delete</string>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="EditButton">
          <property name="text">
           <string>Edit</string>
          </property>
@@ -266,7 +266,7 @@
      <x>0</x>
      <y>0</y>
      <width>666</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="defaultUp">
@@ -351,8 +351,8 @@
   <tabstop>dateBeginning</tabstop>
   <tabstop>dateEnding</tabstop>
   <tabstop>searchCustomerButton</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>EditButton</tabstop>
+  <tabstop>DeleteButton</tabstop>
   <tabstop>treeWidget</tabstop>
  </tabstops>
  <resources>
