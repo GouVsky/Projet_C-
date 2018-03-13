@@ -1,16 +1,11 @@
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
 
-#include <QString>
-#include <QObject>
-#include <QDateTime>
 
-class Client : public QObject
+class Customer
 {
-    Q_OBJECT
-
     public:
-        Client(QString name, QString firstName, QObject *parent = nullptr);
+        Customer(QString name, QString firstName, QObject *parent = nullptr);
         void addAddress(QString address, QString postalCode, QString city);
         void addPhoneNumber(QString phoneNumber);
         void addComments(QString comments);
@@ -32,4 +27,4 @@ class Client : public QObject
         QDateTime consultingDay;
 };
 
-#endif // CLIENT_H
+#endif // CUSTOMER_H

@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        client.cpp \
     identificationcontroller.cpp \
     addingclientcontroller.cpp \
     aproposcontroller.cpp \
@@ -35,10 +34,10 @@ SOURCES += \
     databasecommunicator.cpp \
     resource.cpp \
     addingemployeecontroller.cpp \
-    addingpersoncontroller.cpp
+    addingpersoncontroller.cpp \
+    customer.cpp
 
 HEADERS += \
-    client.h \
     identificationcontroller.h \
     addingclientcontroller.h \
     aproposcontroller.h \
@@ -47,7 +46,8 @@ HEADERS += \
     databasecommunicator.h \
     resource.h \
     addingemployeecontroller.h \
-    addingpersoncontroller.h
+    addingpersoncontroller.h \
+    customer.h
 
 
 FORMS += \
