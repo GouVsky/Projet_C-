@@ -35,7 +35,8 @@ SOURCES += \
     resource.cpp \
     addingemployeecontroller.cpp \
     addingpersoncontroller.cpp \
-    customer.cpp
+    customer.cpp \
+    editemployee.cpp
 
 HEADERS += \
     identificationcontroller.h \
@@ -47,7 +48,8 @@ HEADERS += \
     resource.h \
     addingemployeecontroller.h \
     addingpersoncontroller.h \
-    customer.h
+    customer.h \
+    editemployee.h
 
 
 FORMS += \
@@ -55,7 +57,8 @@ FORMS += \
     identification.ui \
     apropos.ui \
     addingclient.ui \
-    addingemployee.ui
+    addingemployee.ui \
+    editemployee.ui
 
 RESOURCES += \
     resources.qrc

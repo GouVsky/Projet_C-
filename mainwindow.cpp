@@ -50,3 +50,15 @@ void MainWindow::on_actionPersonnel_triggered()
     addingEmployeeDialog = new addingEmployee(this);
     addingEmployeeDialog->exec();
 }
+
+void MainWindow::on_EditButton_clicked()
+{
+    EditEmployeeDialog = new editemployee(this);
+    EditEmployeeDialog->exec();
+}
+
+void MainWindow::on_DeleteButton_clicked()
+{
+
+}
+

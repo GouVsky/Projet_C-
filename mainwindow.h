@@ -10,6 +10,7 @@
 #include "identificationcontroller.h"
 #include "addingemployeecontroller.h"
 #include "databasecommunicator.h"
+#include "editemployee.h"
 
 namespace Ui
 {
@@ -35,12 +36,17 @@ class MainWindow : public QMainWindow
 
         void on_actionPersonnel_triggered();
 
+        void on_EditButton_clicked();
+
+        void on_DeleteButton_clicked();
+
 private:
         Ui::MainWindow * ui;
         Identification * identificationDialog;
         apropos * aProposDialog;
         AddingClient * addingClientDialog;
         addingEmployee * addingEmployeeDialog;
+        editemployee * EditEmployeeDialog;
 };
 
 #endif // MAINWINDOW_H
