@@ -12,7 +12,10 @@
 #include <QItemSelectionModel>
 #include "ui_addingclient.h"
 #include "customer.h"
+#include <QSqlQueryModel>
+#include <QDateTime>
 
+#include "customer.h"
 #include "c_init_bd.h"
 
 class DataBaseCommunicator : public QObject
@@ -24,6 +27,7 @@ class DataBaseCommunicator : public QObject
         void addCustomerToDatabase(Customer * Client);
         void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
         void displayEmployeeList(QTreeView * treeView);
+        QSqlQueryModel *searchCustomerFromDatabase(int id, const QString &name, const QString &firstname, const QDateTime &beginningDate, const QDateTime &endingDate);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);
@@ -31,6 +35,7 @@ class DataBaseCommunicator : public QObject
 
         QSqlDatabase db;
         static DataBaseCommunicator *instance;
+        QSqlQueryModel * model;
 
     signals:
 

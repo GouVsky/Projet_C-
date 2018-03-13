@@ -8,6 +8,8 @@ DataBaseCommunicator::DataBaseCommunicator(QObject *parent) : QObject(parent)
     db = QSqlDatabase::database("QSQLITE");
 
     db.open();
+
+    model = new QSqlQueryModel;
 }
 
 DataBaseCommunicator::~DataBaseCommunicator()
@@ -68,22 +70,25 @@ void DataBaseCommunicator::addCustomerToDatabase(Customer * Client)
     }
 }
 #include <iostream>
-void DataBaseCommunicator::searchCustomerFromDatabase(int id, const QString &name, const QString &firstname)
+QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(int id, const QString &name, const QString &firstname, const QDateTime &beginningDate, const QDateTime &endingDate)
 {
     QSqlQuery query(db);
 
-    query.prepare("SELECT Id, Nom, Prenom FROM TClient WHERE Id == :id OR Nom LIKE ':name%' OR Prenom LIKE ':firstname%';");
+    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE '%'||:name||'%' OR Prenom LIKE '%'||:firstname||'%' OR (DateRdv >= :beginningDate AND DateRdv <= :endingDate);");
 
     query.bindValue(":id", id);
     query.bindValue(":name", name);
     query.bindValue(":firstName", firstname);
+    query.bindValue(":beginningDate", beginningDate);
+    query.bindValue(":endingDate", endingDate);
 
     query.exec();
 
     while (query.next())
     {
-        std::cout << query.value(1).toString().toStdString();
+        model->setQuery(query);
     }
+    return model;
 }
 
 void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
@@ -111,6 +116,5 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     treeView->setModel(standardModel);
     treeView->expandAll();
 
-
-
 }
+
