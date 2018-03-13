@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include "ui_addingclient.h"
+#include "customer.h"
 
 #include "c_init_bd.h"
 
@@ -17,7 +18,7 @@ class DataBaseCommunicator : public QObject
     public:
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
-        void addCustomerToDatabase(Ui::AddingClient * ui);
+        void addCustomerToDatabase(Customer * Client);
         void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
 
     private:

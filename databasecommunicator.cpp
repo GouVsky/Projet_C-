@@ -45,21 +45,21 @@ bool DataBaseCommunicator::checkLoginPassword(const QString &login, const QStrin
     return correctLoginPassword;
 }
 
-void DataBaseCommunicator::addCustomerToDatabase(Ui::AddingClient * ui)
+void DataBaseCommunicator::addCustomerToDatabase(Customer * Client)
 {
     QSqlQuery query(db);
     query.prepare("INSERT INTO TClient(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite) VALUES "
                           "(:NomAdd, :PrenomAdd, :AdresseAdd, :VilleAdd, :CPAdd, :CommentaireAdd, :TelAdd, :DateRdvAdd, :DureeRdvAdd, :PrioriteAdd)");
-    query.bindValue(":NomAdd", ui->editName->text());
-    query.bindValue(":PrenomAdd", ui->editFirstName->text());
-    query.bindValue(":AdresseAdd", ui->editAddress->text());
-    query.bindValue(":VilleAdd", ui->editCity->text());
-    query.bindValue(":CPAdd", ui->editPostalCode->text());
-    query.bindValue(":CommentaireAdd", ui->editComments->toPlainText());
-    query.bindValue(":TelAdd", ui->editPhoneNumber->text().toInt());
-    query.bindValue(":DateRdvAdd", ui->editDate->text());
-    query.bindValue(":DureeRdvAdd", ui->editConsultingTime->text());
-    query.bindValue(":PrioriteAdd", ui->priorityList->itemData(ui->priorityList->currentIndex()));
+    query.bindValue(":NomAdd", Client->getName());
+    query.bindValue(":PrenomAdd", Client->getFirstName());
+    query.bindValue(":AdresseAdd", Client->getAddress());
+    query.bindValue(":VilleAdd", Client->getCity());
+    query.bindValue(":CPAdd", Client->getPostalCode());
+    query.bindValue(":CommentaireAdd", Client->getComments());
+    query.bindValue(":TelAdd", Client->getPhoneNumber());
+    query.bindValue(":DateRdvAdd", Client->getConsultingDay());
+    query.bindValue(":DureeRdvAdd", Client->getDureeRDV());
+    query.bindValue(":PrioriteAdd", Client->getPriority());
 
     if(!query.exec())
     {
