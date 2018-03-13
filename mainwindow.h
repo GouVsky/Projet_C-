@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QSqlQueryModel>
 
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"

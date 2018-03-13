@@ -32,13 +32,16 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_searchCustomerButton_clicked()
 {
-    if (ui->customerIDSearch->text().isEmpty() &&
-        ui->customerNameSearch->text().isEmpty() &&
-        ui->customerFirstNameSearch->text().isEmpty())
+    if (!ui->customerIDSearch->text().isEmpty() ||
+        !ui->customerNameSearch->text().isEmpty() ||
+        !ui->customerFirstNameSearch->text().isEmpty())
     {
         DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
-        db->searchCustomerFromDatabase(ui->customerIDSearch->text().toInt(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text());
+        QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text().toInt(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->dateTime(), ui->dateEnding->dateTime());
+
+        ui->customerView->setModel(model);
+        //ui->customerView->resizeColumnsToContents();
     }
 }
 

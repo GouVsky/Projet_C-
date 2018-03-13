@@ -7,10 +7,10 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlError>
-#include <QSqlTableModel>
-#include "ui_addingclient.h"
-#include "customer.h"
+#include <QSqlQueryModel>
+#include <QDateTime>
 
+#include "customer.h"
 #include "c_init_bd.h"
 
 class DataBaseCommunicator : public QObject
@@ -20,7 +20,7 @@ class DataBaseCommunicator : public QObject
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
         void addCustomerToDatabase(Customer * Client);
-        void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
+        QSqlQueryModel *searchCustomerFromDatabase(int id, const QString &name, const QString &firstname, const QDateTime &beginningDate, const QDateTime &endingDate);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);
@@ -28,6 +28,7 @@ class DataBaseCommunicator : public QObject
 
         QSqlDatabase db;
         static DataBaseCommunicator *instance;
+        QSqlQueryModel * model;
 
     signals:
 
