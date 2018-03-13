@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLineEdit>
 
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
@@ -22,6 +23,7 @@ class MainWindow : public QMainWindow
     public:
         explicit MainWindow(QWidget * parent = 0);
         ~MainWindow();
+        QLineEdit * getCustomerId();
 
     private slots:
         void on_actionA_propos_triggered();

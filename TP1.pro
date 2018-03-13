@@ -62,5 +62,4 @@ FORMS += \
 RESOURCES += \
     resources.qrc
 
-DISTFILES += \
-    qlineeditcapitalizestring.pri
+

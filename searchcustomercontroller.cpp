@@ -5,16 +5,18 @@ SearchCustomerController::SearchCustomerController(QObject *parent) : QObject(pa
 
 }
 
-bool SearchCustomerController::checkOneFieldSearchCustomerFullAtLeast(Ui::MainWindow * ui)
+bool SearchCustomerController::checkOneFieldSearchCustomerFullAtLeast()
 {
     bool oneFieldIsFull = true;
 
-    if (ui->customerIDSearch->text().isEmpty() &&
+    //parent()->
+
+    /*if (ui->customerIDSearch->text().isEmpty() &&
         ui->customerNameSearch->text().isEmpty() &&
         ui->customerFirstNameSearch->text().isEmpty())
     {
         oneFieldIsFull = false;
     }
 
-    return oneFieldIsFull;
+    return oneFieldIsFull;*/
 }

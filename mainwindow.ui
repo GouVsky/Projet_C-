@@ -242,6 +242,24 @@
     </widget>
    </widget>
   </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionClient"/>
+   <addaction name="actionPersonnel"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -274,27 +292,10 @@
      <string>?</string>
     </property>
     <addaction name="actionA_propos"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menu"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionClient"/>
-   <addaction name="actionPersonnel"/>
-  </widget>
-  <widget class="QStatusBar" name="statusBar">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
   </widget>
   <action name="actionPersonnel">
    <property name="icon">
@@ -331,6 +332,12 @@
    </property>
    <property name="text">
     <string>About</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
    </property>
   </action>
  </widget>

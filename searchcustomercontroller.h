@@ -2,15 +2,14 @@
 #define SEARCHCUSTOMERCONTROLLER_H
 
 #include <QObject>
-
-#include "ui_mainwindow.h"
+#include "mainwindow.h"
 
 class SearchCustomerController : public QObject
 {
         Q_OBJECT
     public:
         explicit SearchCustomerController(QObject *parent = nullptr);
-        bool checkOneFieldSearchCustomerFullAtLeast(Ui::MainWindow * ui);
+        bool checkOneFieldSearchCustomerFullAtLeast();
 };
 
 #endif // SEARCHCUSTOMERCONTROLLER_H

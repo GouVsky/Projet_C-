@@ -28,21 +28,26 @@ void MainWindow::on_actionClient_triggered()
 
 void MainWindow::on_actionQuitter_triggered()
 {
-    close();
+     close();
 }
 
 void MainWindow::on_searchCustomerButton_clicked()
 {
-    if (searchCustomerController->checkOneFieldSearchCustomerFullAtLeast(ui))
+    /*if (searchCustomerController->checkOneFieldSearchCustomerFullAtLeast(ui))
     {
         DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
         db->searchCustomerFromDatabase(ui->customerIDSearch->text().toInt(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text());
-    }
+    }*/
 }
 
 void MainWindow::on_actionPersonnel_triggered()
 {
     addingEmployeeDialog = new addingEmployee(this);
     addingEmployeeDialog->exec();
+}
+
+QLineEdit * MainWindow::getCustomerId()
+{
+    return ui->customerIDSearch;
 }
