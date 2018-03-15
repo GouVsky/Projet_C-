@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     identificationDialog = new Identification(this);
 
-    //ui->dateBeginning->setDate(QDate::currentDate());
-    //ui->dateEnding->setDate(QDate::currentDate());
+    ui->dateBeginning->setDate(QDate::currentDate());
+    ui->dateEnding->setDate(QDate::currentDate());
 }
 
 MainWindow::~MainWindow()
@@ -35,16 +35,13 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_searchCustomerButton_clicked()
 {
-    if (!ui->customerIDSearch->text().isEmpty() ||
-        !ui->customerNameSearch->text().isEmpty() ||
-        !ui->customerFirstNameSearch->text().isEmpty())
-    {
-        DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
+    // It is not necessary to verify if fields are full, because dates are always set.
 
-        QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->date(), ui->dateEnding->date());
+    DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
-        ui->customerView->setModel(model);
-    }
+    QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->date(), ui->dateEnding->date());
+
+    ui->customerView->setModel(model);
 }
 
 void MainWindow::on_actionPersonnel_triggered()

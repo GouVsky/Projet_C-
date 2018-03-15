@@ -74,7 +74,7 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
 {
     QSqlQuery query(db);
 
-    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE :name||'%' OR Prenom LIKE :firstname||'%' OR (DateRdv >= :beginningDate AND DateRdv <= :endingDate);");
+    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE :name||'%' OR Prenom LIKE :firstname||'%' OR (DateRdv BETWEEN :beginningDate AND :endingDate);");
 
     query.bindValue(":id", id.isEmpty() ? nullptr : id);
     query.bindValue(":name", name.isEmpty() ? nullptr : name);
