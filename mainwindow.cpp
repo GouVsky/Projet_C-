@@ -6,6 +6,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
 
     identificationDialog = new Identification(this);
+
+    //ui->dateBeginning->setDate(QDate::currentDate());
+    //ui->dateEnding->setDate(QDate::currentDate());
 }
 
 MainWindow::~MainWindow()
@@ -38,10 +41,9 @@ void MainWindow::on_searchCustomerButton_clicked()
     {
         DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
-        QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text().toInt(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->dateTime(), ui->dateEnding->dateTime());
+        QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->date(), ui->dateEnding->date());
 
         ui->customerView->setModel(model);
-        //ui->customerView->resizeColumnsToContents();
     }
 }
 

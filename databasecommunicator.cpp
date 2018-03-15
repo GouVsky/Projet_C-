@@ -69,16 +69,16 @@ void DataBaseCommunicator::addCustomerToDatabase(Customer * Client)
         qDebug() << "Erreur à l'insersion de donnees client !\n";
     }
 }
-#include <iostream>
-QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(int id, const QString &name, const QString &firstname, const QDateTime &beginningDate, const QDateTime &endingDate)
+
+QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate)
 {
     QSqlQuery query(db);
 
-    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE '%'||:name||'%' OR Prenom LIKE '%'||:firstname||'%' OR (DateRdv >= :beginningDate AND DateRdv <= :endingDate);");
+    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE :name||'%' OR Prenom LIKE :firstname||'%' OR (DateRdv >= :beginningDate AND DateRdv <= :endingDate);");
 
-    query.bindValue(":id", id);
-    query.bindValue(":name", name);
-    query.bindValue(":firstName", firstname);
+    query.bindValue(":id", id.isEmpty() ? nullptr : id);
+    query.bindValue(":name", name.isEmpty() ? nullptr : name);
+    query.bindValue(":firstname", firstname.isEmpty() ? nullptr : firstname);
     query.bindValue(":beginningDate", beginningDate);
     query.bindValue(":endingDate", endingDate);
 
