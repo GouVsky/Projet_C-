@@ -1,7 +1,7 @@
-#include "addingclientcontroller.h"
-#include "ui_addingclient.h"
+#include "addingcustomercontroller.h"
+#include "ui_addingcustomer.h"
 
-AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::AddingClient)
+AddingCustomer::AddingCustomer(QWidget *parent) : QDialog(parent), ui(new Ui::AddingCustomer)
 {
     ui->setupUi(this);
 
@@ -18,12 +18,12 @@ AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::Adding
     utils->forbidNumericCaracteres(ui->editCity);
 }
 
-AddingClient::~AddingClient()
+AddingCustomer::~AddingCustomer()
 {
     delete ui;
 }
 
-bool AddingClient::checkRequiredInputs()
+bool AddingCustomer::checkRequiredInputs()
 {
     bool requiredInputs = true;
 
@@ -41,12 +41,12 @@ bool AddingClient::checkRequiredInputs()
     return requiredInputs;
 }
 
-void AddingClient::on_cancel_clicked()
+void AddingCustomer::on_cancel_clicked()
 {
     close();
 }
 
-void AddingClient::on_add_clicked()
+void AddingCustomer::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
@@ -72,17 +72,17 @@ void AddingClient::on_add_clicked()
     }
 }
 
-void AddingClient::on_editName_textChanged(const QString &arg1)
+void AddingCustomer::on_editName_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->editName);
 }
 
-void AddingClient::on_editFirstName_textChanged(const QString &arg1)
+void AddingCustomer::on_editFirstName_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->editFirstName);
 }
 
-void AddingClient::on_editCity_textChanged(const QString &arg1)
+void AddingCustomer::on_editCity_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->editCity);
 }

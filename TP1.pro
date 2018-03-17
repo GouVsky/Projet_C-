@@ -27,38 +27,40 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     identificationcontroller.cpp \
-    addingclientcontroller.cpp \
-    aproposcontroller.cpp \
     mainwindow.cpp \
     c_init_bd.cpp \
     databasecommunicator.cpp \
-    resource.cpp \
     addingemployeecontroller.cpp \
     customer.cpp \
     editemployee.cpp \
-    customizedstring.cpp
+    customizedstring.cpp \
+    resource.cpp \
+    type.cpp \
+    addingcustomercontroller.cpp \
+    aboutcontroller.cpp
 
 HEADERS += \
     identificationcontroller.h \
-    addingclientcontroller.h \
-    aproposcontroller.h \
     mainwindow.h \
     c_init_bd.h \
     databasecommunicator.h \
-    resource.h \
     addingemployeecontroller.h \
     customer.h \
     editemployee.h \
-    customizedstring.h
+    customizedstring.h \
+    resource.h \
+    type.h \
+    addingcustomercontroller.h \
+    aboutcontroller.h
 
 
 FORMS += \
         mainwindow.ui \
     identification.ui \
-    apropos.ui \
-    addingclient.ui \
     addingemployee.ui \
-    editemployee.ui
+    editemployee.ui \
+    addingcustomer.ui \
+    about.ui
 
 RESOURCES += \
     resources.qrc

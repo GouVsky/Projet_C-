@@ -22,17 +22,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionA_propos_triggered()
 {
-    aProposDialog= new apropos(this);
-    aProposDialog->show();
+    aboutDialog= new About(this);
+    aboutDialog->show();
 }
 
 void MainWindow::on_actionClient_triggered()
 {
-    addingClientDialog = new AddingClient(this);
+    addingCustomerDialog = new AddingCustomer(this);
 
-    connect(addingClientDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+    connect(addingCustomerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
-    addingClientDialog->exec();
+    addingCustomerDialog->exec();
 }
 
 void MainWindow::on_actionQuitter_triggered()
@@ -59,8 +59,8 @@ void MainWindow::on_actionPersonnel_triggered()
 
 void MainWindow::on_EditButton_clicked()
 {
-    EditEmployeeDialog = new editemployee(this);
-    EditEmployeeDialog->exec();
+    editEmployeeDialog = new editemployee(this);
+    editEmployeeDialog->exec();
 }
 
 void MainWindow::on_DeleteButton_clicked()

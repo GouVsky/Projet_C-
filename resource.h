@@ -2,16 +2,29 @@
 #define RESOURCE_H
 
 #include <QObject>
+#include <QString>
+
+#include "type.h"
 
 class Resource : public QObject
 {
         Q_OBJECT
     public:
-        explicit Resource(int id, QString name, QObject *parent = nullptr);
+        explicit Resource(QObject *parent = nullptr);
+
+        QString getName() const;
+        QString getFirstName() const;
+        Type * getType() const;
+
+        void setName(const QString & value);
+        void setFirstName(const QString & value);
+        void setType(Type * value);
 
     private:
-        int id;
-        QString name;
+        QString name,
+                firstName;
+
+        Type * type;
 };
 
 #endif // RESOURCE_H

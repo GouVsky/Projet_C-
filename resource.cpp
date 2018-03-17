@@ -1,9 +1,36 @@
 #include "resource.h"
 
-Resource::Resource(int id, QString name, QObject *parent) : QObject(parent)
+Resource::Resource(QObject *parent) : QObject(parent)
 {
-    this->id = id;
-
-    this->name = name;
+    type = new Type(this);
 }
 
+QString Resource::getName() const
+{
+    return name;
+}
+
+QString Resource::getFirstName() const
+{
+    return firstName;
+}
+
+Type * Resource::getType() const
+{
+    return type;
+}
+
+void Resource::setName(const QString & value)
+{
+    name = value;
+}
+
+void Resource::setFirstName(const QString & value)
+{
+    firstName = value;
+}
+
+void Resource::setType(Type * value)
+{
+    type = value;
+}
