@@ -120,23 +120,23 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
 {
     QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
     QStandardItem *rootNode = standardModel->invisibleRootItem();
-    QStandardItem * typeNode= new QStandardItem("Type");
-    QStandardItem * nameNode= new QStandardItem("Name");
-    rootNode->appendRow(typeNode);
-    rootNode->appendRow(nameNode);
-
 
     QSqlQuery query(db);
-    query.prepare("SELECT Nom, Prenom FROM TRessource;");
+    QSqlQuery query2(db);
+    query.prepare("SELECT DISTINCT Label FROM TType ORDER BY Label;");
+    query2.prepare("SELECT Nom FROM TRessource, TType WHERE TRessource.IdType = TType.Id and Label LIKE :label ;");
     query.exec();
     while(query.next())
     {
-        QStandardItem * treeViewType = new QStandardItem(query.value(0).toString());
-        QStandardItem * treeViewName = new QStandardItem(query.value(0).toString());
-        typeNode->appendRow(treeViewType);
-        nameNode->appendRow(treeViewName);
-        /*treeView->(0, query.value(0).toString());
-        treeView->setText(1, query.value(1).toString());*/
+        QStandardItem * typeNode= new QStandardItem(query.value(0).toString());
+        rootNode->appendRow(typeNode);
+        query2.bindValue(":label", query.value(0).toString());
+        query2.exec();
+        while(query2.next())
+        {
+            QStandardItem * nameNode= new QStandardItem(query2.value(0).toString());
+            typeNode->appendRow(nameNode);
+        }
     }
     treeView->setModel(standardModel);
     treeView->expandAll();
