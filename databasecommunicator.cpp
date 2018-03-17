@@ -47,27 +47,37 @@ bool DataBaseCommunicator::checkLoginPassword(const QString &login, const QStrin
     return correctLoginPassword;
 }
 
-void DataBaseCommunicator::addCustomerToDatabase(Customer * Client)
+void DataBaseCommunicator::addCustomerToDatabase(Customer * client)
 {
     QSqlQuery query(db);
-    query.prepare("INSERT INTO TClient(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite) VALUES "
-                          "(:NomAdd, :PrenomAdd, :AdresseAdd, :VilleAdd, :CPAdd, :CommentaireAdd, :TelAdd, :DateRdvAdd, :DureeRdvAdd, :PrioriteAdd)");
-    query.bindValue(":NomAdd", Client->getName());
-    query.bindValue(":PrenomAdd", Client->getFirstName());
-    query.bindValue(":AdresseAdd", Client->getAddress());
-    query.bindValue(":VilleAdd", Client->getCity());
-    query.bindValue(":CPAdd", Client->getPostalCode());
-    query.bindValue(":CommentaireAdd", Client->getComments());
-    query.bindValue(":TelAdd", Client->getPhoneNumber());
-    query.bindValue(":DateRdvAdd", Client->getConsultingDay());
-    query.bindValue(":DureeRdvAdd", Client->getDureeRDV());
-    query.bindValue(":PrioriteAdd", Client->getPriority());
+
+    query.prepare("INSERT INTO TClient(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite) VALUES (:NomAdd, :PrenomAdd, :AdresseAdd, :VilleAdd, :CPAdd, :CommentaireAdd, :TelAdd, :DateRdvAdd, :DureeRdvAdd, :PrioriteAdd)");
+
+    query.bindValue(":NomAdd", client->getName());
+    query.bindValue(":PrenomAdd", client->getFirstName());
+    query.bindValue(":AdresseAdd", client->getAddress());
+    query.bindValue(":VilleAdd", client->getCity());
+    query.bindValue(":CPAdd", client->getPostalCode());
+    query.bindValue(":CommentaireAdd", client->getComments());
+    query.bindValue(":TelAdd", client->getPhoneNumber());
+    query.bindValue(":DateRdvAdd", client->getConsultingDay());
+    query.bindValue(":DureeRdvAdd", client->getDureeRDV());
+    query.bindValue(":PrioriteAdd", client->getPriority());
 
     if(!query.exec())
     {
         qDebug() << db.lastError().text();
         qDebug() << "Erreur à l'insersion de donnees client !\n";
     }
+}
+
+void DataBaseCommunicator::addEmployeeToDatabase(Resource *resource)
+{
+    QSqlQuery query(db);
+
+    query.prepare("INSERT INTO TClient() VALUES ()");
+
+    //query.bindValue();
 }
 
 QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate)
@@ -88,6 +98,7 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
     {
         model->setQuery(query);
     }
+
     return model;
 }
 
@@ -124,4 +135,3 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     treeView->expandAll();
 
 }
-

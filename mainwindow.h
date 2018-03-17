@@ -6,8 +6,8 @@
 #include <QTreeWidget>
 #include <QSqlQueryModel>
 
-#include "aproposcontroller.h"
-#include "addingclientcontroller.h"
+#include "aboutcontroller.h"
+#include "addingcustomercontroller.h"
 #include "addingemployeecontroller.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
@@ -51,10 +51,10 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow * ui;
-        apropos * aProposDialog;
-        AddingClient * addingClientDialog;
+        About * aboutDialog;
+        AddingCustomer * addingCustomerDialog;
         addingEmployee * addingEmployeeDialog;
-        editemployee * EditEmployeeDialog;
+        editemployee * editEmployeeDialog;
         CustomizedString *utils;
 };
 

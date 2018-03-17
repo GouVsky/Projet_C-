@@ -10,17 +10,18 @@
 #include "customizedstring.h"
 #include "databasecommunicator.h"
 
-namespace Ui {
-    class AddingClient;
+namespace Ui
+{
+    class AddingCustomer;
 }
 
-class AddingClient : public QDialog
+class AddingCustomer : public QDialog
 {
         Q_OBJECT
 
     public:
-        explicit AddingClient(QWidget *parent = 0);
-        ~AddingClient();
+        explicit AddingCustomer(QWidget *parent = 0);
+        ~AddingCustomer();
         bool checkRequiredInputs();
 
     private slots:
@@ -38,7 +39,7 @@ class AddingClient : public QDialog
         void addingSucceed(QString message);
 
     private:
-        Ui::AddingClient *ui;
+        Ui::AddingCustomer *ui;
         CustomizedString *utils;
 };
 
