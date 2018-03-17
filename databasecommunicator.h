@@ -13,7 +13,7 @@
 #include "ui_addingclient.h"
 #include "customer.h"
 #include <QSqlQueryModel>
-#include <QDateTime>
+#include <QDate>
 
 #include "customer.h"
 #include "c_init_bd.h"
@@ -27,7 +27,7 @@ class DataBaseCommunicator : public QObject
         void addCustomerToDatabase(Customer * Client);
         void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
         void displayEmployeeList(QTreeView * treeView);
-        QSqlQueryModel *searchCustomerFromDatabase(int id, const QString &name, const QString &firstname, const QDateTime &beginningDate, const QDateTime &endingDate);
+        QSqlQueryModel *searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);
