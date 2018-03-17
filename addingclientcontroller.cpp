@@ -1,21 +1,21 @@
 #include "addingclientcontroller.h"
 #include "ui_addingclient.h"
-#include "databasecommunicator.h"
-#include "customer.h"
 
-AddingClient::AddingClient(QWidget *parent) : AddingPerson(parent), ui(new Ui::AddingClient)
+AddingClient::AddingClient(QWidget *parent) : QDialog(parent), ui(new Ui::AddingClient)
 {
     ui->setupUi(this);
 
     ui->editDate->setDate(QDate::currentDate());
     ui->editDate->setMinimumDate(QDate::currentDate());
 
-    forbidAlphaCaracteres(ui->editPhoneNumber, 10);
-    forbidAlphaCaracteres(ui->editPostalCode, 5);
+    utils = new CustomizedString(this);
 
-    forbidNumericCaracteres(ui->editName);
-    forbidNumericCaracteres(ui->editFirstName);
-    forbidNumericCaracteres(ui->editCity);
+    utils->forbidAlphaCaracteres(ui->editPhoneNumber, 10);
+    utils->forbidAlphaCaracteres(ui->editPostalCode, 5);
+
+    utils->forbidNumericCaracteres(ui->editName);
+    utils->forbidNumericCaracteres(ui->editFirstName);
+    utils->forbidNumericCaracteres(ui->editCity);
 }
 
 AddingClient::~AddingClient()
@@ -74,15 +74,15 @@ void AddingClient::on_add_clicked()
 
 void AddingClient::on_editName_textChanged(const QString &arg1)
 {
-    capitalize(arg1, ui->editName);
+    utils->capitalize(arg1, ui->editName);
 }
 
 void AddingClient::on_editFirstName_textChanged(const QString &arg1)
 {
-    capitalize(arg1, ui->editFirstName);
+    utils->capitalize(arg1, ui->editFirstName);
 }
 
 void AddingClient::on_editCity_textChanged(const QString &arg1)
 {
-    capitalize(arg1, ui->editCity);
+    utils->capitalize(arg1, ui->editCity);
 }

@@ -2,16 +2,19 @@
 #define ADDINGCLIENT_H
 
 #include <QObject>
+#include <QDialog>
 #include <QLineEdit>
 #include <QMessageBox>
 
-#include "addingpersoncontroller.h"
+#include "customer.h"
+#include "customizedstring.h"
+#include "databasecommunicator.h"
 
 namespace Ui {
     class AddingClient;
 }
 
-class AddingClient : public AddingPerson
+class AddingClient : public QDialog
 {
         Q_OBJECT
 
@@ -36,6 +39,7 @@ class AddingClient : public AddingPerson
 
     private:
         Ui::AddingClient *ui;
+        CustomizedString *utils;
 };
 
 #endif // ADDINGCLIENT_H

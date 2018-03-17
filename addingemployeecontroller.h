@@ -2,14 +2,15 @@
 #define ADDINGEMPLOYEE_H
 
 #include <QObject>
+#include <QDialog>
 
-#include "addingpersoncontroller.h"
+#include "customizedstring.h"
 
 namespace Ui {
 class addingEmployee;
 }
 
-class addingEmployee : public AddingPerson
+class addingEmployee : public QDialog
 {
     Q_OBJECT
 
@@ -31,6 +32,7 @@ class addingEmployee : public AddingPerson
 
     private:
         Ui::addingEmployee *ui;
+        CustomizedString *utils;
 };
 
 #endif // ADDINGEMPLOYEE_H

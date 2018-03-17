@@ -1,11 +1,11 @@
-#include "addingpersoncontroller.h"
+#include "customizedstring.h"
 
-AddingPerson::AddingPerson(QWidget *parent) : QDialog(parent)
+CustomizedString::CustomizedString(QObject *parent) : QObject(parent)
 {
 
 }
 
-void AddingPerson::capitalize(const QString &str, QLineEdit *lineEdit)
+void CustomizedString::capitalize(const QString &str, QLineEdit *lineEdit)
 {
     int position = lineEdit->cursorPosition();
 
@@ -20,7 +20,7 @@ void AddingPerson::capitalize(const QString &str, QLineEdit *lineEdit)
     lineEdit->setCursorPosition(position);
 }
 
-void AddingPerson::forbidNumericCaracteres(QLineEdit *lineEdit, int size)
+void CustomizedString::forbidNumericCaracteres(QLineEdit *lineEdit, int size)
 {
     QString regexp = QString("[A-Za-z]{%1}").arg(size);
 
@@ -31,7 +31,7 @@ void AddingPerson::forbidNumericCaracteres(QLineEdit *lineEdit, int size)
     lineEdit->setValidator(stringWithoutNumericCaracteresValidator);
 }
 
-void AddingPerson::forbidAlphaCaracteres(QLineEdit *lineEdit, int size)
+void CustomizedString::forbidAlphaCaracteres(QLineEdit *lineEdit, int size)
 {
     QString regexp = QString("[0-9]{%1}").arg(size);
 

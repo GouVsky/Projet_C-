@@ -1,16 +1,17 @@
-#ifndef ADDINGPERSON_H
-#define ADDINGPERSON_H
+#ifndef CUSTOMIZEDSTRING_H
+#define CUSTOMIZEDSTRING_H
 
-#include <QDialog>
+#include <QObject>
+#include <QString>
 #include <QRegExp>
 #include <QLineEdit>
 #include <QRegExpValidator>
 
-class AddingPerson : public QDialog
+class CustomizedString : public QObject
 {
         Q_OBJECT
     public:
-        explicit AddingPerson(QWidget *parent = nullptr);
+        explicit CustomizedString(QObject *parent = nullptr);
         void capitalize(const QString &str, QLineEdit *lineEdit);
         void forbidNumericCaracteres(QLineEdit *lineEdit, int size = 50);
         void forbidAlphaCaracteres(QLineEdit *lineEdit, int size = 50);
@@ -18,10 +19,6 @@ class AddingPerson : public QDialog
     private:
         QRegExpValidator *stringWithoutNumericCaracteresValidator,
                          *stringWithoutAlphaCaracteresValidator;
-
-    signals:
-
-    public slots:
 };
 
-#endif // ADDINGPERSON_H
+#endif // CUSTOMIZEDSTRING_H

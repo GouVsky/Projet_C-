@@ -1,12 +1,14 @@
 #include "addingemployeecontroller.h"
 #include "ui_addingemployee.h"
 
-addingEmployee::addingEmployee(QWidget *parent) : AddingPerson(parent), ui(new Ui::addingEmployee)
+addingEmployee::addingEmployee(QWidget *parent) : QDialog(parent), ui(new Ui::addingEmployee)
 {
     ui->setupUi(this);
 
-    forbidNumericCaracteres(ui->NomInput);
-    forbidNumericCaracteres(ui->PrenomInput);
+    utils = new CustomizedString(this);
+
+    utils->forbidNumericCaracteres(ui->NomInput);
+    utils->forbidNumericCaracteres(ui->PrenomInput);
 }
 
 addingEmployee::~addingEmployee()
@@ -45,10 +47,10 @@ void addingEmployee::on_comboBox_currentIndexChanged(int index)
 
 void addingEmployee::on_NomInput_textChanged(const QString &arg1)
 {
-    capitalize(arg1, ui->NomInput);
+    utils->capitalize(arg1, ui->NomInput);
 }
 
 void addingEmployee::on_PrenomInput_textChanged(const QString &arg1)
 {
-    capitalize(arg1, ui->PrenomInput);
+    utils->capitalize(arg1, ui->PrenomInput);
 }
