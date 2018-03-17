@@ -4,10 +4,15 @@
 #include <QObject>
 #include <QDialog>
 
+#include "type.h"
+#include "account.h"
+#include "resource.h"
 #include "customizedstring.h"
+#include "databasecommunicator.h"
 
-namespace Ui {
-class addingEmployee;
+namespace Ui
+{
+    class addingEmployee;
 }
 
 class addingEmployee : public QDialog
@@ -18,9 +23,6 @@ class addingEmployee : public QDialog
         explicit addingEmployee(QWidget *parent = 0);
         ~addingEmployee();
 
-    private:
-        void enableOrDisableComputerScientistLayout(bool enabled);
-
     private slots:
         void on_QuitButton_clicked();
 
@@ -30,7 +32,14 @@ class addingEmployee : public QDialog
 
         void on_PrenomInput_textChanged(const QString &arg1);
 
+        void on_AddButton_clicked();
+
+    signals:
+        void addingSucceed(QString message);
+
     private:
+        void enableOrDisableComputerScientistLayout(bool enabled);
+
         Ui::addingEmployee *ui;
         CustomizedString *utils;
 };

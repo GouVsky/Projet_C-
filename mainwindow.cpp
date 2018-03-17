@@ -54,6 +54,9 @@ void MainWindow::on_searchCustomerButton_clicked()
 void MainWindow::on_actionPersonnel_triggered()
 {
     addingEmployeeDialog = new addingEmployee(this);
+
+    connect(addingEmployeeDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+
     addingEmployeeDialog->exec();
 }
 

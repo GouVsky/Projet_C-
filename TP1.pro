@@ -37,7 +37,8 @@ SOURCES += \
     resource.cpp \
     type.cpp \
     addingcustomercontroller.cpp \
-    aboutcontroller.cpp
+    aboutcontroller.cpp \
+    account.cpp
 
 HEADERS += \
     identificationcontroller.h \
@@ -51,7 +52,8 @@ HEADERS += \
     resource.h \
     type.h \
     addingcustomercontroller.h \
-    aboutcontroller.h
+    aboutcontroller.h \
+    account.h
 
 
 FORMS += \

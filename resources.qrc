@@ -2,5 +2,6 @@
     <qresource prefix="/images">
         <file>personnel.png</file>
         <file>client.png</file>
+        <file>polytech.png</file>
     </qresource>
 </RCC>

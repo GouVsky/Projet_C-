@@ -50,21 +50,21 @@ void AddingCustomer::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
-        Customer client;
-        client.setAddress(ui->editAddress->text());
-        client.setCity(ui->editCity->text());
-        client.setComments(ui->editComments->toPlainText());
-        client.setConsultingDay(ui->editDate->dateTime());
-        client.setDureeRDV(ui->editConsultingTime->text().toInt());
-        client.setFirstName(ui->editFirstName->text());
-        client.setName(ui->editName->text());
-        client.setPhoneNumber(ui->editPhoneNumber->text().toInt());
-        client.setPostalCode(ui->editPostalCode->text());
-        client.setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
+        Customer customer;
+        customer.setAddress(ui->editAddress->text());
+        customer.setCity(ui->editCity->text());
+        customer.setComments(ui->editComments->toPlainText());
+        customer.setConsultingDay(ui->editDate->dateTime());
+        customer.setDureeRDV(ui->editConsultingTime->text().toInt());
+        customer.setFirstName(ui->editFirstName->text());
+        customer.setName(ui->editName->text());
+        customer.setPhoneNumber(ui->editPhoneNumber->text().toInt());
+        customer.setPostalCode(ui->editPostalCode->text());
+        customer.setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
 
-        DataBaseCommunicator * dtbc= DataBaseCommunicator::getInstance();
+        DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        dtbc->addCustomerToDatabase(&client);
+        dtbc->addCustomerToDatabase(&customer);
 
         emit addingSucceed("New customer added to the database.");
 

@@ -54,3 +54,28 @@ void addingEmployee::on_PrenomInput_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->PrenomInput);
 }
+
+void addingEmployee::on_AddButton_clicked()
+{
+    Type type;
+    Account account;
+    Resource resource;
+
+    type.setLabel(ui->comboBox->currentText());
+
+    resource.setName(ui->NomInput->text());
+    resource.setFirstName(ui->PrenomInput->text());
+    resource.setType(&type);
+
+    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    dtbc->addEmployeeToDatabase(&resource);
+
+    emit addingSucceed("New resource added to the database.");
+
+    accept();
+
+    /*account.setLogin(ui->editInformaticienLogin->text());
+    account.setPassword(ui->editInformaticienPassword->text());
+    account.setResource(resource);*/
+}

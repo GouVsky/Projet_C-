@@ -73,11 +73,25 @@ void DataBaseCommunicator::addCustomerToDatabase(Customer * client)
 
 void DataBaseCommunicator::addEmployeeToDatabase(Resource *resource)
 {
-    QSqlQuery query(db);
+    QSqlQuery queryType(db);
+    QSqlQuery queryResource(db);
 
-    query.prepare("INSERT INTO TClient() VALUES ()");
+    // We get the id of the type of the resource.
 
-    //query.bindValue();
+    /*queryType.prepare("SELECT Id FROM TType WHERE Label == :label");
+
+    queryType.bindValue(":label", resource->getType()->getLabel());
+
+    queryType.exec();*/
+
+
+    queryResource.prepare("INSERT INTO TRessource (Nom, Prenom, IdType) VALUES (:name, :firstname, :idType)");
+
+    queryResource.bindValue(":name", resource->getName());
+    queryResource.bindValue(":firstname", resource->getFirstName());
+    queryResource.bindValue(":idType", 1/*queryType.value(0)*/);
+
+    queryResource.exec();
 }
 
 QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate)
