@@ -5,11 +5,13 @@
 #include <QLineEdit>
 #include <QTreeWidget>
 #include <QSqlQueryModel>
+
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
 #include "addingemployeecontroller.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
+#include "customizedstring.h"
 
 namespace Ui
 {
@@ -43,12 +45,17 @@ class MainWindow : public QMainWindow
 
         void on_RefreshButon_clicked();
 
+        void on_customerNameSearch_textChanged(const QString &arg1);
+
+        void on_customerFirstNameSearch_textChanged(const QString &arg1);
+
     private:
         Ui::MainWindow * ui;
         apropos * aProposDialog;
         AddingClient * addingClientDialog;
         addingEmployee * addingEmployeeDialog;
         editemployee * EditEmployeeDialog;
+        CustomizedString *utils;
 };
 
 #endif // MAINWINDOW_H

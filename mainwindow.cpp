@@ -7,6 +7,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->dateBeginning->setDate(QDate::currentDate());
     ui->dateEnding->setDate(QDate::currentDate());
+
+    utils = new CustomizedString(this);
+
+    utils->forbidAlphaCaracteres(ui->customerIDSearch);
+    utils->forbidNumericCaracteres(ui->customerNameSearch);
+    utils->forbidNumericCaracteres(ui->customerFirstNameSearch);
 }
 
 MainWindow::~MainWindow()
@@ -71,4 +77,14 @@ void MainWindow::on_RefreshButon_clicked()
 {
      DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
      db->displayEmployeeList(ui->treeView);
+}
+
+void MainWindow::on_customerNameSearch_textChanged(const QString &arg1)
+{
+    utils->capitalize(arg1, ui->customerNameSearch);
+}
+
+void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
+{
+    utils->capitalize(arg1, ui->customerFirstNameSearch);
 }
