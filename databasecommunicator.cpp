@@ -106,10 +106,6 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
 {
     QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
     QStandardItem *rootNode = standardModel->invisibleRootItem();
-    //QStandardItem * typeNode= new QStandardItem("Type");
-    //QStandardItem * nameNode= new QStandardItem("Name");
-    //rootNode->appendRow(nameNode);
-
 
     QSqlQuery query(db);
     QSqlQuery query2(db);
@@ -127,9 +123,6 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
             QStandardItem * nameNode= new QStandardItem(query2.value(0).toString());
             typeNode->appendRow(nameNode);
         }
-
-        //QStandardItem * treeViewType = new QStandardItem(query.value(0).toString());
-        //QStandardItem * treeViewName = new QStandardItem(query.value(1).toString());
     }
     treeView->setModel(standardModel);
     treeView->expandAll();
