@@ -14,7 +14,6 @@
 #include "customer.h"
 #include <QSqlQueryModel>
 #include <QDate>
-
 #include "customer.h"
 #include "c_init_bd.h"
 
