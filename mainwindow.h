@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QLineEdit>
+#include <QTreeWidget>
 #include <QSqlQueryModel>
-
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
 #include "addingemployeecontroller.h"
@@ -40,6 +40,8 @@ class MainWindow : public QMainWindow
         void on_DeleteButton_clicked();
 
         void showMessageStatusBar(QString message);
+
+        void on_RefreshButon_clicked();
 
     private:
         Ui::MainWindow * ui;

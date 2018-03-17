@@ -88,6 +88,33 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
     {
         model->setQuery(query);
     }
-
     return model;
 }
+
+void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
+{
+    QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
+    QStandardItem *rootNode = standardModel->invisibleRootItem();
+    QStandardItem * typeNode= new QStandardItem("Type");
+    QStandardItem * nameNode= new QStandardItem("Name");
+    rootNode->appendRow(typeNode);
+    rootNode->appendRow(nameNode);
+
+
+    QSqlQuery query(db);
+    query.prepare("SELECT Nom, Prenom FROM TRessource;");
+    query.exec();
+    while(query.next())
+    {
+        QStandardItem * treeViewType = new QStandardItem(query.value(0).toString());
+        QStandardItem * treeViewName = new QStandardItem(query.value(0).toString());
+        typeNode->appendRow(treeViewType);
+        nameNode->appendRow(treeViewName);
+        /*treeView->(0, query.value(0).toString());
+        treeView->setText(1, query.value(1).toString());*/
+    }
+    treeView->setModel(standardModel);
+    treeView->expandAll();
+
+}
+

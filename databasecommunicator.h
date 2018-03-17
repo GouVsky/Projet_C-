@@ -7,6 +7,11 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlError>
+#include <QTreeWidget>
+#include <QStandardItemModel>
+#include <QItemSelectionModel>
+#include "ui_addingclient.h"
+#include "customer.h"
 #include <QSqlQueryModel>
 #include <QDate>
 
@@ -20,6 +25,8 @@ class DataBaseCommunicator : public QObject
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
         void addCustomerToDatabase(Customer * Client);
+        void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
+        void displayEmployeeList(QTreeView * treeView);
         QSqlQueryModel *searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate);
 
     private:

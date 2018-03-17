@@ -66,3 +66,9 @@ void MainWindow::showMessageStatusBar(QString message)
 {
     ui->statusBar->showMessage(message, 5000);
 }
+
+void MainWindow::on_RefreshButon_clicked()
+{
+     DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
+     db->displayEmployeeList(ui->treeView);
+}
