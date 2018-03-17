@@ -96,43 +96,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="comboBox">
-      <item>
-       <property name="text">
-        <string>Informaticien</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Banquier type A</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Banquier type B</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Assureur logement</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Assureur voiture</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Assureur vie</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Divers</string>
-       </property>
-      </item>
-     </widget>
+     <widget class="QComboBox" name="comboBox"/>
     </item>
    </layout>
   </widget>

@@ -71,25 +71,27 @@ void DataBaseCommunicator::addCustomerToDatabase(Customer * client)
     }
 }
 
-void DataBaseCommunicator::addEmployeeToDatabase(Resource *resource)
+void DataBaseCommunicator::addResourceToDatabase(Resource *resource)
 {
     QSqlQuery queryType(db);
     QSqlQuery queryResource(db);
 
     // We get the id of the type of the resource.
 
-    /*queryType.prepare("SELECT Id FROM TType WHERE Label == :label");
+    queryType.prepare("SELECT Id FROM TType WHERE Id == :id");
 
-    queryType.bindValue(":label", resource->getType()->getLabel());
+    queryType.bindValue(":id", resource->getType()->getId());
 
-    queryType.exec();*/
+    queryType.exec();
+
+    queryType.next();
 
 
     queryResource.prepare("INSERT INTO TRessource (Nom, Prenom, IdType) VALUES (:name, :firstname, :idType)");
 
     queryResource.bindValue(":name", resource->getName());
     queryResource.bindValue(":firstname", resource->getFirstName());
-    queryResource.bindValue(":idType", 1/*queryType.value(0)*/);
+    queryResource.bindValue(":idType", queryType.value(0).toInt());
 
     queryResource.exec();
 }
@@ -141,4 +143,22 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     treeView->setModel(standardModel);
     treeView->expandAll();
 
+}
+
+QStringList DataBaseCommunicator::getResourcesList()
+{
+    QStringList resources;
+
+    QSqlQuery query(db);
+
+    query.prepare("SELECT Label FROM TType");
+
+    query.exec();
+
+    while (query.next())
+    {
+        resources.append(query.value(0).toString());
+    }
+
+    return resources;
 }

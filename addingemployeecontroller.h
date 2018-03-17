@@ -26,7 +26,7 @@ class addingEmployee : public QDialog
     private slots:
         void on_QuitButton_clicked();
 
-        void on_comboBox_currentIndexChanged(int index);
+        void on_comboBox_currentTextChanged(const QString &arg1);
 
         void on_NomInput_textChanged(const QString &arg1);
 

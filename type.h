@@ -10,11 +10,14 @@ class Type : public QObject
     public:
         explicit Type(QObject *parent = nullptr);
 
+        int getId() const;
         QString getLabel() const;
 
+        void setId(int value);
         void setLabel(const QString & value);
 
     private:
+        int id;
         QString label;
 
     signals:

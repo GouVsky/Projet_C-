@@ -9,6 +9,15 @@ addingEmployee::addingEmployee(QWidget *parent) : QDialog(parent), ui(new Ui::ad
 
     utils->forbidNumericCaracteres(ui->NomInput);
     utils->forbidNumericCaracteres(ui->PrenomInput);
+
+    enableOrDisableComputerScientistLayout(false);
+
+    // We get resources list from the database.
+    // It will be not necessary to add resource in combobox if it is added in the database.
+
+    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    ui->comboBox->addItems(dtbc->getResourcesList());
 }
 
 addingEmployee::~addingEmployee()
@@ -30,11 +39,9 @@ void addingEmployee::enableOrDisableComputerScientistLayout(bool enabled)
     ui->editInformaticienPassword->setEnabled(enabled);
 }
 
-void addingEmployee::on_comboBox_currentIndexChanged(int index)
+void addingEmployee::on_comboBox_currentTextChanged(const QString &arg1)
 {
-    // Index 0 refers to the type "Informaticien".
-
-    if (index == 0)
+    if (arg1 == "Informaticien")
     {
         enableOrDisableComputerScientistLayout(true);
     }
@@ -44,6 +51,7 @@ void addingEmployee::on_comboBox_currentIndexChanged(int index)
         enableOrDisableComputerScientistLayout(false);
     }
 }
+
 
 void addingEmployee::on_NomInput_textChanged(const QString &arg1)
 {
@@ -61,21 +69,25 @@ void addingEmployee::on_AddButton_clicked()
     Account account;
     Resource resource;
 
-    type.setLabel(ui->comboBox->currentText());
+    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    // We add 1 because the index of the combobox starts at 0.
+    // And the first id in the database is 1.
+
+    type.setId(ui->comboBox->currentIndex() + 1);
+    type.setLabel(ui->comboBox->itemData(ui->comboBox->currentIndex()).toString());
 
     resource.setName(ui->NomInput->text());
     resource.setFirstName(ui->PrenomInput->text());
     resource.setType(&type);
 
-    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
-
-    dtbc->addEmployeeToDatabase(&resource);
-
-    emit addingSucceed("New resource added to the database.");
-
-    accept();
+    dtbc->addResourceToDatabase(&resource);
 
     /*account.setLogin(ui->editInformaticienLogin->text());
     account.setPassword(ui->editInformaticienPassword->text());
     account.setResource(resource);*/
+
+    emit addingSucceed("New resource added to the database.");
+
+    accept();
 }
