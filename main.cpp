@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "identificationcontroller.h"
 #include <QApplication>
 
 #include "databasecommunicator.h"
@@ -13,7 +14,7 @@ int main(int argc, char *argv[])
 
     MainWindow w;
 
-    Identification identification;
+    Identification identification(&w);
 
     w.show();
 

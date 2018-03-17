@@ -2,7 +2,6 @@
 #include "ui_addingclient.h"
 #include "databasecommunicator.h"
 #include "customer.h"
-#include <iostream>
 
 AddingClient::AddingClient(QWidget *parent) : AddingPerson(parent), ui(new Ui::AddingClient)
 {
@@ -66,7 +65,8 @@ void AddingClient::on_add_clicked()
         DataBaseCommunicator * dtbc= DataBaseCommunicator::getInstance();
 
         dtbc->addCustomerToDatabase(&client);
-        std::cout << "super, le client " << client.getName().toStdString() <<  " a bien été ajouté";
+
+        emit addingSucceed("New customer added to the database.");
 
         accept();
     }

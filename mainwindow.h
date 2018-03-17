@@ -7,7 +7,6 @@
 
 #include "aproposcontroller.h"
 #include "addingclientcontroller.h"
-#include "identificationcontroller.h"
 #include "addingemployeecontroller.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
@@ -40,9 +39,10 @@ class MainWindow : public QMainWindow
 
         void on_DeleteButton_clicked();
 
-private:
+        void showMessageStatusBar(QString message);
+
+    private:
         Ui::MainWindow * ui;
-        Identification * identificationDialog;
         apropos * aProposDialog;
         AddingClient * addingClientDialog;
         addingEmployee * addingEmployeeDialog;

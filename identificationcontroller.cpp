@@ -1,11 +1,11 @@
 #include "identificationcontroller.h"
 #include "ui_identification.h"
 
-#include "databasecommunicator.h"
-
-Identification::Identification(QWidget *parent) : QDialog(parent), ui(new Ui::Identification)
+Identification::Identification(MainWindow *mainWindow, QWidget *parent) : QDialog(parent), ui(new Ui::Identification)
 {
     ui->setupUi(this);
+
+    connect(this, SIGNAL(connectionSucceed(QString)), mainWindow, SLOT(showMessageStatusBar(QString)));
 }
 
 Identification::~Identification()
@@ -41,5 +41,8 @@ void Identification::on_connect_clicked()
     if (checkIdentification())
     {
         accept();
+
+        emit connectionSucceed("Connected to the application.");
     }
 }
+

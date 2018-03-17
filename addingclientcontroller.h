@@ -31,6 +31,9 @@ class AddingClient : public AddingPerson
 
         void on_editCity_textChanged(const QString &arg1);
 
+    signals:
+        void addingSucceed(QString message);
+
     private:
         Ui::AddingClient *ui;
 };

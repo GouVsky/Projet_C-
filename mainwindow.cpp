@@ -5,8 +5,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-    identificationDialog = new Identification(this);
-
     ui->dateBeginning->setDate(QDate::currentDate());
     ui->dateEnding->setDate(QDate::currentDate());
 }
@@ -25,6 +23,9 @@ void MainWindow::on_actionA_propos_triggered()
 void MainWindow::on_actionClient_triggered()
 {
     addingClientDialog = new AddingClient(this);
+
+    connect(addingClientDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+
     addingClientDialog->exec();
 }
 
@@ -61,3 +62,7 @@ void MainWindow::on_DeleteButton_clicked()
 
 }
 
+void MainWindow::showMessageStatusBar(QString message)
+{
+    ui->statusBar->showMessage(message, 5000);
+}
