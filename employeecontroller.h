@@ -12,16 +12,16 @@
 
 namespace Ui
 {
-    class addingEmployee;
+    class EmployeeController;
 }
 
-class addingEmployee : public QDialog
+class EmployeeController : public QDialog
 {
     Q_OBJECT
 
     public:
-        explicit addingEmployee(QWidget *parent = 0);
-        ~addingEmployee();
+        explicit EmployeeController(QWidget *parent = 0);
+        ~EmployeeController();
 
     private slots:
         void on_QuitButton_clicked();
@@ -40,7 +40,7 @@ class addingEmployee : public QDialog
     private:
         void enableOrDisableComputerScientistLayout(bool enabled);
 
-        Ui::addingEmployee *ui;
+        Ui::EmployeeController *ui;
         CustomizedString *utils;
 };
 

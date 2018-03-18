@@ -1,7 +1,7 @@
-#include "addingemployeecontroller.h"
-#include "ui_addingemployee.h"
+#include "employeecontroller.h"
+#include "ui_employee.h"
 
-addingEmployee::addingEmployee(QWidget *parent) : QDialog(parent), ui(new Ui::addingEmployee)
+EmployeeController::EmployeeController(QWidget *parent) : QDialog(parent), ui(new Ui::EmployeeController)
 {
     ui->setupUi(this);
 
@@ -20,17 +20,17 @@ addingEmployee::addingEmployee(QWidget *parent) : QDialog(parent), ui(new Ui::ad
     ui->comboBox->addItems(dtbc->getResourcesList());
 }
 
-addingEmployee::~addingEmployee()
+EmployeeController::~EmployeeController()
 {
     delete ui;
 }
 
-void addingEmployee::on_QuitButton_clicked()
+void EmployeeController::on_QuitButton_clicked()
 {
     close();
 }
 
-void addingEmployee::enableOrDisableComputerScientistLayout(bool enabled)
+void EmployeeController::enableOrDisableComputerScientistLayout(bool enabled)
 {
     ui->informaticienIdentification->setEnabled(enabled);
     ui->InformaticienLogin->setEnabled(enabled);
@@ -39,7 +39,7 @@ void addingEmployee::enableOrDisableComputerScientistLayout(bool enabled)
     ui->editInformaticienPassword->setEnabled(enabled);
 }
 
-void addingEmployee::on_comboBox_currentTextChanged(const QString &arg1)
+void EmployeeController::on_comboBox_currentTextChanged(const QString &arg1)
 {
     if (arg1 == "Informaticien")
     {
@@ -53,17 +53,17 @@ void addingEmployee::on_comboBox_currentTextChanged(const QString &arg1)
 }
 
 
-void addingEmployee::on_NomInput_textChanged(const QString &arg1)
+void EmployeeController::on_NomInput_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->NomInput);
 }
 
-void addingEmployee::on_PrenomInput_textChanged(const QString &arg1)
+void EmployeeController::on_PrenomInput_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->PrenomInput);
 }
 
-void addingEmployee::on_AddButton_clicked()
+void EmployeeController::on_AddButton_clicked()
 {
     Type type;
     Account account;

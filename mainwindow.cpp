@@ -28,11 +28,11 @@ void MainWindow::on_actionA_propos_triggered()
 
 void MainWindow::on_actionClient_triggered()
 {
-    addingCustomerDialog = new AddingCustomer(this);
+    customerDialog = new CustomerController(this);
 
-    connect(addingCustomerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+    connect(customerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
-    addingCustomerDialog->exec();
+    customerDialog->exec();
 }
 
 void MainWindow::on_actionQuitter_triggered()
@@ -55,23 +55,18 @@ void MainWindow::on_searchCustomerButton_clicked()
 
 void MainWindow::on_actionPersonnel_triggered()
 {
-    addingEmployeeDialog = new addingEmployee(this);
+    employeeDialog = new EmployeeController(this);
 
-    connect(addingEmployeeDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+    connect(employeeDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
-    addingEmployeeDialog->exec();
+    employeeDialog->exec();
 }
 
-void MainWindow::on_EditButton_clicked()
+/*void MainWindow::on_EditButton_clicked()
 {
     editEmployeeDialog = new editemployee(this);
     editEmployeeDialog->exec();
-}
-
-void MainWindow::on_DeleteButton_clicked()
-{
-
-}
+}*/
 
 void MainWindow::showMessageStatusBar(QString message)
 {

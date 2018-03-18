@@ -36,25 +36,6 @@
      <attribute name="title">
       <string>Search customer</string>
      </attribute>
-     <widget class="QTableView" name="customerView">
-      <property name="geometry">
-       <rect>
-        <x>15</x>
-        <y>150</y>
-        <width>601</width>
-        <height>251</height>
-       </rect>
-      </property>
-      <property name="showGrid">
-       <bool>true</bool>
-      </property>
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-     </widget>
      <widget class="QLineEdit" name="customerIDSearch">
       <property name="geometry">
        <rect>
@@ -186,6 +167,45 @@
        <string>Search</string>
       </property>
      </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>611</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="searchCustomerEditButton">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="searchCustomerDeleteButton">
+         <property name="text">
+          <string>Delete</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QTableView" name="customerView">
+         <property name="showGrid">
+          <bool>true</bool>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="employees">
      <attribute name="title">
@@ -202,14 +222,14 @@
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="1">
-        <widget class="QPushButton" name="DeleteButton">
+        <widget class="QPushButton" name="showEmployeesDeleteButton">
          <property name="text">
           <string>Delete</string>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QPushButton" name="EditButton">
+        <widget class="QPushButton" name="showEmployeesEditButton">
          <property name="text">
           <string>Edit</string>
          </property>
@@ -350,8 +370,8 @@
   <tabstop>dateBeginning</tabstop>
   <tabstop>dateEnding</tabstop>
   <tabstop>searchCustomerButton</tabstop>
-  <tabstop>EditButton</tabstop>
-  <tabstop>DeleteButton</tabstop>
+  <tabstop>showEmployeesEditButton</tabstop>
+  <tabstop>showEmployeesDeleteButton</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>

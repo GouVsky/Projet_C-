@@ -12,16 +12,16 @@
 
 namespace Ui
 {
-    class AddingCustomer;
+    class CustomerController;
 }
 
-class AddingCustomer : public QDialog
+class CustomerController : public QDialog
 {
         Q_OBJECT
 
     public:
-        explicit AddingCustomer(QWidget *parent = 0);
-        ~AddingCustomer();
+        explicit CustomerController(QWidget *parent = 0);
+        ~CustomerController();
         bool checkRequiredInputs();
 
     private slots:
@@ -39,7 +39,7 @@ class AddingCustomer : public QDialog
         void addingSucceed(QString message);
 
     private:
-        Ui::AddingCustomer *ui;
+        Ui::CustomerController *ui;
         CustomizedString *utils;
 };
 

@@ -7,8 +7,8 @@
 #include <QSqlQueryModel>
 
 #include "aboutcontroller.h"
-#include "addingcustomercontroller.h"
-#include "addingemployeecontroller.h"
+#include "customercontroller.h"
+#include "employeecontroller.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
 #include "customizedstring.h"
@@ -37,10 +37,6 @@ class MainWindow : public QMainWindow
 
         void on_actionPersonnel_triggered();
 
-        void on_EditButton_clicked();
-
-        void on_DeleteButton_clicked();
-
         void showMessageStatusBar(QString message);
 
         void on_RefreshButon_clicked();
@@ -52,8 +48,8 @@ class MainWindow : public QMainWindow
     private:
         Ui::MainWindow * ui;
         About * aboutDialog;
-        AddingCustomer * addingCustomerDialog;
-        addingEmployee * addingEmployeeDialog;
+        CustomerController * customerDialog;
+        EmployeeController * employeeDialog;
         editemployee * editEmployeeDialog;
         CustomizedString *utils;
 };

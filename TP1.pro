@@ -30,39 +30,39 @@ SOURCES += \
     mainwindow.cpp \
     c_init_bd.cpp \
     databasecommunicator.cpp \
-    addingemployeecontroller.cpp \
     customer.cpp \
     editemployee.cpp \
     customizedstring.cpp \
     resource.cpp \
     type.cpp \
-    addingcustomercontroller.cpp \
     aboutcontroller.cpp \
-    account.cpp
+    account.cpp \
+    customercontroller.cpp \
+    employeecontroller.cpp
 
 HEADERS += \
     identificationcontroller.h \
     mainwindow.h \
     c_init_bd.h \
     databasecommunicator.h \
-    addingemployeecontroller.h \
     customer.h \
     editemployee.h \
     customizedstring.h \
     resource.h \
     type.h \
-    addingcustomercontroller.h \
     aboutcontroller.h \
-    account.h
+    account.h \
+    customercontroller.h \
+    employeecontroller.h
 
 
 FORMS += \
         mainwindow.ui \
     identification.ui \
-    addingemployee.ui \
     editemployee.ui \
-    addingcustomer.ui \
-    about.ui
+    about.ui \
+    customer.ui \
+    employee.ui
 
 RESOURCES += \
     resources.qrc
