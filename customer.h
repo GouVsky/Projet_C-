@@ -2,13 +2,12 @@
 #define CUSTOMER_H
 
 #include <QString>
-#include <QDateTime>
+#include <QDate>
 
 class Customer
 {
     public:
         Customer();
-
         QString getName() const;
         QString getFirstName() const;
         QString getAddress() const;
@@ -18,7 +17,7 @@ class Customer
         int getPhoneNumber() const;
         int getPriority() const;
         int getDureeRDV() const;
-        QDateTime getConsultingDay() const;
+        QDate getConsultingDay() const;
 
         void setName(const QString &value);
         void setFirstName(const QString &value);
@@ -29,11 +28,11 @@ class Customer
         void setPhoneNumber(int value);
         void setPriority(int value);
         void setDureeRDV(int value);
-        void setConsultingDay(const QDateTime &value);
+        void setConsultingDay(const QDate &value);
 
 private:
         QString name,
-        firstName,
+                firstName,
                 address,
                 city,
                 postalCode,
@@ -43,7 +42,7 @@ private:
             Priority,
             DureeRDV;
 
-        QDateTime consultingDay;
+        QDate consultingDay;
 };
 
 #endif // CUSTOMER_H
