@@ -81,11 +81,15 @@ void addingEmployee::on_AddButton_clicked()
     resource.setFirstName(ui->PrenomInput->text());
     resource.setType(&type);
 
-    dtbc->addResourceToDatabase(&resource);
+    int index = dtbc->addResourceToDatabase(&resource);
 
-    /*account.setLogin(ui->editInformaticienLogin->text());
-    account.setPassword(ui->editInformaticienPassword->text());
-    account.setResource(resource);*/
+    if (type.getLabel() == "Informaticien")
+    {
+        account.setLogin(ui->editInformaticienLogin->text());
+        account.setPassword(ui->editInformaticienPassword->text());
+
+        dtbc->addAccountToDatabase(&account, index);
+    }
 
     emit addingSucceed("New resource added to the database.");
 

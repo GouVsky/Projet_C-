@@ -47,7 +47,7 @@ bool DataBaseCommunicator::checkLoginPassword(const QString &login, const QStrin
     return correctLoginPassword;
 }
 
-void DataBaseCommunicator::addCustomerToDatabase(Customer * client)
+int DataBaseCommunicator::addCustomerToDatabase(Customer * client)
 {
     QSqlQuery query(db);
 
@@ -69,9 +69,11 @@ void DataBaseCommunicator::addCustomerToDatabase(Customer * client)
         qDebug() << db.lastError().text();
         qDebug() << "Erreur à l'insersion de donnees client !\n";
     }
+
+    return query.lastInsertId().toInt();
 }
 
-void DataBaseCommunicator::addResourceToDatabase(Resource *resource)
+int DataBaseCommunicator::addResourceToDatabase(Resource *resource)
 {
     QSqlQuery queryType(db);
     QSqlQuery queryResource(db);
@@ -94,6 +96,23 @@ void DataBaseCommunicator::addResourceToDatabase(Resource *resource)
     queryResource.bindValue(":idType", queryType.value(0).toInt());
 
     queryResource.exec();
+
+    return queryResource.lastInsertId().toInt();
+}
+
+int DataBaseCommunicator::addAccountToDatabase(Account *account, int resource)
+{
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO TCompte (IdRessource, Login, MdP) VALUES (:resource, :login, :mdp)");
+
+    query.bindValue(":resource", resource);
+    query.bindValue(":login", account->getLogin());
+    query.bindValue(":mdp", account->getPassword());
+
+    query.exec();
+
+    return query.lastInsertId().toInt();
 }
 
 QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate)

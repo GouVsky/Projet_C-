@@ -49,6 +49,8 @@ void MainWindow::on_searchCustomerButton_clicked()
     QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->date(), ui->dateEnding->date());
 
     ui->customerView->setModel(model);
+
+    ui->customerView->horizontalHeader()->setStretchLastSection(true);
 }
 
 void MainWindow::on_actionPersonnel_triggered()

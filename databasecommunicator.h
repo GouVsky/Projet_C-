@@ -14,6 +14,7 @@
 #include <QDate>
 #include <QStringList>
 
+#include "account.h"
 #include "customer.h"
 #include "resource.h"
 #include "c_init_bd.h"
@@ -24,8 +25,9 @@ class DataBaseCommunicator : public QObject
     public:
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
-        void addCustomerToDatabase(Customer *client);
-        void addResourceToDatabase(Resource *resource);
+        int addCustomerToDatabase(Customer *client);
+        int addResourceToDatabase(Resource *resource);
+        int addAccountToDatabase(Account *account, int resource);
         void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
         QSqlQueryModel *searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate);
         void displayEmployeeList(QTreeView *treeView);

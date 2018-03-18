@@ -16,6 +16,10 @@ AddingCustomer::AddingCustomer(QWidget *parent) : QDialog(parent), ui(new Ui::Ad
     utils->forbidNumericCaracteres(ui->editName);
     utils->forbidNumericCaracteres(ui->editFirstName);
     utils->forbidNumericCaracteres(ui->editCity);
+
+    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    ui->resourcesList->addItems(dtbc->getResourcesList());
 }
 
 AddingCustomer::~AddingCustomer()
