@@ -20,7 +20,8 @@ class CustomerController : public QDialog
         Q_OBJECT
 
     public:
-        explicit CustomerController(QWidget *parent = 0);
+        CustomerController(QWidget *parent = 0);
+        CustomerController(Customer *customer, QWidget *parent = 0);
         ~CustomerController();
         bool checkRequiredInputs();
 
