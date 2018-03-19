@@ -36,6 +36,7 @@ class DataBaseCommunicator : public QObject
         QStringList getTypesList();
         QStringList getResourcesTypesList();
         void editEmployee(QString employeeName);
+        void fillChamps(QString nomEmployee);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);
