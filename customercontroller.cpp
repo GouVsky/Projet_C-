@@ -22,22 +22,6 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
     ui->resourcesList->addItems(dtbc->getResourcesList());
 }
 
-CustomerController::CustomerController(Customer *customer, QWidget *parent) : QDialog(parent), ui(new Ui::CustomerController)
-{
-    ui->setupUi(this);
-
-    ui->editName->setText(customer->getName());
-    ui->editFirstName->setText(customer->getFirstName());
-    ui->editAddress->setText(customer->getAddress());
-    ui->editPostalCode->setText(customer->getPostalCode());
-    ui->editCity->setText(customer->getCity());
-    ui->editComments->setText(customer->getComments());
-    ui->editDate->setDate(customer->getConsultingDay());
-    ui->editConsultingTime->setValue(customer->getDureeRDV());
-    ui->editPhoneNumber->setText(QString::number(customer->getPhoneNumber()));
-    //ui->priorityList
-}
-
 CustomerController::~CustomerController()
 {
     delete ui;
@@ -74,7 +58,7 @@ void CustomerController::on_add_clicked()
         customer.setAddress(ui->editAddress->text());
         customer.setCity(ui->editCity->text());
         customer.setComments(ui->editComments->toPlainText());
-        customer.setConsultingDay(ui->editDate->date());
+        customer.setConsultingDay(ui->editDate->dateTime());
         customer.setDureeRDV(ui->editConsultingTime->text().toInt());
         customer.setFirstName(ui->editFirstName->text());
         customer.setName(ui->editName->text());

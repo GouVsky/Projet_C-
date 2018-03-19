@@ -50,7 +50,7 @@ int Customer::getDureeRDV() const
     return DureeRDV;
 }
 
-QDate Customer::getConsultingDay() const
+QDateTime Customer::getConsultingDay() const
 {
     return consultingDay;
 }
@@ -100,7 +100,7 @@ void Customer::setDureeRDV(int value)
     DureeRDV = value;
 }
 
-void Customer::setConsultingDay(const QDate &value)
+void Customer::setConsultingDay(const QDateTime &value)
 {
     consultingDay = value;
 }

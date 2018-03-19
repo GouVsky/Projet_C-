@@ -28,9 +28,9 @@ class DataBaseCommunicator : public QObject
         int addCustomerToDatabase(Customer *client);
         int addResourceToDatabase(Resource *resource);
         int addAccountToDatabase(Account *account, int resource);
+        void searchCustomerFromDatabase(int id, const QString &name, const QString &firstname);
         QSqlQueryModel *searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate);
         void displayEmployeeList(QTreeView *treeView);
-        Customer getCustomer(int index);
         QStringList getResourcesList();
 
     private:
