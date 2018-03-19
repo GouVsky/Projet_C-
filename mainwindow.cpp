@@ -75,8 +75,11 @@ void MainWindow::showMessageStatusBar(QString message)
 
 void MainWindow::on_RefreshButon_clicked()
 {
+
      DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
      db->displayEmployeeList(ui->treeView);
+     ui->treeView->setModel(standardModel);
+     ui->treeView->expandAll();
 }
 
 void MainWindow::on_customerNameSearch_textChanged(const QString &arg1)
