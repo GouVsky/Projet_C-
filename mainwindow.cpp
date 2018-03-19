@@ -75,9 +75,9 @@ void MainWindow::on_searchCustomerEditButton_clicked()
 
     Customer customer = dtbc->getCustomer(indexCustomer);
 
-    CustomerController editCustomerDialog(&customer);
+    CustomerController editCustomerDialog(&customer, indexCustomer);
 
-    connect(&editCustomerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+    connect(&editCustomerDialog, SIGNAL(editingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
     editCustomerDialog.exec();
 }

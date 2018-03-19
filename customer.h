@@ -18,6 +18,7 @@ class Customer
         int getPriority() const;
         int getDureeRDV() const;
         QDate getConsultingDay() const;
+        int getId() const;
 
         void setName(const QString &value);
         void setFirstName(const QString &value);
@@ -29,8 +30,11 @@ class Customer
         void setPriority(int value);
         void setDureeRDV(int value);
         void setConsultingDay(const QDate &value);
+        void setId(int value);
 
-private:
+    private:
+        int id;
+
         QString name,
                 firstName,
                 address,
