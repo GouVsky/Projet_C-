@@ -61,6 +61,12 @@
         <height>30</height>
        </size>
       </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
    </layout>

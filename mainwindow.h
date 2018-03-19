@@ -56,6 +56,7 @@ class MainWindow : public QMainWindow
 private:
         Ui::MainWindow *ui;
         CustomizedString *utils;
+        QSqlQueryModel *model;
 };
 
 #endif // MAINWINDOW_H
