@@ -32,6 +32,7 @@ class DataBaseCommunicator : public QObject
         void displayEmployeeList(QTreeView *treeView);
         Customer getCustomer(int index);
         QStringList getResourcesList();
+        void editEmployee(QString employeeName);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);

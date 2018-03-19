@@ -208,3 +208,10 @@ QStringList DataBaseCommunicator::getResourcesList()
 
     return resources;
 }
+
+void DataBaseCommunicator::editEmployee(QString employeeName)
+{
+    QSqlQuery query(db);
+    query.prepare("UPDATE TRessource WHERE Nom LIKE :employeeName");
+    query.bindValue(":employeeName", employeeName);
+}

@@ -49,7 +49,11 @@ class MainWindow : public QMainWindow
 
         void on_customerFirstNameSearch_textChanged(const QString &arg1);
 
-    private:
+        void on_showEmployeesEditButton_clicked();
+
+        void on_showEmployeesDeleteButton_clicked();
+
+private:
         Ui::MainWindow *ui;
         CustomizedString *utils;
 };

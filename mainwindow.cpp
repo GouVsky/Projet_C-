@@ -108,3 +108,28 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->customerFirstNameSearch);
 }
+#include <iostream>
+void MainWindow::on_showEmployeesEditButton_clicked()
+{
+     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
+     QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
+     QModelIndex index = ui->treeView->currentIndex();
+     if(!index.isValid())
+     {
+         QMessageBox::information(this,"warning", "Please select an item to edit it");
+     }
+     else
+     {
+         QVariant data= selectionModel->model()->data(index);
+         QString text = data.toString();
+         editemployee employeeEditDialog;
+         employeeEditDialog.exec();
+         //DataBaseCommunicator::editEmployee(text);
+     }
+
+}
+
+void MainWindow::on_showEmployeesDeleteButton_clicked()
+{
+
+}
