@@ -12,12 +12,14 @@
 #include <QItemSelectionModel>
 #include <QSqlQueryModel>
 #include <QDate>
+#include <QDir>
 #include <QStringList>
-
+#include <QInputDialog>
 #include "account.h"
 #include "customer.h"
 #include "resource.h"
 #include "c_init_bd.h"
+#include "editemployee.h"
 
 class DataBaseCommunicator : public QObject
 {
@@ -34,7 +36,7 @@ class DataBaseCommunicator : public QObject
         Customer getCustomer(int index);
         QStringList getResourcesList();
         void editEmployee(QString employeeName);
-        void fillChamps(QString nomEmployee);
+        Resource * fillChamps(QString nomEmployee);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);

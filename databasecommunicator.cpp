@@ -232,7 +232,42 @@ QStringList DataBaseCommunicator::getResourcesList()
 
 void DataBaseCommunicator::editEmployee(QString employeeName)
 {
+
+}
+Resource * DataBaseCommunicator::fillChamps(QString nomEmployee)
+{
     QSqlQuery query(db);
-    query.prepare("UPDATE TRessource WHERE Nom LIKE :employeeName");
-    query.bindValue(":employeeName", employeeName);
+    QSqlQuery queryType(db);
+    query.prepare("SELECT * FROM TRessource WHERE Nom LIKE :employeeName");
+    query.bindValue(":employeeName", nomEmployee);
+    query.exec();
+    query.next();
+    queryType.prepare("SELECT * FROM TType WHERE Id == :id");
+    queryType.bindValue(":id", query.value(3));
+    queryType.exec();
+    queryType.next();
+    /*
+    if(query.next())
+    {
+        query.finish();
+        bool ok;
+        QString FirstNameEmp= QInputDialog::getText(this, tr("QInputDialog::getText()", tr("FirstName"),
+                                                    QLineEdit::Normal, QDir::home().dirName(), &ok);
+
+        query.prepare("SELECT * FROM TRessource WHERE Nom LIKE :employeeName AND Prenom LIKE :FirstName");
+        query.bindValue(":employeeName", nomEmployee);
+        query.bindValue(":FirstName", FirstNameEmp);
+        query.exec();
+    }
+    */
+    Resource * employeeEdited = new Resource();
+    Type * typeEmployee = new Type();
+    typeEmployee->setId(queryType.value(0).toInt());
+    typeEmployee->setLabel(queryType.value(1).toString());
+
+    employeeEdited->setFirstName(query.value(1).toString());
+    employeeEdited->setName(query.value(2).toString());
+    employeeEdited->setType(typeEmployee);
+
+    return employeeEdited;
 }
