@@ -20,37 +20,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionQuit_triggered()
+void MainWindow::on_actionA_propos_triggered()
+{
+    aboutDialog= new About(this);
+    aboutDialog->show();
+}
+
+void MainWindow::on_actionClient_triggered()
+{
+    customerDialog = new CustomerController(this);
+
+    connect(customerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+
+    customerDialog->exec();
+}
+
+void MainWindow::on_actionQuitter_triggered()
 {
      close();
 }
 
-void MainWindow::on_actionAbout_triggered()
-{
-    About aboutDialog;
-
-    aboutDialog.exec();
-}
-
-void MainWindow::on_actionAddingCustomer_triggered()
-{
-    CustomerController addingCustomerDialog;
-
-    connect(&addingCustomerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
-
-    addingCustomerDialog.exec();
-}
-
-void MainWindow::on_actionAddingEmployee_triggered()
-{
-    EmployeeController addingEmployeeDialog;
-
-    connect(&addingEmployeeDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
-
-    addingEmployeeDialog.exec();
-}
-
-void MainWindow::on_searchCustomerSearchButton_clicked()
+void MainWindow::on_searchCustomerButton_clicked()
 {
     // It is not necessary to verify if fields are full, because dates are always set.
 
@@ -63,40 +53,30 @@ void MainWindow::on_searchCustomerSearchButton_clicked()
     ui->customerView->horizontalHeader()->setStretchLastSection(true);
 }
 
-void MainWindow::on_searchCustomerEditButton_clicked()
+void MainWindow::on_actionPersonnel_triggered()
 {
-    DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
+    employeeDialog = new EmployeeController(this);
 
-    QItemSelectionModel *selectedRow = ui->customerView->selectionModel();
+    connect(employeeDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
-    // We get index of the customer to edit.
-
-    int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
-
-    Customer customer = dtbc->getCustomer(indexCustomer);
-
-    CustomerController editCustomerDialog(&customer);
-
-    connect(&editCustomerDialog, SIGNAL(addingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
-
-    editCustomerDialog.exec();
+    employeeDialog->exec();
 }
 
-void MainWindow::on_searchCustomerDeleteButton_clicked()
+/*void MainWindow::on_EditButton_clicked()
 {
-
-}
-
-void MainWindow::on_showEmployeesRefreshButton_clicked()
-{
-     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-
-     dtbc->displayEmployeeList(ui->treeView);
-}
+    editEmployeeDialog = new editemployee(this);
+    editEmployeeDialog->exec();
+}*/
 
 void MainWindow::showMessageStatusBar(QString message)
 {
     ui->statusBar->showMessage(message, 5000);
+}
+
+void MainWindow::on_RefreshButon_clicked()
+{
+     DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
+     db->displayEmployeeList(ui->treeView);
 }
 
 void MainWindow::on_customerNameSearch_textChanged(const QString &arg1)
