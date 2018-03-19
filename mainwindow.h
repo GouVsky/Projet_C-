@@ -5,7 +5,7 @@
 #include <QLineEdit>
 #include <QTreeWidget>
 #include <QSqlQueryModel>
-
+#include <QStandardItemModel>
 #include "aboutcontroller.h"
 #include "customercontroller.h"
 #include "employeecontroller.h"

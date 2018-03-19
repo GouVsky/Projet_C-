@@ -145,7 +145,7 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     query2.prepare("SELECT Nom FROM TRessource, TType WHERE TRessource.IdType = TType.Id and Label LIKE :label ;");
     query.exec();
 
-    QStandardItemModel * standardModel = new QStandardItemModel(ui->treeView) ;
+    QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
     QStandardItem *rootNode = standardModel->invisibleRootItem();
     while(query.next())
     {
@@ -159,6 +159,8 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
             typeNode->appendRow(nameNode);
         }
     }
+    treeView->setModel(standardModel);
+    treeView->expandAll();
 }
 
 Customer DataBaseCommunicator::getCustomer(int index)

@@ -90,16 +90,12 @@ void MainWindow::on_searchCustomerDeleteButton_clicked()
 void MainWindow::on_showEmployeesRefreshButton_clicked()
 {
      DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-
      dtbc->displayEmployeeList(ui->treeView);
+
 }
 
 void MainWindow::showMessageStatusBar(QString message)
 {
-     DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
-     db->displayEmployeeList(ui->treeView);
-     ui->treeView->setModel(standardModel);
-     ui->treeView->expandAll();
     ui->statusBar->showMessage(message, 5000);
 }
 
