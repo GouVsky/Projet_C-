@@ -56,7 +56,7 @@ void MainWindow::on_searchCustomerSearchButton_clicked()
 
     DataBaseCommunicator *db = DataBaseCommunicator::getInstance();
 
-    QSqlQueryModel *model = db->searchCustomerFromDatabase(ui->customerIDSearch->text(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->date(), ui->dateEnding->date());
+    model = db->searchCustomerFromDatabase(ui->customerIDSearch->text(), ui->customerNameSearch->text(), ui->customerFirstNameSearch->text(), ui->dateBeginning->date(), ui->dateEnding->date());
 
     ui->customerView->setModel(model);
 
@@ -80,6 +80,8 @@ void MainWindow::on_searchCustomerEditButton_clicked()
     connect(&editCustomerDialog, SIGNAL(editingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
     editCustomerDialog.exec();
+
+    model->query().exec();
 }
 
 void MainWindow::on_searchCustomerDeleteButton_clicked()
@@ -95,6 +97,8 @@ void MainWindow::on_searchCustomerDeleteButton_clicked()
     dtbc->deleteCustomer(indexCustomer);
 
     showMessageStatusBar("You have deleted a customer.");
+
+    model->query().exec();
 }
 
 void MainWindow::on_showEmployeesRefreshButton_clicked()
