@@ -7,8 +7,8 @@
 #include <QSqlQueryModel>
 
 #include "aboutcontroller.h"
-#include "customercontrollear.h"
-#include "employeecontrollera.h"
+#include "customercontroller.h"
+#include "employeecontroller.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
 #include "customizedstring.h"
@@ -27,30 +27,30 @@ class MainWindow : public QMainWindow
         ~MainWindow();
 
     private slots:
-        void on_actionA_propos_triggered();
+        void on_actionQuit_triggered();
 
-        void on_actionClient_triggered();
+        void on_actionAbout_triggered();
 
-        void on_actionQuitter_triggered();
+        void on_actionAddingCustomer_triggered();
 
-        void on_searchCustomerButton_clicked();
+        void on_actionAddingEmployee_triggered();
 
-        void on_actionPersonnel_triggered();
+        void on_searchCustomerSearchButton_clicked();
+
+        void on_searchCustomerEditButton_clicked();
+
+        void on_searchCustomerDeleteButton_clicked();
+
+        void on_showEmployeesRefreshButton_clicked();
 
         void showMessageStatusBar(QString message);
-
-        void on_RefreshButon_clicked();
 
         void on_customerNameSearch_textChanged(const QString &arg1);
 
         void on_customerFirstNameSearch_textChanged(const QString &arg1);
 
     private:
-        Ui::MainWindow * ui;
-        About * aboutDialog;
-        CustomerController * customerDialog;
-        EmployeeController * employeeDialog;
-        editemployee * editEmployeeDialog;
+        Ui::MainWindow *ui;
         CustomizedString *utils;
 };
 

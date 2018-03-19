@@ -161,6 +161,34 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     }
 }
 
+Customer DataBaseCommunicator::getCustomer(int index)
+{
+    Customer customer;
+
+    QSqlQuery query(db);
+
+    query.prepare("SELECT * FROM TClient WHERE Id == :id");
+
+    query.bindValue(":id", index);
+
+    query.exec();
+
+    query.next();
+
+    customer.setName(query.value(1).toString());
+    customer.setFirstName(query.value(2).toString());
+    customer.setAddress(query.value(3).toString());
+    customer.setCity(query.value(4).toString());
+    customer.setPostalCode(query.value(5).toString());
+    customer.setComments(query.value(6).toString());
+    customer.setPhoneNumber(query.value(7).toInt());
+    customer.setConsultingDay(query.value(8).toDate());
+    customer.setDureeRDV(query.value(9).toInt());
+    customer.setPriority(query.value(10).toInt());
+
+    return customer;
+}
+
 QStringList DataBaseCommunicator::getResourcesList()
 {
     QStringList resources;

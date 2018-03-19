@@ -154,7 +154,7 @@
        <string>To</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="searchCustomerButton">
+     <widget class="QPushButton" name="searchCustomerSearchButton">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -193,6 +193,9 @@
        </item>
        <item row="0" column="0" colspan="2">
         <widget class="QTableView" name="customerView">
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
          <property name="showGrid">
           <bool>true</bool>
          </property>
@@ -240,7 +243,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="RefreshButon">
+     <widget class="QPushButton" name="showEmployeesRefreshButton">
       <property name="geometry">
        <rect>
         <x>530</x>
@@ -271,8 +274,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionClient"/>
-   <addaction name="actionPersonnel"/>
+   <addaction name="actionAddingCustomer"/>
+   <addaction name="actionAddingEmployee"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="enabled">
@@ -299,24 +302,24 @@
      <property name="title">
       <string>Add</string>
      </property>
-     <addaction name="actionClient"/>
-     <addaction name="actionPersonnel"/>
+     <addaction name="actionAddingCustomer"/>
+     <addaction name="actionAddingEmployee"/>
     </widget>
     <addaction name="menuAdd"/>
     <addaction name="separator"/>
-    <addaction name="actionQuitter"/>
+    <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>?</string>
     </property>
-    <addaction name="actionA_propos"/>
+    <addaction name="actionAbout"/>
     <addaction name="separator"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menu"/>
   </widget>
-  <action name="actionPersonnel">
+  <action name="actionAddingEmployee">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/images/personnel.png</normaloff>:/images/personnel.png</iconset>
@@ -328,7 +331,7 @@
     <bool>false</bool>
    </property>
   </action>
-  <action name="actionClient">
+  <action name="actionAddingCustomer">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/images/client.png</normaloff>:/images/client.png</iconset>
@@ -340,12 +343,12 @@
     <bool>false</bool>
    </property>
   </action>
-  <action name="actionQuitter">
+  <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
    </property>
   </action>
-  <action name="actionA_propos">
+  <action name="actionAbout">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -369,7 +372,7 @@
   <tabstop>customerFirstNameSearch</tabstop>
   <tabstop>dateBeginning</tabstop>
   <tabstop>dateEnding</tabstop>
-  <tabstop>searchCustomerButton</tabstop>
+  <tabstop>searchCustomerSearchButton</tabstop>
   <tabstop>showEmployeesEditButton</tabstop>
   <tabstop>showEmployeesDeleteButton</tabstop>
  </tabstops>
