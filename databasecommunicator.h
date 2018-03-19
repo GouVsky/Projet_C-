@@ -15,6 +15,7 @@
 #include <QDir>
 #include <QStringList>
 #include <QInputDialog>
+#include <QMessageBox>
 #include "account.h"
 #include "customer.h"
 #include "resource.h"
@@ -39,6 +40,7 @@ class DataBaseCommunicator : public QObject
         QStringList getResourcesTypesList();
         void editEmployee(QString employeeName);
         Resource * fillChamps(QString nomEmployee);
+        Account * getAccount(QString nomEmployee);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);

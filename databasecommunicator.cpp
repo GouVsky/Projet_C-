@@ -263,6 +263,7 @@ void DataBaseCommunicator::editEmployee(QString employeeName)
 {
 
 }
+#include <iostream>
 Resource * DataBaseCommunicator::fillChamps(QString nomEmployee)
 {
     QSqlQuery query(db);
@@ -275,20 +276,6 @@ Resource * DataBaseCommunicator::fillChamps(QString nomEmployee)
     queryType.bindValue(":id", query.value(3));
     queryType.exec();
     queryType.next();
-    /*
-    if(query.next())
-    {
-        query.finish();
-        bool ok;
-        QString FirstNameEmp= QInputDialog::getText(this, tr("QInputDialog::getText()", tr("FirstName"),
-                                                    QLineEdit::Normal, QDir::home().dirName(), &ok);
-
-        query.prepare("SELECT * FROM TRessource WHERE Nom LIKE :employeeName AND Prenom LIKE :FirstName");
-        query.bindValue(":employeeName", nomEmployee);
-        query.bindValue(":FirstName", FirstNameEmp);
-        query.exec();
-    }
-    */
     Resource * employeeEdited = new Resource();
     Type * typeEmployee = new Type();
     typeEmployee->setId(queryType.value(0).toInt());
@@ -297,6 +284,19 @@ Resource * DataBaseCommunicator::fillChamps(QString nomEmployee)
     employeeEdited->setFirstName(query.value(1).toString());
     employeeEdited->setName(query.value(2).toString());
     employeeEdited->setType(typeEmployee);
-
     return employeeEdited;
+}
+
+Account * DataBaseCommunicator::getAccount(QString nomEmployee)
+{
+    Account * infoAccount = new Account();
+     QSqlQuery query(db);
+     query.prepare("SELECT * FROM TCompte C, TRessource R WHERE C.IdRessource= R.Id AND R.Nom LIKE :employeeName");
+     query.bindValue(":employeeName", nomEmployee);
+     query.exec();
+     query.next();
+     infoAccount->setLogin(query.value(2).toString());
+     infoAccount->setPassword(query.value(3).toString());
+
+     return infoAccount;
 }

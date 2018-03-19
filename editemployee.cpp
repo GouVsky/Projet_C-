@@ -16,13 +16,15 @@ editemployee::editemployee(QString nomEmploye, QWidget *parent) :
     nomEmployee=nomEmploye;
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
     Resource * employeeFind = dtbc->fillChamps(nomEmployee);
+    int index= ui->comboBox->findText(employeeFind->getType()->getLabel());
     ui->NomInput->insert(nomEmployee);
     ui->PrenomInput->insert(employeeFind->getName());
-    ui->comboBox->setCurrentText(employeeFind->getType()->getLabel());
+    ui->comboBox->setCurrentIndex( index);
     if (employeeFind->getType()->getLabel() == "Informaticien")
     {
-        //dtbc->g
-        //ui->editInformaticienLogin->insert();
+        Account * infoAccount = dtbc->getAccount(nomEmployee);
+        ui->editInformaticienLogin->insert(infoAccount->getLogin());
+        ui->editInformaticienPassword->insert(infoAccount->getPassword());
     }
 }
 

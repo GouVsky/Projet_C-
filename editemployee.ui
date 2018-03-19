@@ -163,6 +163,12 @@
     </item>
     <item>
      <widget class="QComboBox" name="comboBox">
+      <property name="editable">
+       <bool>false</bool>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <item>
        <property name="text">
         <string>Informaticien</string>
@@ -170,27 +176,27 @@
       </item>
       <item>
        <property name="text">
-        <string>Banquier type A</string>
+        <string>Banquier A</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Banquier type B</string>
+        <string>Banquier B</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Assureur logement</string>
+        <string>Assureur Logement</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Assureur voiture</string>
+        <string>Assureur Voiture</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Assureur vie</string>
+        <string>Assureur Vie</string>
        </property>
       </item>
       <item>
