@@ -19,7 +19,7 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
 
     DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-    ui->resourcesList->addItems(dtbc->getResourcesList());
+    ui->resourcesList->addItems(dtbc->getResourcesTypesList());
 
     ui->edit->setVisible(false);
     ui->add->setVisible(true);

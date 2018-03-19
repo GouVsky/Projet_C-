@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include "databasecommunicator.h"
+
 namespace Ui {
 class editemployee;
 }
