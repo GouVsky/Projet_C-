@@ -20,9 +20,14 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
     DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
     ui->resourcesList->addItems(dtbc->getResourcesList());
+
+    ui->edit->setVisible(false);
+    ui->add->setVisible(true);
+
+    customer = new Customer();
 }
 
-CustomerController::CustomerController(Customer *customer, QWidget *parent) : QDialog(parent), ui(new Ui::CustomerController)
+CustomerController::CustomerController(Customer *customer, int id, QWidget *parent) : QDialog(parent), ui(new Ui::CustomerController)
 {
     ui->setupUi(this);
 
@@ -36,11 +41,18 @@ CustomerController::CustomerController(Customer *customer, QWidget *parent) : QD
     ui->editConsultingTime->setValue(customer->getDureeRDV());
     ui->editPhoneNumber->setText(QString::number(customer->getPhoneNumber()));
     //ui->priorityList
+
+    ui->edit->setVisible(true);
+    ui->add->setVisible(false);
+
+    this->customer = new Customer();
+    this->customer->setId(id);
 }
 
 CustomerController::~CustomerController()
 {
     delete ui;
+    delete customer;
 }
 
 bool CustomerController::checkRequiredInputs()
@@ -70,21 +82,20 @@ void CustomerController::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
-        Customer customer;
-        customer.setAddress(ui->editAddress->text());
-        customer.setCity(ui->editCity->text());
-        customer.setComments(ui->editComments->toPlainText());
-        customer.setConsultingDay(ui->editDate->date());
-        customer.setDureeRDV(ui->editConsultingTime->text().toInt());
-        customer.setFirstName(ui->editFirstName->text());
-        customer.setName(ui->editName->text());
-        customer.setPhoneNumber(ui->editPhoneNumber->text().toInt());
-        customer.setPostalCode(ui->editPostalCode->text());
-        customer.setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
+        customer->setAddress(ui->editAddress->text());
+        customer->setCity(ui->editCity->text());
+        customer->setComments(ui->editComments->toPlainText());
+        customer->setConsultingDay(ui->editDate->date());
+        customer->setDureeRDV(ui->editConsultingTime->text().toInt());
+        customer->setFirstName(ui->editFirstName->text());
+        customer->setName(ui->editName->text());
+        customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
+        customer->setPostalCode(ui->editPostalCode->text());
+        customer->setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
 
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        dtbc->addCustomerToDatabase(&customer);
+        dtbc->addCustomerToDatabase(customer);
 
         emit addingSucceed("New customer added to the database.");
 
@@ -105,4 +116,29 @@ void CustomerController::on_editFirstName_textChanged(const QString &arg1)
 void CustomerController::on_editCity_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->editCity);
+}
+
+void CustomerController::on_edit_clicked()
+{
+    if (checkRequiredInputs())
+    {
+        customer->setAddress(ui->editAddress->text());
+        customer->setCity(ui->editCity->text());
+        customer->setComments(ui->editComments->toPlainText());
+        customer->setConsultingDay(ui->editDate->date());
+        customer->setDureeRDV(ui->editConsultingTime->text().toInt());
+        customer->setFirstName(ui->editFirstName->text());
+        customer->setName(ui->editName->text());
+        customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
+        customer->setPostalCode(ui->editPostalCode->text());
+        customer->setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
+
+        DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+        dtbc->updateCustomer(customer);
+
+        emit editingSucceed("Customer edited.");
+
+        accept();
+    }
 }

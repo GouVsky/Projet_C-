@@ -21,7 +21,7 @@ class CustomerController : public QDialog
 
     public:
         CustomerController(QWidget *parent = 0);
-        CustomerController(Customer *customer, QWidget *parent = 0);
+        CustomerController(Customer *customer, int id, QWidget *parent = 0);
         ~CustomerController();
         bool checkRequiredInputs();
 
@@ -36,12 +36,16 @@ class CustomerController : public QDialog
 
         void on_editCity_textChanged(const QString &arg1);
 
+        void on_edit_clicked();
+
     signals:
         void addingSucceed(QString message);
+        void editingSucceed(QString message);
 
     private:
         Ui::CustomerController *ui;
         CustomizedString *utils;
+        Customer *customer;
 };
 
 #endif // CUSTOMERCONTROLLER_H

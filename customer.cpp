@@ -2,7 +2,7 @@
 
 Customer::Customer()
 {
-
+    id = 0;
 }
 
 QString Customer::getName() const
@@ -103,4 +103,14 @@ void Customer::setDureeRDV(int value)
 void Customer::setConsultingDay(const QDate &value)
 {
     consultingDay = value;
+}
+
+int Customer::getId() const
+{
+    return id;
+}
+
+void Customer::setId(int value)
+{
+    id = value;
 }

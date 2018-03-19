@@ -25,7 +25,8 @@ class DataBaseCommunicator : public QObject
     public:
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
-        int addCustomerToDatabase(Customer *client);
+        int addCustomerToDatabase(Customer *customer);
+        void updateCustomer(Customer *customer);
         int addResourceToDatabase(Resource *resource);
         int addAccountToDatabase(Account *account, int resource);
         QSqlQueryModel *searchCustomerFromDatabase(const QString &id, const QString &name, const QString &firstname, const QDate &beginningDate, const QDate &endingDate);

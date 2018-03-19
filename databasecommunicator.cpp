@@ -73,6 +73,27 @@ int DataBaseCommunicator::addCustomerToDatabase(Customer * client)
     return query.lastInsertId().toInt();
 }
 
+void DataBaseCommunicator::updateCustomer(Customer *customer)
+{
+    QSqlQuery query(db);
+
+    query.prepare("UPDATE TClient SET Nom = :name, Prenom = :firstname, Adresse = :address, Ville = :city, CP = :postalCode, Commentaire = :comments, Tel = :phone, DateRdv = :dateRdv, DureeRdv = :consultingTime, Priorite = :priority WHERE Id == :id;");
+
+    query.bindValue(":id", customer->getId());
+    query.bindValue(":name", customer->getName());
+    query.bindValue(":firstname", customer->getFirstName());
+    query.bindValue(":address", customer->getAddress());
+    query.bindValue(":city", customer->getCity());
+    query.bindValue(":postalCode", customer->getPostalCode());
+    query.bindValue(":comments", customer->getComments());
+    query.bindValue(":phone", customer->getPhoneNumber());
+    query.bindValue(":dateRdv", customer->getConsultingDay());
+    query.bindValue(":consultingTime", customer->getDureeRDV());
+    query.bindValue(":priority", customer->getPriority());
+
+    query.exec();
+}
+
 int DataBaseCommunicator::addResourceToDatabase(Resource *resource)
 {
     QSqlQuery queryType(db);
