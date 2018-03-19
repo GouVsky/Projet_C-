@@ -160,14 +160,14 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
 
 void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
 {
-    QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
-    QStandardItem *rootNode = standardModel->invisibleRootItem();
-
     QSqlQuery query(db);
     QSqlQuery query2(db);
     query.prepare("SELECT DISTINCT Label FROM TType ORDER BY Label;");
     query2.prepare("SELECT Nom FROM TRessource, TType WHERE TRessource.IdType = TType.Id and Label LIKE :label ;");
     query.exec();
+
+    QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
+    QStandardItem *rootNode = standardModel->invisibleRootItem();
     while(query.next())
     {
         QStandardItem * typeNode= new QStandardItem(query.value(0).toString());
@@ -182,7 +182,6 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     }
     treeView->setModel(standardModel);
     treeView->expandAll();
-
 }
 
 Customer DataBaseCommunicator::getCustomer(int index)
@@ -229,4 +228,11 @@ QStringList DataBaseCommunicator::getResourcesList()
     }
 
     return resources;
+}
+
+void DataBaseCommunicator::editEmployee(QString employeeName)
+{
+    QSqlQuery query(db);
+    query.prepare("UPDATE TRessource WHERE Nom LIKE :employeeName");
+    query.bindValue(":employeeName", employeeName);
 }
