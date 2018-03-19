@@ -259,12 +259,17 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
     return resources;
 }
 
-void DataBaseCommunicator::editEmployee(QString employeeName)
+void DataBaseCommunicator::editEmployee(Resource oldEmployee, Resource newEmployee)
 {
-
+     QSqlQuery query(db);
+     query.prepare("UPDATE TRessource SET Nom = ':newName', Prenom = ':newFirstName', IdType = ':newType' WHERE Nom LIKE :oldName");
+     query.bindValue(":newName", newEmployee.getName());
+     query.bindValue("newFirstName", newEmployee.getFirstName());
+     query.bindValue("newType", newEmployee.getType());
+     query.bindValue(":oldName", oldEmployee.getName());
 }
 #include <iostream>
-Resource * DataBaseCommunicator::fillChamps(QString nomEmployee)
+Resource * DataBaseCommunicator::findEmployee(QString nomEmployee)
 {
     QSqlQuery query(db);
     QSqlQuery queryType(db);

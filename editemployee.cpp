@@ -15,7 +15,7 @@ editemployee::editemployee(QString nomEmploye, QWidget *parent) :
     ui->setupUi(this);
     nomEmployee=nomEmploye;
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-    Resource * employeeFind = dtbc->fillChamps(nomEmployee);
+    Resource * employeeFind = dtbc->findEmployee(nomEmployee);
     int index= ui->comboBox->findText(employeeFind->getType()->getLabel());
     ui->NomInput->insert(nomEmployee);
     ui->PrenomInput->insert(employeeFind->getName());
@@ -57,7 +57,14 @@ void editemployee::on_comboBox_currentTextChanged(const QString &arg1)
 void editemployee::on_editemployee_accepted()
 {
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-    //dtbc->fillChamps(nomEmployee);
+    Resource * employeeFind = dtbc->findEmployee(nomEmployee);
+    Resource * employeeToSend = new Resource();
+    Type * typeEmployee = new Type();
+    employeeToSend->setName(ui->NomInput);
+    employeeToSend->setFirstName(ui->PrenomInput);
+    employeeToSend->setType(typeEmployee);
+    typeEmployee->setLabel(ui->comboBox->currentText());
+
 }
 
 void editemployee::on_Buton_cancel_clicked()

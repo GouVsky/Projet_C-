@@ -39,7 +39,7 @@ class DataBaseCommunicator : public QObject
         QStringList getTypesList();
         QStringList getResourcesTypesList();
         void editEmployee(QString employeeName);
-        Resource * fillChamps(QString nomEmployee);
+        Resource * findEmployee(QString nomEmployee);
         Account * getAccount(QString nomEmployee);
         void deleteEmployee(QString nameEmployee);
 
