@@ -133,8 +133,6 @@ void MainWindow::on_showEmployeesEditButton_clicked()
          QString text = data.toString();
          editemployee employeeEditDialog(text);
          employeeEditDialog.exec();
-         DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-         Resource * employeeFind = dtbc->fillChamps(text);
          //dtbc->editEmployee(text);
      }
 

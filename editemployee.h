@@ -19,6 +19,8 @@ public:
 
 private slots:
     void on_editemployee_accepted();
+    void enableOrDisableComputerScientistLayout(bool enabled);
+    void on_comboBox_currentTextChanged(const QString &arg1);
 
 private:
     Ui::editemployee *ui;
