@@ -24,6 +24,5 @@ editemployee::~editemployee()
 void editemployee::on_editemployee_accepted()
 {
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-    dtbc->fillChamps(nomEmployee);
-
+    //dtbc->fillChamps(nomEmployee);
 }

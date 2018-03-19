@@ -2,7 +2,8 @@
 #define EDITEMPLOYEE_H
 
 #include <QDialog>
-#include <databasecommunicator.h>
+#include "databasecommunicator.h"
+
 namespace Ui {
 class editemployee;
 }

@@ -17,7 +17,7 @@ EmployeeController::EmployeeController(QWidget *parent) : QDialog(parent), ui(ne
 
     DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-    ui->comboBox->addItems(dtbc->getResourcesList());
+    ui->comboBox->addItems(dtbc->getTypesList());
 }
 
 EmployeeController::~EmployeeController()

@@ -84,7 +84,17 @@ void MainWindow::on_searchCustomerEditButton_clicked()
 
 void MainWindow::on_searchCustomerDeleteButton_clicked()
 {
+    DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
 
+    QItemSelectionModel *selectedRow = ui->customerView->selectionModel();
+
+    // We get index of the customer to delete.
+
+    int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
+
+    dtbc->deleteCustomer(indexCustomer);
+
+    showMessageStatusBar("You have deleted a customer.");
 }
 
 void MainWindow::on_showEmployeesRefreshButton_clicked()

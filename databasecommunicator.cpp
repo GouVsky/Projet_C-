@@ -94,6 +94,17 @@ void DataBaseCommunicator::updateCustomer(Customer *customer)
     query.exec();
 }
 
+void DataBaseCommunicator::deleteCustomer(int id)
+{
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM TClient WHERE Id == :id");
+
+    query.bindValue(":id", id);
+
+    query.exec();
+}
+
 int DataBaseCommunicator::addResourceToDatabase(Resource *resource)
 {
     QSqlQuery queryType(db);
@@ -212,9 +223,9 @@ Customer DataBaseCommunicator::getCustomer(int index)
     return customer;
 }
 
-QStringList DataBaseCommunicator::getResourcesList()
+QStringList DataBaseCommunicator::getTypesList()
 {
-    QStringList resources;
+    QStringList types;
 
     QSqlQuery query(db);
 
@@ -224,7 +235,25 @@ QStringList DataBaseCommunicator::getResourcesList()
 
     while (query.next())
     {
-        resources.append(query.value(0).toString());
+        types.append(query.value(0).toString());
+    }
+
+    return types;
+}
+
+QStringList DataBaseCommunicator::getResourcesTypesList()
+{
+    QStringList resources;
+
+    QSqlQuery query(db);
+
+    query.prepare("SELECT Nom, Prenom, Label FROM TRessource R, TType T WHERE R.IdType == T.Id;");
+
+    query.exec();
+
+    while (query.next())
+    {
+        resources.append(query.value(0).toString() + " " + query.value(1).toString() + " - " + query.value(2).toString());
     }
 
     return resources;
