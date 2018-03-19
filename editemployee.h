@@ -13,10 +13,15 @@ class editemployee : public QDialog
 
 public:
     explicit editemployee(QWidget *parent = 0);
+    explicit editemployee( QString nomEmploye, QWidget *parent = 0);
     ~editemployee();
+
+private slots:
+    void on_editemployee_accepted();
 
 private:
     Ui::editemployee *ui;
+    QString nomEmployee;
 };
 
 #endif // EDITEMPLOYEE_H

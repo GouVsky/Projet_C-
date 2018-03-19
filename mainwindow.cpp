@@ -111,7 +111,6 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 #include <iostream>
 void MainWindow::on_showEmployeesEditButton_clicked()
 {
-     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
      QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
      QModelIndex index = ui->treeView->currentIndex();
      if(!index.isValid())
@@ -122,9 +121,10 @@ void MainWindow::on_showEmployeesEditButton_clicked()
      {
          QVariant data= selectionModel->model()->data(index);
          QString text = data.toString();
-         editemployee employeeEditDialog;
+         editemployee employeeEditDialog(text);
          employeeEditDialog.exec();
-         //DataBaseCommunicator::editEmployee(text);
+
+         //dtbc->editEmployee(text);
      }
 
 }
