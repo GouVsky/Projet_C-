@@ -1,5 +1,5 @@
-#ifndef EMPLOYEECONTROLLER_H
-#define EMPLOYEECONTROLLER_H
+#ifndef ADDINGEMPLOYEE_H
+#define ADDINGEMPLOYEE_H
 
 #include <QObject>
 #include <QDialog>
@@ -44,4 +44,4 @@ class EmployeeController : public QDialog
         CustomizedString *utils;
 };
 
-#endif // EMPLOYEECONTROLLER_H
+#endif // ADDINGEMPLOYEE_H

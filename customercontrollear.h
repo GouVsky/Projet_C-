@@ -1,5 +1,5 @@
-#ifndef CUSTOMERCONTROLLER_H
-#define CUSTOMERCONTROLLER_H
+#ifndef ADDINGCLIENT_H
+#define ADDINGCLIENT_H
 
 #include <QObject>
 #include <QDialog>
@@ -44,4 +44,4 @@ class CustomerController : public QDialog
         CustomizedString *utils;
 };
 
-#endif // CUSTOMERCONTROLLER_H
+#endif // ADDINGCLIENT_H

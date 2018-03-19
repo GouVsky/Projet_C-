@@ -1,23 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EmployeeController</class>
- <widget class="QDialog" name="EmployeeController">
+ <class>addingEmployee</class>
+ <widget class="QDialog" name="addingEmployee">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>568</width>
-    <height>319</height>
+    <width>633</width>
+    <height>316</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>New Employee</string>
   </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>20</y>
+     <width>241</width>
+     <height>95</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="NameInforation">
+    <item row="3" column="0">
+     <widget class="QLabel" name="Prenom">
+      <property name="text">
+       <string>First Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="NomInput"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="PrenomInput"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="Nom">
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="TitleName">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>&lt;b&gt; General informations &lt;/b&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>30</y>
+     <x>340</x>
+     <y>20</y>
      <width>241</width>
      <height>66</height>
     </rect>
@@ -45,43 +100,11 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="AddButton">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>280</y>
-     <width>113</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>113</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="text">
-    <string>Add</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="QuitButton">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>280</y>
-     <width>113</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="gridLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>130</y>
+     <x>340</x>
+     <y>120</y>
      <width>241</width>
      <height>95</height>
     </rect>
@@ -143,62 +166,48 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QPushButton" name="AddButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>241</width>
-     <height>95</height>
+     <x>340</x>
+     <y>270</y>
+     <width>113</width>
+     <height>32</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="NameInforation">
-    <item row="3" column="0">
-     <widget class="QLabel" name="Prenom">
-      <property name="text">
-       <string>First Name</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="2">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="NomInput"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="PrenomInput"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="Nom">
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="TitleName">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>&lt;b&gt; General informations &lt;/b&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignHCenter|Qt::AlignTop</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="maximumSize">
+    <size>
+     <width>113</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="QuitButton">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>270</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>NomInput</tabstop>
+  <tabstop>PrenomInput</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>editInformaticienLogin</tabstop>
+  <tabstop>editInformaticienPassword</tabstop>
+  <tabstop>AddButton</tabstop>
+  <tabstop>QuitButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

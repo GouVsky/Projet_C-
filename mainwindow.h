@@ -7,8 +7,8 @@
 #include <QSqlQueryModel>
 
 #include "aboutcontroller.h"
-#include "customercontroller.h"
-#include "employeecontroller.h"
+#include "customercontrollear.h"
+#include "employeecontrollera.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
 #include "customizedstring.h"
