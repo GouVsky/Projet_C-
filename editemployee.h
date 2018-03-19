@@ -22,6 +22,8 @@ private slots:
     void enableOrDisableComputerScientistLayout(bool enabled);
     void on_comboBox_currentTextChanged(const QString &arg1);
 
+    void on_Buton_cancel_clicked();
+
 private:
     Ui::editemployee *ui;
     QString nomEmployee;

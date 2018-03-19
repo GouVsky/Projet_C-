@@ -137,12 +137,35 @@ void MainWindow::on_showEmployeesEditButton_clicked()
          QString text = data.toString();
          editemployee employeeEditDialog(text);
          employeeEditDialog.exec();
-         //dtbc->editEmployee(text);
      }
 
 }
 
 void MainWindow::on_showEmployeesDeleteButton_clicked()
 {
+    QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
+    QModelIndex index = ui->treeView->currentIndex();
+    if(!index.isValid())
+    {
+        QMessageBox::information(this,"warning", "Please select an item to edit it");
+    }
+    else
+    {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Warning", "Do you really want to delete this employee?",
+                                        QMessageBox::Yes|QMessageBox::No);
+          if (reply == QMessageBox::Yes)
+          {
+            QVariant data= selectionModel->model()->data(index);
+            QString text = data.toString();
+            DataBaseCommunicator *dtbc =DataBaseCommunicator::getInstance();
+            dtbc->deleteEmployee(text);
+            dtbc->displayEmployeeList(ui->treeView);
+          } else
+          {
+
+          }
+    }
+
 
 }

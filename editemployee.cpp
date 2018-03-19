@@ -59,3 +59,8 @@ void editemployee::on_editemployee_accepted()
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
     //dtbc->fillChamps(nomEmployee);
 }
+
+void editemployee::on_Buton_cancel_clicked()
+{
+    this->close();
+}

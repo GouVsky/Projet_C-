@@ -300,3 +300,11 @@ Account * DataBaseCommunicator::getAccount(QString nomEmployee)
 
      return infoAccount;
 }
+
+void DataBaseCommunicator::deleteEmployee(QString nameEmployee)
+{
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM TRessource WHERE Nom LIKE :nameToDel");
+    query.bindValue(":nameToDel", nameEmployee);
+    query.exec();
+}

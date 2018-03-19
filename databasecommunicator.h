@@ -41,6 +41,7 @@ class DataBaseCommunicator : public QObject
         void editEmployee(QString employeeName);
         Resource * fillChamps(QString nomEmployee);
         Account * getAccount(QString nomEmployee);
+        void deleteEmployee(QString nameEmployee);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);
