@@ -265,7 +265,7 @@ void DataBaseCommunicator::editEmployee(Resource oldEmployee, Resource newEmploy
      query.prepare("UPDATE TRessource SET Nom = ':newName', Prenom = ':newFirstName', IdType = ':newType' WHERE Nom LIKE :oldName");
      query.bindValue(":newName", newEmployee.getName());
      query.bindValue("newFirstName", newEmployee.getFirstName());
-     query.bindValue("newType", newEmployee.getType());
+     query.bindValue("newType", newEmployee.getType()->getId());
      query.bindValue(":oldName", oldEmployee.getName());
 }
 Resource * DataBaseCommunicator::findEmployee(QString nomEmployee)

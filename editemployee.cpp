@@ -60,8 +60,8 @@ void editemployee::on_editemployee_accepted()
     Resource * employeeFind = dtbc->findEmployee(nomEmployee);
     Resource * employeeToSend = new Resource();
     Type * typeEmployee = new Type();
-    employeeToSend->setName(ui->NomInput);
-    employeeToSend->setFirstName(ui->PrenomInput);
+    employeeToSend->setName(ui->NomInput->text());
+    employeeToSend->setFirstName(ui->PrenomInput->text());
     employeeToSend->setType(typeEmployee);
     typeEmployee->setLabel(ui->comboBox->currentText());
 

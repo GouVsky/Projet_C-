@@ -10,259 +10,261 @@
     <height>557</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>641</width>
-      <height>441</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>641</width>
-      <height>441</height>
-     </size>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="customerSearch">
-     <attribute name="title">
-      <string>Search customer</string>
-     </attribute>
-     <widget class="QLineEdit" name="customerIDSearch">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>30</y>
-        <width>151</width>
-        <height>21</height>
-       </rect>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="maximumSize">
+       <size>
+        <width>641</width>
+        <height>441</height>
+       </size>
       </property>
-      <property name="text">
-       <string/>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="customerSearch">
+       <attribute name="title">
+        <string>Search customer</string>
+       </attribute>
+       <widget class="QLabel" name="customerFirstName">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>90</y>
+          <width>66</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>First Name</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="customerIDSearch">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>30</y>
+          <width>125</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="searchCustomerSearchButton">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>100</y>
+          <width>85</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="customerFirstNameSearch">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>90</y>
+          <width>125</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="customerNameSearch">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>60</y>
+          <width>125</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="dateBeginning">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>60</y>
+          <width>100</width>
+          <height>24</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="customerID">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>76</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Customer ID</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="to">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>60</y>
+          <width>16</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>To</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="searchCustomerDeleteButton">
+        <property name="geometry">
+         <rect>
+          <x>521</x>
+          <y>380</y>
+          <width>91</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="dateEnding">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>60</y>
+          <width>100</width>
+          <height>24</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="customerName">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>36</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="customerView">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>136</y>
+          <width>591</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="showGrid">
+         <bool>true</bool>
+        </property>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+       <widget class="QLabel" name="datesInterval">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>30</y>
+          <width>117</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Select time interval</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="searchCustomerEditButton">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>380</y>
+          <width>91</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Edit</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="employees">
+       <attribute name="title">
+        <string>Employees</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="showEmployeesRefreshButton">
+          <property name="text">
+           <string>Refresh</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QGridLayout" name="gridLayout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="showEmployeesDeleteButton">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="showEmployeesEditButton">
+            <property name="text">
+             <string>Edit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QTreeView" name="treeView"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="planning">
+       <attribute name="title">
+        <string>Schedule</string>
+       </attribute>
+      </widget>
      </widget>
-     <widget class="QLabel" name="customerID">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Customer ID</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="customerName">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>60</y>
-        <width>60</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="customerFirstName">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>90</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>First Name</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="customerNameSearch">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>60</y>
-        <width>151</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="customerFirstNameSearch">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>90</y>
-        <width>151</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="datesInterval">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>30</y>
-        <width>121</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Select time interval</string>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="dateBeginning">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>60</y>
-        <width>110</width>
-        <height>24</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="dateEnding">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>60</y>
-        <width>110</width>
-        <height>24</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="to">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>60</y>
-        <width>21</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>To</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="searchCustomerSearchButton">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>110</y>
-        <width>113</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Search</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="gridLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>150</y>
-        <width>611</width>
-        <height>261</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0">
-        <widget class="QPushButton" name="searchCustomerEditButton">
-         <property name="text">
-          <string>Edit</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="searchCustomerDeleteButton">
-         <property name="text">
-          <string>Delete</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QTableView" name="customerView">
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
-         </property>
-         <property name="showGrid">
-          <bool>true</bool>
-         </property>
-         <attribute name="horizontalHeaderStretchLastSection">
-          <bool>false</bool>
-         </attribute>
-         <attribute name="verticalHeaderVisible">
-          <bool>false</bool>
-         </attribute>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="employees">
-     <attribute name="title">
-      <string>Employees</string>
-     </attribute>
-     <widget class="QWidget" name="gridLayoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>601</width>
-        <height>371</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="1">
-        <widget class="QPushButton" name="showEmployeesDeleteButton">
-         <property name="text">
-          <string>Delete</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="showEmployeesEditButton">
-         <property name="text">
-          <string>Edit</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QTreeView" name="treeView"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="showEmployeesRefreshButton">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>0</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Refresh</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="planning">
-     <attribute name="title">
-      <string>Schedule</string>
-     </attribute>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="enabled">
@@ -288,7 +290,7 @@
      <x>0</x>
      <y>0</y>
      <width>666</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="defaultUp">
@@ -365,14 +367,10 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>customerView</tabstop>
   <tabstop>customerIDSearch</tabstop>
-  <tabstop>customerNameSearch</tabstop>
   <tabstop>customerFirstNameSearch</tabstop>
   <tabstop>dateBeginning</tabstop>
   <tabstop>dateEnding</tabstop>
-  <tabstop>searchCustomerSearchButton</tabstop>
   <tabstop>showEmployeesEditButton</tabstop>
   <tabstop>showEmployeesDeleteButton</tabstop>
  </tabstops>
