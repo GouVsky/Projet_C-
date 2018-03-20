@@ -268,7 +268,6 @@ void DataBaseCommunicator::editEmployee(Resource oldEmployee, Resource newEmploy
      query.bindValue("newType", newEmployee.getType());
      query.bindValue(":oldName", oldEmployee.getName());
 }
-#include <iostream>
 Resource * DataBaseCommunicator::findEmployee(QString nomEmployee)
 {
     QSqlQuery query(db);

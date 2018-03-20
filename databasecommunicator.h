@@ -38,7 +38,7 @@ class DataBaseCommunicator : public QObject
         Customer getCustomer(int index);
         QStringList getTypesList();
         QStringList getResourcesTypesList();
-        void editEmployee(QString employeeName);
+        void editEmployee(Resource oldEmployee, Resource newEmployee);
         Resource * findEmployee(QString nomEmployee);
         Account * getAccount(QString nomEmployee);
         void deleteEmployee(QString nameEmployee);
