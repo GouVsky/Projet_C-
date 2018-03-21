@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     utils->forbidAlphaCaracteres(ui->customerIDSearch);
     utils->forbidNumericCaracteres(ui->customerNameSearch);
     utils->forbidNumericCaracteres(ui->customerFirstNameSearch);
+
+    ui->customerView->setModel(model);
 }
 
 MainWindow::~MainWindow()
@@ -69,19 +71,22 @@ void MainWindow::on_searchCustomerEditButton_clicked()
 
     QItemSelectionModel *selectedRow = ui->customerView->selectionModel();
 
-    // We get index of the customer to edit.
+    if (selectedRow->model()->rowCount() > 0)
+    {
+        // We get index of the customer to edit.
 
-    int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
+        int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
 
-    Customer customer = dtbc->getCustomer(indexCustomer);
+        Customer customer = dtbc->getCustomer(indexCustomer);
 
-    CustomerController editCustomerDialog(&customer, indexCustomer);
+        CustomerController editCustomerDialog(&customer, indexCustomer);
 
-    connect(&editCustomerDialog, SIGNAL(editingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
+        connect(&editCustomerDialog, SIGNAL(editingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
 
-    editCustomerDialog.exec();
+        editCustomerDialog.exec();
 
-    model->query().exec();
+        model->query().exec();
+    }
 }
 
 void MainWindow::on_searchCustomerDeleteButton_clicked()
@@ -94,11 +99,19 @@ void MainWindow::on_searchCustomerDeleteButton_clicked()
 
     int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
 
-    dtbc->deleteCustomer(indexCustomer);
+    QMessageBox::StandardButton reply;
 
-    showMessageStatusBar("You have deleted a customer.");
+    reply = QMessageBox::question(this, "Warning", "Do you really want to delete this customer?",
+                                  QMessageBox::Yes | QMessageBox::No);
 
-    model->query().exec();
+    if (reply == QMessageBox::Yes)
+    {
+        dtbc->deleteCustomer(indexCustomer);
+
+        showMessageStatusBar("You have deleted a customer.");
+
+        model->query().exec();
+     }
 }
 
 void MainWindow::on_showEmployeesRefreshButton_clicked()
@@ -122,7 +135,7 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->customerFirstNameSearch);
 }
-#include <iostream>
+
 void MainWindow::on_showEmployeesEditButton_clicked()
 {
      QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
@@ -161,6 +174,9 @@ void MainWindow::on_showEmployeesDeleteButton_clicked()
             DataBaseCommunicator *dtbc =DataBaseCommunicator::getInstance();
             dtbc->deleteEmployee(text);
             dtbc->displayEmployeeList(ui->treeView);
+
+            showMessageStatusBar("You have deleted an employee.");
+
           } else
           {
 

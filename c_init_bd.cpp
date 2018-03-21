@@ -178,8 +178,8 @@ bool C_INIT_BD::Creation_BD()
             return false;
         }
 
-        //db.close();
-        //db.removeDatabase("QSQLITE");
+        db.close();
+        db.removeDatabase("QSQLITE");
         return true;
 
     }

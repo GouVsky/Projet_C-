@@ -235,6 +235,15 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>NomInput</tabstop>
+  <tabstop>PrenomInput</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>editInformaticienLogin</tabstop>
+  <tabstop>editInformaticienPassword</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>Buton_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

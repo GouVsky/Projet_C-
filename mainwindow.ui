@@ -368,11 +368,19 @@
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>customerIDSearch</tabstop>
+  <tabstop>customerNameSearch</tabstop>
   <tabstop>customerFirstNameSearch</tabstop>
   <tabstop>dateBeginning</tabstop>
   <tabstop>dateEnding</tabstop>
+  <tabstop>searchCustomerSearchButton</tabstop>
+  <tabstop>customerView</tabstop>
+  <tabstop>searchCustomerEditButton</tabstop>
+  <tabstop>searchCustomerDeleteButton</tabstop>
+  <tabstop>tabWidget</tabstop>
   <tabstop>showEmployeesEditButton</tabstop>
   <tabstop>showEmployeesDeleteButton</tabstop>
+  <tabstop>showEmployeesRefreshButton</tabstop>
+  <tabstop>treeView</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>

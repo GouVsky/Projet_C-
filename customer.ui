@@ -334,6 +334,22 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>editName</tabstop>
+  <tabstop>editFirstName</tabstop>
+  <tabstop>editPhoneNumber</tabstop>
+  <tabstop>editAddress</tabstop>
+  <tabstop>editPostalCode</tabstop>
+  <tabstop>editCity</tabstop>
+  <tabstop>editDate</tabstop>
+  <tabstop>priorityList</tabstop>
+  <tabstop>editConsultingTime</tabstop>
+  <tabstop>resourcesList</tabstop>
+  <tabstop>editComments</tabstop>
+  <tabstop>add</tabstop>
+  <tabstop>cancel</tabstop>
+  <tabstop>edit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

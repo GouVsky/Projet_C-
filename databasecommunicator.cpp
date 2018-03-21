@@ -5,7 +5,7 @@ DataBaseCommunicator *DataBaseCommunicator::instance = nullptr;
 
 DataBaseCommunicator::DataBaseCommunicator(QObject *parent) : QObject(parent)
 {
-    db = QSqlDatabase::database("QSQLITE");
+    db = QSqlDatabase::database();
 
     db.open();
 
@@ -247,13 +247,15 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     QSqlQuery query(db);
 
-    query.prepare("SELECT Nom, Prenom, Label FROM TRessource R, TType T WHERE R.IdType == T.Id;");
+    query.prepare("SELECT R.Id, Nom, Prenom, Label FROM TRessource R, TType T WHERE R.IdType == T.Id;");
 
     query.exec();
 
     while (query.next())
     {
-        resources.append(query.value(0).toString() + " " + query.value(1).toString() + " - " + query.value(2).toString());
+        resources.append("[" + query.value(0).toString() + "]"
+                         + " " + query.value(1).toString() + " " + query.value(2).toString()
+                         + " - " + query.value(3).toString());
     }
 
     return resources;

@@ -17,9 +17,9 @@ bool Identification::checkIdentification()
 {
     bool check = true;
 
-    DataBaseCommunicator *dbc = DataBaseCommunicator::getInstance();
+    DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
 
-    if (!dbc->checkLoginPassword(ui->loginField->text(), ui->passwordField->text()))
+    if (!dtbc->checkLoginPassword(ui->loginField->text(), ui->passwordField->text()))
     {
         check = false;
 

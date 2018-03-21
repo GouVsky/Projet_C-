@@ -199,6 +199,15 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>NomInput</tabstop>
+  <tabstop>PrenomInput</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>editInformaticienLogin</tabstop>
+  <tabstop>editInformaticienPassword</tabstop>
+  <tabstop>AddButton</tabstop>
+  <tabstop>QuitButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
