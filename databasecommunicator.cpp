@@ -185,15 +185,15 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
         while(query2.next())
         {
             QStandardItem * nameNode= new QStandardItem(query2.value(0).toString());
-            QStandardItem * idNode= new QStandardItem(query2.value(1).toString());
-            //typeNode->appendRow(nameNode);
-            typeNode->appendRow(QList<QStandardItem *>() << nameNode << idNode);
+            //QStandardItem * idNode= new QStandardItem(query2.value(1).toString());
+            nameNode->setData(QVariant(query2.value(1).toString()), Qt::UserRole);
+            //typeNode->appendRow(QList<QStandardItem *>() << nameNode << idNode);
+            typeNode->appendRow(nameNode);
         }
     }
 
     treeView->setModel(standardModel);
     treeView->expandAll();
-    treeView->hideColumn(1);
 }
 
 Customer DataBaseCommunicator::getCustomer(int index)
@@ -287,7 +287,7 @@ void DataBaseCommunicator::editEmployee(Resource oldEmployee, Resource newEmploy
      query.bindValue(":oldName", oldEmployee.getName());
 }
 
-Resource DataBaseCommunicator::findEmployee(int index)
+Resource * DataBaseCommunicator::findEmployee(int index)
 {
     QSqlQuery query(db);
     QSqlQuery queryType(db);
@@ -302,24 +302,24 @@ Resource DataBaseCommunicator::findEmployee(int index)
     queryType.exec();
     queryType.next();
 
-    Resource employeeEdited;
+    Resource * employeeEdited= new Resource();
     Type typeEmployee;
     typeEmployee.setId(queryType.value(0).toInt());
     typeEmployee.setLabel(queryType.value(1).toString());
 
-    employeeEdited.setId(query.value(0).toInt());
-    employeeEdited.setName(query.value(1).toString());
-    employeeEdited.setFirstName(query.value(2).toString());
-    employeeEdited.setType(typeEmployee);
+    employeeEdited->setId(query.value(0).toInt());
+    employeeEdited->setName(query.value(1).toString());
+    employeeEdited->setFirstName(query.value(2).toString());
+    employeeEdited->setType(typeEmployee);
     return employeeEdited;
 }
 
-Account * DataBaseCommunicator::getAccount(QString nomEmployee)
+Account * DataBaseCommunicator::getAccount(int idEmployee)
 {
     Account * infoAccount = new Account();
      QSqlQuery query(db);
-     query.prepare("SELECT * FROM TCompte C, TRessource R WHERE C.IdRessource= R.Id AND R.Nom LIKE :employeeName");
-     query.bindValue(":employeeName", nomEmployee);
+     query.prepare("SELECT * FROM TCompte WHERE IdRessource = :employeeid");
+     query.bindValue(":employeeid", idEmployee);
      query.exec();
      query.next();
      infoAccount->setLogin(query.value(2).toString());

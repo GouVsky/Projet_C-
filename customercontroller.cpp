@@ -111,9 +111,9 @@ void CustomerController::on_add_clicked()
 
         for (int i = 0; i < selectedItemsNumber; i++)
         {
-            Resource resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+            Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
 
-            customer->setResource(resource);
+            customer->setResource(*resource);
         }
 
         dtbc->addCustomer(customer);
@@ -164,9 +164,9 @@ void CustomerController::on_edit_clicked()
 
         for (int i = 0; i < selectedItemsNumber; i++)
         {
-            Resource resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+            Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
 
-            customer->setResource(resource);
+            customer->setResource(*resource);
         }
 
         dtbc->addCustomer(customer, true);

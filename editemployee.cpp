@@ -8,24 +8,24 @@ editemployee::editemployee(QWidget *parent) :
     ui->setupUi(this);
 }
 
-editemployee::editemployee(QString nomEmploye, QWidget *parent) :
+editemployee::editemployee(int idEmploye, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editemployee)
 {
-    /*ui->setupUi(this);
-    nomEmployee=nomEmploye;
+    ui->setupUi(this);
+    idEmployee=idEmploye;
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-    Resource * employeeFind = dtbc->findEmployee(nomEmployee);
+    Resource * employeeFind = dtbc->findEmployee(idEmployee);
     int index= ui->comboBox->findText(employeeFind->getType()->getLabel());
-    ui->NomInput->insert(nomEmployee);
+    ui->NomInput->insert(employeeFind->getFirstName());
     ui->PrenomInput->insert(employeeFind->getName());
     ui->comboBox->setCurrentIndex( index);
     if (employeeFind->getType()->getLabel() == "Informaticien")
     {
-        Account * infoAccount = dtbc->getAccount(nomEmployee);
+        Account * infoAccount = dtbc->getAccount(idEmployee);
         ui->editInformaticienLogin->insert(infoAccount->getLogin());
         ui->editInformaticienPassword->insert(infoAccount->getPassword());
-    }*/
+    }
 }
 
 editemployee::~editemployee()

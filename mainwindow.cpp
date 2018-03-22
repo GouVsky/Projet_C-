@@ -142,17 +142,17 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 void MainWindow::on_showEmployeesEditButton_clicked()
 {
      QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
-     QModelIndex index = ui->treeView->currentIndex();
-     if(!index.isValid())
+     //QVariant index = ui->treeView->currentIndex().data(Qt::UserRole);
+      QVariant data = ui->treeView->currentIndex().data(Qt::UserRole);
+     if(!data.isValid())
      {
          QMessageBox::information(this,"warning", "Please select an item to edit it");
      }
      else
      {
-         QVariant data= selectionModel->model()->data(index);
-         QString text = data.toString();
-         std::cout << text.toStdString();
-         editemployee employeeEditDialog(text);
+         //QVariant data= selectionModel->model()->data(index);
+         int idEmployee = data.toInt();
+         editemployee employeeEditDialog(idEmployee);
          employeeEditDialog.exec();
      }
 
