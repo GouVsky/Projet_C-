@@ -25,6 +25,24 @@ EmployeeController::~EmployeeController()
     delete ui;
 }
 
+bool EmployeeController::checkRequiredInputs()
+{
+    bool requiredInputs = true;
+
+    if (ui->NomInput->text().isEmpty() ||
+        ui->PrenomInput->text().isEmpty() ||
+        (ui->comboBox->currentText() == "Informaticien" &&
+         (ui->editInformaticienLogin->text().isEmpty() ||
+          ui->editInformaticienPassword->text().isEmpty())))
+    {
+        requiredInputs = false;
+
+        QMessageBox::warning(this, "Warning", "Some information is missing.");
+    }
+
+    return requiredInputs;
+}
+
 void EmployeeController::on_QuitButton_clicked()
 {
     close();
@@ -69,29 +87,32 @@ void EmployeeController::on_AddButton_clicked()
     Account account;
     Resource resource;
 
-    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
-
-    // We add 1 because the index of the combobox starts at 0.
-    // And the first id in the database is 1.
-
-    type.setId(ui->comboBox->currentIndex() + 1);
-    type.setLabel(ui->comboBox->itemData(ui->comboBox->currentIndex()).toString());
-
-    resource.setName(ui->NomInput->text());
-    resource.setFirstName(ui->PrenomInput->text());
-    resource.setType(type);
-
-    int index = dtbc->addResourceToDatabase(&resource);
-
-    if (type.getLabel() == "Informaticien")
+    if (checkRequiredInputs())
     {
-        account.setLogin(ui->editInformaticienLogin->text());
-        account.setPassword(ui->editInformaticienPassword->text());
+        DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        dtbc->addAccountToDatabase(&account, index);
+        // We add 1 because the index of the combobox starts at 0.
+        // And the first id in the database is 1.
+
+        type.setId(ui->comboBox->currentIndex() + 1);
+        type.setLabel(ui->comboBox->itemData(ui->comboBox->currentIndex()).toString());
+
+        resource.setName(ui->NomInput->text());
+        resource.setFirstName(ui->PrenomInput->text());
+        resource.setType(type);
+
+        int index = dtbc->addResourceToDatabase(&resource);
+
+        if (type.getLabel() == "Informaticien")
+        {
+            account.setLogin(ui->editInformaticienLogin->text());
+            account.setPassword(ui->editInformaticienPassword->text());
+
+            dtbc->addAccountToDatabase(&account, index);
+        }
+
+        emit addingSucceed("New resource added to the database.");
+
+        accept();
     }
-
-    emit addingSucceed("New resource added to the database.");
-
-    accept();
 }

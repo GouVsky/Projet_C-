@@ -16,6 +16,7 @@ public:
     explicit editemployee(QWidget *parent = 0);
     explicit editemployee(int idEmploye, QWidget *parent = 0);
     ~editemployee();
+    bool checkRequiredInputs();
 
 private slots:
     void enableOrDisableComputerScientistLayout(bool enabled);

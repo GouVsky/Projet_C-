@@ -33,6 +33,24 @@ editemployee::~editemployee()
     delete ui;
 }
 
+bool editemployee::checkRequiredInputs()
+{
+    bool requiredInputs = true;
+
+    if (ui->NomInput->text().isEmpty() ||
+        ui->PrenomInput->text().isEmpty() ||
+        (ui->comboBox->currentText() == "Informaticien" &&
+         (ui->editInformaticienLogin->text().isEmpty() ||
+          ui->editInformaticienPassword->text().isEmpty())))
+    {
+        requiredInputs = false;
+
+        QMessageBox::warning(this, "Warning", "Some information is missing.");
+    }
+
+    return requiredInputs;
+}
+
 void editemployee::enableOrDisableComputerScientistLayout(bool enabled)
 {
     ui->informaticienIdentification->setEnabled(enabled);

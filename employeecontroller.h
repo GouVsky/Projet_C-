@@ -22,6 +22,7 @@ class EmployeeController : public QDialog
     public:
         explicit EmployeeController(QWidget *parent = 0);
         ~EmployeeController();
+        bool checkRequiredInputs();
 
     private slots:
         void on_QuitButton_clicked();
