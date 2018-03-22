@@ -281,8 +281,8 @@ void DataBaseCommunicator::editEmployee(Resource newEmployee, int idEmp)
      QSqlQuery query(db);
      query.prepare("UPDATE TRessource SET Nom = :newName, Prenom = :newFirstName, IdType = :newType WHERE Id == :idEmp");
      query.bindValue(":newName", newEmployee.getName());
-     query.bindValue("newFirstName", newEmployee.getFirstName());
-     query.bindValue("newType", newEmployee.getType()->getId());
+     query.bindValue(":newFirstName", newEmployee.getFirstName());
+     query.bindValue(":newType", newEmployee.getType()->getId());
      query.bindValue(":idEmp", idEmp);
      query.exec();
 }
