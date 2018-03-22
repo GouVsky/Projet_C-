@@ -208,7 +208,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="Edit_buton">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -241,7 +241,7 @@
   <tabstop>comboBox</tabstop>
   <tabstop>editInformaticienLogin</tabstop>
   <tabstop>editInformaticienPassword</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>Edit_buton</tabstop>
   <tabstop>Buton_cancel</tabstop>
  </tabstops>
  <resources/>

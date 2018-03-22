@@ -18,11 +18,12 @@ public:
     ~editemployee();
 
 private slots:
-    void on_editemployee_accepted();
     void enableOrDisableComputerScientistLayout(bool enabled);
     void on_comboBox_currentTextChanged(const QString &arg1);
 
     void on_Buton_cancel_clicked();
+
+    void on_Edit_buton_clicked();
 
 private:
     Ui::editemployee *ui;

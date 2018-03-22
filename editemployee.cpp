@@ -54,20 +54,21 @@ void editemployee::on_comboBox_currentTextChanged(const QString &arg1)
         enableOrDisableComputerScientistLayout(false);
     }
 }
-void editemployee::on_editemployee_accepted()
+
+void editemployee::on_Buton_cancel_clicked()
 {
-    /*DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-    Resource * employeeFind = dtbc->findEmployee(nomEmployee);
+    this->close();
+}
+
+void editemployee::on_Edit_buton_clicked()
+{
+    DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
     Resource * employeeToSend = new Resource();
     Type * typeEmployee = new Type();
     employeeToSend->setName(ui->NomInput->text());
     employeeToSend->setFirstName(ui->PrenomInput->text());
-    employeeToSend->setType(typeEmployee);
-    typeEmployee->setLabel(ui->comboBox->currentText());*/
-
-}
-
-void editemployee::on_Buton_cancel_clicked()
-{
+    employeeToSend->setType(*typeEmployee);
+    typeEmployee->setLabel(ui->comboBox->currentText());
+    dtbc->editEmployee(*employeeToSend, idEmployee);
     this->close();
 }

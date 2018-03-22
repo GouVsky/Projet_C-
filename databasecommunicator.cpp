@@ -185,9 +185,7 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
         while(query2.next())
         {
             QStandardItem * nameNode= new QStandardItem(query2.value(0).toString());
-            //QStandardItem * idNode= new QStandardItem(query2.value(1).toString());
             nameNode->setData(QVariant(query2.value(1).toString()), Qt::UserRole);
-            //typeNode->appendRow(QList<QStandardItem *>() << nameNode << idNode);
             typeNode->appendRow(nameNode);
         }
     }
@@ -277,15 +275,16 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     return resources;
 }
-
-void DataBaseCommunicator::editEmployee(Resource oldEmployee, Resource newEmployee)
+#include <iostream>
+void DataBaseCommunicator::editEmployee(Resource newEmployee, int idEmp)
 {
      QSqlQuery query(db);
-     query.prepare("UPDATE TRessource SET Nom = ':newName', Prenom = ':newFirstName', IdType = ':newType' WHERE Nom LIKE :oldName");
+     query.prepare("UPDATE TRessource SET Nom = :newName, Prenom = :newFirstName, IdType = :newType WHERE Id == :idEmp");
      query.bindValue(":newName", newEmployee.getName());
      query.bindValue("newFirstName", newEmployee.getFirstName());
      query.bindValue("newType", newEmployee.getType()->getId());
-     query.bindValue(":oldName", oldEmployee.getName());
+     query.bindValue(":idEmp", idEmp);
+     query.exec();
 }
 
 Resource * DataBaseCommunicator::findEmployee(int index)
@@ -319,7 +318,7 @@ Account * DataBaseCommunicator::getAccount(int idEmployee)
 {
     Account * infoAccount = new Account();
      QSqlQuery query(db);
-     query.prepare("SELECT * FROM TCompte WHERE IdRessource = :employeeid");
+     query.prepare("SELECT * FROM TCompte WHERE IdRessource == :employeeid");
      query.bindValue(":employeeid", idEmployee);
      query.exec();
      query.next();
@@ -332,7 +331,7 @@ Account * DataBaseCommunicator::getAccount(int idEmployee)
 void DataBaseCommunicator::deleteEmployee(int idEmployee)
 {
     QSqlQuery query(db);
-    query.prepare("DELETE FROM TRessource WHERE Id = :IdToDel");
+    query.prepare("DELETE FROM TRessource WHERE Id == :IdToDel");
     query.bindValue(":IdToDel", idEmployee);
     query.exec();
 }
