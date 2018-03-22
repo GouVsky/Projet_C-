@@ -78,7 +78,7 @@ int DataBaseCommunicator::addCustomer(Customer *customer, bool exists)
 
     queryRdv.prepare("INSERT INTO TRdv(IdRessource, IdClient) VALUES(:resource, :customer);");
 
-    queryRdv.bindValue(":customer", customer->getId());
+    queryRdv.bindValue(":customer", (exists) ? customer->getId() : queryCustomer.lastInsertId().toInt());
 
     for (int i = 0; i < customer->getResourcesNumber(); i++)
     {
@@ -210,6 +210,7 @@ Customer DataBaseCommunicator::getCustomer(int index)
 
     while (queryGetCustomer.next())
     {
+        customer.setId(index);
         customer.setName(queryGetCustomer.value(1).toString());
         customer.setFirstName(queryGetCustomer.value(2).toString());
         customer.setAddress(queryGetCustomer.value(3).toString());
