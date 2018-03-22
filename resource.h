@@ -13,15 +13,15 @@ class Resource
         QString getName() const;
         QString getFirstName() const;
         Type * getType() const;
-        int getIndexInCombobox() const;
+        int getId() const;
 
         void setName(const QString & value);
         void setFirstName(const QString & value);
         void setType(Type value);
-        void setIndexInCombobox(int value);
+        void setId(int value);
 
     private:
-        int indexInCombobox;
+        int id;
 
         QString name,
                 firstName;

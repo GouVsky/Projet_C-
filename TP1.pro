@@ -4,13 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql widgets uiplugin
+QT       += core gui sql widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = TP1
 TEMPLATE += app
-CONFIG += plugin
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings

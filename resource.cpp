@@ -35,12 +35,12 @@ void Resource::setType(Type value)
     *type = value;
 }
 
-int Resource::getIndexInCombobox() const
+int Resource::getId() const
 {
-    return indexInCombobox;
+    return id;
 }
 
-void Resource::setIndexInCombobox(int value)
+void Resource::setId(int value)
 {
-    indexInCombobox = value;
+    id = value;
 }

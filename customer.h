@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QDate>
+#include <QList>
 
 #include "resource.h"
 
@@ -21,7 +22,8 @@ class Customer
         int getDureeRDV() const;
         QDate getConsultingDay() const;
         int getId() const;
-        Resource * getResource() const;
+        Resource getResource(int index) const;
+        int getResourcesNumber() const;
 
         void setName(const QString &value);
         void setFirstName(const QString &value);
@@ -34,7 +36,7 @@ class Customer
         void setDureeRDV(int value);
         void setConsultingDay(const QDate &value);
         void setId(int value);
-        void setResource(Resource * value);
+        void setResource(Resource value);
 
     private:
         int id;
@@ -52,7 +54,7 @@ class Customer
 
         QDate consultingDay;
 
-        Resource *resource;
+        QList <Resource> *resources;
 };
 
 #endif // CUSTOMER_H

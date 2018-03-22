@@ -29,8 +29,7 @@ class DataBaseCommunicator : public QObject
     public:
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
-        int addCustomerToDatabase(Customer *customer, int idResource);
-        void updateCustomer(Customer *customer);
+        int addCustomer(Customer *customer, bool exists = false);
         void deleteCustomer(int id);
         int addResourceToDatabase(Resource *resource);
         int addAccountToDatabase(Account *account, int resource);
@@ -43,6 +42,7 @@ class DataBaseCommunicator : public QObject
         Resource findEmployee(int index);
         Account * getAccount(QString nomEmployee);
         void deleteEmployee(QString nameEmployee);
+        void deleteRdv(int index);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);

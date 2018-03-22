@@ -3,7 +3,7 @@
 Customer::Customer()
 {
     id = 0;
-    resource = new Resource();
+    resources = new QList <Resource> ();
 }
 
 QString Customer::getName() const
@@ -116,12 +116,17 @@ void Customer::setId(int value)
     id = value;
 }
 
-Resource * Customer::getResource() const
+Resource Customer::getResource(int i) const
 {
-    return resource;
+    return resources->at(i);
 }
 
-void Customer::setResource(Resource * value)
+void Customer::setResource(Resource value)
 {
-    resource = value;
+    resources->push_back(value);
+}
+
+int Customer::getResourcesNumber() const
+{
+    return resources->size();
 }

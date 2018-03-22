@@ -26,7 +26,7 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
 
     customer = new Customer();
 }
-
+#include <iostream>
 CustomerController::CustomerController(Customer *customer, int id, QWidget *parent) : QDialog(parent), ui(new Ui::CustomerController)
 {
     ui->setupUi(this);
@@ -46,13 +46,18 @@ CustomerController::CustomerController(Customer *customer, int id, QWidget *pare
 
     ui->resourcesList->addItems(dtbc->getResourcesTypesList());
 
-    // We substract 1 because Id of Tables begin at 1 and Id of QCombobox begin at 0.
-    ui->resourcesList->setCurrentIndex(customer->getResource()->getType()->getId() - 1);
+    for (int i = 0; i < customer->getResourcesNumber(); i++)
+    {
+        QString id = QString::number(customer->getResource(i).getId());
+
+        ui->resourcesList->findItems(id ,Qt::MatchContains)[0]->setSelected(true);
+    }
 
     ui->edit->setVisible(true);
     ui->add->setVisible(false);
 
     this->customer = new Customer();
+
     this->customer->setId(id);
 }
 
@@ -102,11 +107,16 @@ void CustomerController::on_add_clicked()
 
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        Resource resource = dtbc->findEmployee(ui->resourcesList->currentText()[1].digitValue());
+        int selectedItemsNumber = ui->resourcesList->selectedItems().size();
 
-        customer->setResource(&resource);
+        for (int i = 0; i < selectedItemsNumber; i++)
+        {
+            Resource resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
 
-        dtbc->addCustomerToDatabase(customer, customer->getResource()->getType()->getId());
+            customer->setResource(resource);
+        }
+
+        dtbc->addCustomer(customer);
 
         emit addingSucceed("New customer added to the database.");
 
@@ -146,12 +156,20 @@ void CustomerController::on_edit_clicked()
 
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        Resource resource = dtbc->findEmployee(ui->resourcesList->currentText()[1].digitValue());
+        // We delete all Rendez-vous of the customer.
 
-        // We get the id of the resource.
-        customer->setResource(&resource);
+        dtbc->deleteRdv(customer->getId());
 
-        dtbc->updateCustomer(customer);
+        int selectedItemsNumber = ui->resourcesList->selectedItems().size();
+
+        for (int i = 0; i < selectedItemsNumber; i++)
+        {
+            Resource resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+
+            customer->setResource(resource);
+        }
+
+        dtbc->addCustomer(customer, true);
 
         emit editingSucceed("Customer edited.");
 
