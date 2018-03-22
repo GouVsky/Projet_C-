@@ -142,16 +142,13 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 #include <iostream>
 void MainWindow::on_showEmployeesEditButton_clicked()
 {
-     QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
-     //QVariant index = ui->treeView->currentIndex().data(Qt::UserRole);
-      QVariant data = ui->treeView->currentIndex().data(Qt::UserRole);
+     QVariant data = ui->treeView->currentIndex().data(Qt::UserRole);
      if(!data.isValid())
      {
          QMessageBox::information(this,"warning", "Please select an item to edit it");
      }
      else
      {
-         //QVariant data= selectionModel->model()->data(index);
          int idEmployee = data.toInt();
          editemployee employeeEditDialog(idEmployee);
          employeeEditDialog.exec();
@@ -161,9 +158,8 @@ void MainWindow::on_showEmployeesEditButton_clicked()
 
 void MainWindow::on_showEmployeesDeleteButton_clicked()
 {
-    QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
-    QModelIndex index = ui->treeView->currentIndex();
-    if(!index.isValid())
+    QVariant data = ui->treeView->currentIndex().data(Qt::UserRole);
+    if(!data.isValid())
     {
         QMessageBox::information(this,"warning", "Please select an item to edit it");
     }
@@ -174,10 +170,9 @@ void MainWindow::on_showEmployeesDeleteButton_clicked()
                                         QMessageBox::Yes|QMessageBox::No);
           if (reply == QMessageBox::Yes)
           {
-            QVariant data= selectionModel->model()->data(index);
-            QString text = data.toString();
+            int idEmployee = data.toInt();
             DataBaseCommunicator *dtbc =DataBaseCommunicator::getInstance();
-            dtbc->deleteEmployee(text);
+            dtbc->deleteEmployee(idEmployee);
             dtbc->displayEmployeeList(ui->treeView);
 
             showMessageStatusBar("You have deleted an employee.");

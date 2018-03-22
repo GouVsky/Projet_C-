@@ -41,7 +41,7 @@ class DataBaseCommunicator : public QObject
         void editEmployee(Resource oldEmployee, Resource newEmployee);
         Resource  * findEmployee(int index);
         Account * getAccount(int idEmployee);
-        void deleteEmployee(QString nameEmployee);
+        void deleteEmployee(int idEmployee);
         void deleteRdv(int index);
 
     private:
