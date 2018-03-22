@@ -43,6 +43,7 @@ class DataBaseCommunicator : public QObject
         Account * getAccount(int idEmployee);
         void deleteEmployee(int idEmployee);
         void deleteRdv(int index);
+        void updateAccount(Account * acountToUpdate, int idEmployee);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);

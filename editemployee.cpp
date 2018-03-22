@@ -59,16 +59,25 @@ void editemployee::on_Buton_cancel_clicked()
 {
     this->close();
 }
-
+#include <iostream>
 void editemployee::on_Edit_buton_clicked()
 {
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
-    Resource * employeeToSend = new Resource();
-    Type * typeEmployee = new Type();
-    employeeToSend->setName(ui->NomInput->text());
-    employeeToSend->setFirstName(ui->PrenomInput->text());
-    employeeToSend->setType(*typeEmployee);
-    typeEmployee->setLabel(ui->comboBox->currentText());
-    dtbc->editEmployee(*employeeToSend, idEmployee);
+    Resource employeeToSend;
+    Type typeEmployee;
+    Account acountToUpdate;
+
+    typeEmployee.setLabel(ui->comboBox->currentText());
+    employeeToSend.setName(ui->NomInput->text());
+    employeeToSend.setFirstName(ui->PrenomInput->text());
+    employeeToSend.setType(typeEmployee);
+    dtbc->editEmployee(employeeToSend, idEmployee);
+
+    if (typeEmployee.getLabel() == "Informaticien")
+    {
+        acountToUpdate.setLogin(ui->editInformaticienLogin->text());
+        acountToUpdate.setPassword(ui->editInformaticienPassword->text());
+        dtbc->updateAccount(&acountToUpdate, idEmployee);
+    }
     this->close();
 }

@@ -279,10 +279,17 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 void DataBaseCommunicator::editEmployee(Resource newEmployee, int idEmp)
 {
      QSqlQuery query(db);
-     query.prepare("UPDATE TRessource SET Nom = :newName, Prenom = :newFirstName, IdType = :newType WHERE Id == :idEmp");
+     QSqlQuery typeQuery(db);
+
+     typeQuery.prepare("SELECT Id FROM TType WHERE Label LIKE :typeName");
+     typeQuery.bindValue(":typeName", newEmployee.getType()->getLabel());
+     typeQuery.exec();
+     typeQuery.next();
+
+     query.prepare("UPDATE TRessource SET Nom = :newFirstName, Prenom = :newName, IdType = :newType WHERE Id == :idEmp");
      query.bindValue(":newName", newEmployee.getName());
      query.bindValue(":newFirstName", newEmployee.getFirstName());
-     query.bindValue(":newType", newEmployee.getType()->getId());
+     query.bindValue(":newType", typeQuery.value(0).toInt());
      query.bindValue(":idEmp", idEmp);
      query.exec();
 }
@@ -345,4 +352,15 @@ void DataBaseCommunicator::deleteRdv(int index)
     query.bindValue(":id", index);
 
     query.exec();
+}
+
+void DataBaseCommunicator::updateAccount(Account * acountToUpdate, int idEmployee)
+{
+    QSqlQuery query(db);
+    query.prepare("UPDATE TCompte SET Login =:newLog, MdP=:newMdp WHERE IdRessource= :idEmp");
+    query.bindValue(":newLog", acountToUpdate->getLogin());
+    query.bindValue(":newMdp", acountToUpdate->getPassword());
+    query.bindValue(":idEmp", idEmployee);
+    query.exec();
+
 }
