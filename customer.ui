@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>497</height>
+    <height>509</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>430</y>
+     <y>470</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -111,9 +111,9 @@
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>210</y>
+     <y>190</y>
      <width>311</width>
-     <height>191</height>
+     <height>171</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="layoutComments">
@@ -143,12 +143,63 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>210</y>
+     <y>190</y>
      <width>291</width>
-     <height>221</height>
+     <height>171</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="layoutRendezVous">
+    <item row="2" column="0">
+     <widget class="QLabel" name="dayRendezVous">
+      <property name="text">
+       <string>Day</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QSpinBox" name="editConsultingTime">
+      <property name="maximum">
+       <number>9999</number>
+      </property>
+      <property name="value">
+       <number>60</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="rendezVous">
+      <property name="text">
+       <string>&lt;b&gt; Rendez-vous &lt;/b&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="consultingTime">
+      <property name="text">
+       <string>Consulting Time</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QSpinBox" name="priorityList">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>5</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="Line" name="line_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <widget class="QDateEdit" name="editDate">
       <property name="calendarPopup">
@@ -163,68 +214,10 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
-     <widget class="Line" name="line_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QSpinBox" name="priorityList">
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>5</number>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="rendezVous">
-      <property name="text">
-       <string>&lt;b&gt; Rendez-vous &lt;/b&gt;</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QSpinBox" name="editConsultingTime">
-      <property name="maximum">
-       <number>9999</number>
-      </property>
-      <property name="value">
-       <number>60</number>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="consultingTime">
-      <property name="text">
-       <string>Consulting Time</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="dayRendezVous">
-      <property name="text">
-       <string>Day</string>
-      </property>
-     </widget>
-    </item>
     <item row="5" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Resource</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QListWidget" name="resourcesList">
-      <property name="selectionMode">
-       <enum>QAbstractItemView::MultiSelection</enum>
+       <string>Resources</string>
       </property>
      </widget>
     </item>
@@ -234,7 +227,7 @@
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>430</y>
+     <y>470</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -306,13 +299,26 @@
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>430</y>
+     <y>470</y>
      <width>113</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
     <string>Edit</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="resourcesList">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>370</y>
+     <width>291</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::MultiSelection</enum>
    </property>
   </widget>
  </widget>

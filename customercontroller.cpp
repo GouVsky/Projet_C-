@@ -48,7 +48,7 @@ CustomerController::CustomerController(Customer *customer, int id, QWidget *pare
 
     for (int i = 0; i < customer->getResourcesNumber(); i++)
     {
-        QString id = QString::number(customer->getResource(i).getId());
+        QString id = "[" + QString::number(customer->getResource(i).getId()) + "]";
 
         ui->resourcesList->findItems(id ,Qt::MatchContains)[0]->setSelected(true);
     }
@@ -109,7 +109,23 @@ void CustomerController::setCustomerFields()
 
     for (int i = 0; i < selectedItemsNumber; i++)
     {
-        Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+        // We get the number part of the string.
+        // We begin at 1 to jump the '[' character.
+        // We have extracted all the number when we reach the ']' character.
+
+        int count = 1;
+
+        QString id;
+        QString resourceString = ui->resourcesList->selectedItems()[i]->text();
+
+        while (resourceString[count] != ']')
+        {
+            id += resourceString[count];
+
+            count++;
+        }
+
+        Resource * resource = dtbc->findEmployee(id.toInt());
 
         customer->setResource(*resource);
     }
@@ -121,14 +137,6 @@ void CustomerController::on_add_clicked()
     {
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        int selectedItemsNumber = ui->resourcesList->selectedItems().size();
-
-        for (int i = 0; i < selectedItemsNumber; i++)
-        {
-            Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
-
-            customer->setResource(*resource);
-        }
         setCustomerFields();
 
         dtbc->addCustomer(customer);
@@ -148,14 +156,7 @@ void CustomerController::on_edit_clicked()
         // We delete all Rendez-vous of the customer.
 
         dtbc->deleteRdv(customer->getId());
-        int selectedItemsNumber = ui->resourcesList->selectedItems().size();
 
-        for (int i = 0; i < selectedItemsNumber; i++)
-        {
-            Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
-
-            customer->setResource(*resource);
-        }
         setCustomerFields();
 
         dtbc->addCustomer(customer, true);
