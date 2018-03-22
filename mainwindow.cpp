@@ -64,7 +64,7 @@ void MainWindow::on_searchCustomerSearchButton_clicked()
 
     ui->customerView->horizontalHeader()->setStretchLastSection(true);
 }
-
+#include <iostream>
 void MainWindow::on_searchCustomerEditButton_clicked()
 {
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
@@ -79,6 +79,7 @@ void MainWindow::on_searchCustomerEditButton_clicked()
 
         Customer customer = dtbc->getCustomer(indexCustomer);
 
+        //std::cout << customer.getId();
         CustomerController editCustomerDialog(&customer, indexCustomer);
 
         connect(&editCustomerDialog, SIGNAL(editingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));

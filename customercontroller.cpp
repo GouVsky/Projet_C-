@@ -26,7 +26,7 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
 
     customer = new Customer();
 }
-#include <iostream>
+
 CustomerController::CustomerController(Customer *customer, int id, QWidget *parent) : QDialog(parent), ui(new Ui::CustomerController)
 {
     ui->setupUi(this);
@@ -90,21 +90,35 @@ void CustomerController::on_cancel_clicked()
     close();
 }
 
+void CustomerController::setCustomerFields()
+{
+    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    customer->setAddress(ui->editAddress->text());
+    customer->setCity(ui->editCity->text());
+    customer->setComments(ui->editComments->toPlainText());
+    customer->setConsultingDay(ui->editDate->date());
+    customer->setDureeRDV(ui->editConsultingTime->value());
+    customer->setFirstName(ui->editFirstName->text());
+    customer->setName(ui->editName->text());
+    customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
+    customer->setPostalCode(ui->editPostalCode->text());
+    customer->setPriority(ui->priorityList->value());
+
+    int selectedItemsNumber = ui->resourcesList->selectedItems().size();
+
+    for (int i = 0; i < selectedItemsNumber; i++)
+    {
+        Resource resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+
+        customer->setResource(resource);
+    }
+}
+
 void CustomerController::on_add_clicked()
 {
     if (checkRequiredInputs())
     {
-        customer->setAddress(ui->editAddress->text());
-        customer->setCity(ui->editCity->text());
-        customer->setComments(ui->editComments->toPlainText());
-        customer->setConsultingDay(ui->editDate->date());
-        customer->setDureeRDV(ui->editConsultingTime->value());
-        customer->setFirstName(ui->editFirstName->text());
-        customer->setName(ui->editName->text());
-        customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
-        customer->setPostalCode(ui->editPostalCode->text());
-        customer->setPriority(ui->priorityList->value());
-
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
         int selectedItemsNumber = ui->resourcesList->selectedItems().size();
@@ -115,10 +129,38 @@ void CustomerController::on_add_clicked()
 
             customer->setResource(*resource);
         }
+        setCustomerFields();
 
         dtbc->addCustomer(customer);
 
         emit addingSucceed("New customer added to the database.");
+
+        accept();
+    }
+}
+
+void CustomerController::on_edit_clicked()
+{
+    if (checkRequiredInputs())
+    {
+        DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+        // We delete all Rendez-vous of the customer.
+
+        dtbc->deleteRdv(customer->getId());
+        int selectedItemsNumber = ui->resourcesList->selectedItems().size();
+
+        for (int i = 0; i < selectedItemsNumber; i++)
+        {
+            Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+
+            customer->setResource(*resource);
+        }
+        setCustomerFields();
+
+        dtbc->addCustomer(customer, true);
+
+        emit editingSucceed("Customer edited.");
 
         accept();
     }
@@ -137,42 +179,4 @@ void CustomerController::on_editFirstName_textChanged(const QString &arg1)
 void CustomerController::on_editCity_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->editCity);
-}
-
-void CustomerController::on_edit_clicked()
-{
-    if (checkRequiredInputs())
-    {
-        customer->setAddress(ui->editAddress->text());
-        customer->setCity(ui->editCity->text());
-        customer->setComments(ui->editComments->toPlainText());
-        customer->setConsultingDay(ui->editDate->date());
-        customer->setDureeRDV(ui->editConsultingTime->text().toInt());
-        customer->setFirstName(ui->editFirstName->text());
-        customer->setName(ui->editName->text());
-        customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
-        customer->setPostalCode(ui->editPostalCode->text());
-        customer->setPriority(ui->priorityList->value());
-
-        DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
-
-        // We delete all Rendez-vous of the customer.
-
-        dtbc->deleteRdv(customer->getId());
-
-        int selectedItemsNumber = ui->resourcesList->selectedItems().size();
-
-        for (int i = 0; i < selectedItemsNumber; i++)
-        {
-            Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
-
-            customer->setResource(*resource);
-        }
-
-        dtbc->addCustomer(customer, true);
-
-        emit editingSucceed("Customer edited.");
-
-        accept();
-    }
 }

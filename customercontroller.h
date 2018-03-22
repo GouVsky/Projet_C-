@@ -31,19 +31,21 @@ class CustomerController : public QDialog
 
         void on_add_clicked();
 
+        void on_edit_clicked();
+
         void on_editName_textChanged(const QString &arg1);
 
         void on_editFirstName_textChanged(const QString &arg1);
 
         void on_editCity_textChanged(const QString &arg1);
 
-        void on_edit_clicked();
-
     signals:
         void addingSucceed(QString message);
         void editingSucceed(QString message);
 
     private:
+        void setCustomerFields();
+
         Ui::CustomerController *ui;
         CustomizedString *utils;
         Customer *customer;
