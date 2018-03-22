@@ -138,7 +138,7 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->customerFirstNameSearch);
 }
-
+#include <iostream>
 void MainWindow::on_showEmployeesEditButton_clicked()
 {
      QItemSelectionModel *selectionModel= ui->treeView->selectionModel();
@@ -151,6 +151,7 @@ void MainWindow::on_showEmployeesEditButton_clicked()
      {
          QVariant data= selectionModel->model()->data(index);
          QString text = data.toString();
+         std::cout << text.toStdString();
          editemployee employeeEditDialog(text);
          employeeEditDialog.exec();
      }

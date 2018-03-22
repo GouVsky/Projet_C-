@@ -170,10 +170,11 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     QSqlQuery query(db);
     QSqlQuery query2(db);
     query.prepare("SELECT DISTINCT Label FROM TType ORDER BY Label;");
-    query2.prepare("SELECT Nom FROM TRessource, TType WHERE TRessource.IdType = TType.Id and Label LIKE :label ;");
+    query2.prepare("SELECT Nom, TRessource.Id FROM TRessource, TType WHERE TRessource.IdType = TType.Id and Label LIKE :label ;");
     query.exec();
 
     QStandardItemModel * standardModel = new QStandardItemModel(treeView) ;
+    standardModel->setColumnCount(2);
     QStandardItem *rootNode = standardModel->invisibleRootItem();
     while(query.next())
     {
@@ -184,11 +185,15 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
         while(query2.next())
         {
             QStandardItem * nameNode= new QStandardItem(query2.value(0).toString());
-            typeNode->appendRow(nameNode);
+            QStandardItem * idNode= new QStandardItem(query2.value(1).toString());
+            //typeNode->appendRow(nameNode);
+            typeNode->appendRow(QList<QStandardItem *>() << nameNode << idNode);
         }
     }
+
     treeView->setModel(standardModel);
     treeView->expandAll();
+    treeView->hideColumn(1);
 }
 
 Customer DataBaseCommunicator::getCustomer(int index)
