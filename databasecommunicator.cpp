@@ -357,10 +357,19 @@ void DataBaseCommunicator::deleteRdv(int index)
 void DataBaseCommunicator::updateAccount(Account * acountToUpdate, int idEmployee)
 {
     QSqlQuery query(db);
+    QSqlQuery query2(db);
     query.prepare("UPDATE TCompte SET Login =:newLog, MdP=:newMdp WHERE IdRessource= :idEmp");
     query.bindValue(":newLog", acountToUpdate->getLogin());
     query.bindValue(":newMdp", acountToUpdate->getPassword());
     query.bindValue(":idEmp", idEmployee);
     query.exec();
+    if(!query.next())
+    {
+        query2.prepare("INSERT INTO TCompte (IdRessource, Login, MdP) VALUES (:idEmp, :newLog, :newMdp)");
+        query2.bindValue(":newLog", acountToUpdate->getLogin());
+        query2.bindValue(":newMdp", acountToUpdate->getPassword());
+        query2.bindValue(":idEmp", idEmployee);
+        query2.exec();
+    }
 
 }
