@@ -179,7 +179,7 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
 
     return model;
 }
-#include <iostream>
+
 void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
 {
     QSqlQuery query(db);
