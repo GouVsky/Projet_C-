@@ -38,7 +38,8 @@ SOURCES += \
     aboutcontroller.cpp \
     account.cpp \
     customercontroller.cpp \
-    employeecontroller.cpp
+    employeecontroller.cpp \
+    planification.cpp
 
 HEADERS += \
     identificationcontroller.h \
@@ -53,7 +54,8 @@ HEADERS += \
     aboutcontroller.h \
     account.h \
     customercontroller.h \
-    employeecontroller.h
+    employeecontroller.h \
+    planification.h
 
 
 FORMS += \

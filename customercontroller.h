@@ -2,6 +2,7 @@
 #define CUSTOMERCONTROLLER_H
 
 #include <QObject>
+#include <QVector>
 #include <QDialog>
 #include <QLineEdit>
 #include <QMessageBox>

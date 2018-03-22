@@ -79,7 +79,7 @@ void EmployeeController::on_AddButton_clicked()
 
     resource.setName(ui->NomInput->text());
     resource.setFirstName(ui->PrenomInput->text());
-    resource.setType(&type);
+    resource.setType(type);
 
     int index = dtbc->addResourceToDatabase(&resource);
 

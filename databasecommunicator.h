@@ -16,6 +16,7 @@
 #include <QStringList>
 #include <QInputDialog>
 #include <QMessageBox>
+
 #include "account.h"
 #include "customer.h"
 #include "resource.h"
@@ -28,7 +29,7 @@ class DataBaseCommunicator : public QObject
     public:
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
-        int addCustomerToDatabase(Customer *customer);
+        int addCustomerToDatabase(Customer *customer, int idResource);
         void updateCustomer(Customer *customer);
         void deleteCustomer(int id);
         int addResourceToDatabase(Resource *resource);
@@ -39,7 +40,7 @@ class DataBaseCommunicator : public QObject
         QStringList getTypesList();
         QStringList getResourcesTypesList();
         void editEmployee(Resource oldEmployee, Resource newEmployee);
-        Resource * findEmployee(QString nomEmployee);
+        Resource findEmployee(int index);
         Account * getAccount(QString nomEmployee);
         void deleteEmployee(QString nameEmployee);
 

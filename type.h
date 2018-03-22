@@ -1,14 +1,12 @@
 #ifndef TYPE_H
 #define TYPE_H
 
-#include <QObject>
 #include <QString>
 
-class Type : public QObject
+class Type
 {
-        Q_OBJECT
     public:
-        explicit Type(QObject *parent = nullptr);
+        Type();
 
         int getId() const;
         QString getLabel() const;
@@ -19,10 +17,6 @@ class Type : public QObject
     private:
         int id;
         QString label;
-
-    signals:
-
-    public slots:
 };
 
 #endif // TYPE_H

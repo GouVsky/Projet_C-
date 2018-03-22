@@ -95,23 +95,26 @@ void MainWindow::on_searchCustomerDeleteButton_clicked()
 
     QItemSelectionModel *selectedRow = ui->customerView->selectionModel();
 
-    // We get index of the customer to delete.
-
-    int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
-
-    QMessageBox::StandardButton reply;
-
-    reply = QMessageBox::question(this, "Warning", "Do you really want to delete this customer?",
-                                  QMessageBox::Yes | QMessageBox::No);
-
-    if (reply == QMessageBox::Yes)
+    if (selectedRow->model()->rowCount() > 0)
     {
-        dtbc->deleteCustomer(indexCustomer);
+        // We get index of the customer to delete.
 
-        showMessageStatusBar("You have deleted a customer.");
+        int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
 
-        model->query().exec();
-     }
+        QMessageBox::StandardButton reply;
+
+        reply = QMessageBox::question(this, "Warning", "Do you really want to delete this customer?",
+                                      QMessageBox::Yes | QMessageBox::No);
+
+        if (reply == QMessageBox::Yes)
+        {
+            dtbc->deleteCustomer(indexCustomer);
+
+            showMessageStatusBar("You have deleted a customer.");
+
+            model->query().exec();
+         }
+    }
 }
 
 void MainWindow::on_showEmployeesRefreshButton_clicked()

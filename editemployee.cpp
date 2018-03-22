@@ -12,7 +12,7 @@ editemployee::editemployee(QString nomEmploye, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editemployee)
 {
-    ui->setupUi(this);
+    /*ui->setupUi(this);
     nomEmployee=nomEmploye;
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
     Resource * employeeFind = dtbc->findEmployee(nomEmployee);
@@ -25,7 +25,7 @@ editemployee::editemployee(QString nomEmploye, QWidget *parent) :
         Account * infoAccount = dtbc->getAccount(nomEmployee);
         ui->editInformaticienLogin->insert(infoAccount->getLogin());
         ui->editInformaticienPassword->insert(infoAccount->getPassword());
-    }
+    }*/
 }
 
 editemployee::~editemployee()
@@ -56,14 +56,14 @@ void editemployee::on_comboBox_currentTextChanged(const QString &arg1)
 }
 void editemployee::on_editemployee_accepted()
 {
-    DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
+    /*DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
     Resource * employeeFind = dtbc->findEmployee(nomEmployee);
     Resource * employeeToSend = new Resource();
     Type * typeEmployee = new Type();
     employeeToSend->setName(ui->NomInput->text());
     employeeToSend->setFirstName(ui->PrenomInput->text());
     employeeToSend->setType(typeEmployee);
-    typeEmployee->setLabel(ui->comboBox->currentText());
+    typeEmployee->setLabel(ui->comboBox->currentText());*/
 
 }
 

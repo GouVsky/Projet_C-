@@ -47,51 +47,62 @@ bool DataBaseCommunicator::checkLoginPassword(const QString &login, const QStrin
     return correctLoginPassword;
 }
 
-int DataBaseCommunicator::addCustomerToDatabase(Customer * client)
+int DataBaseCommunicator::addCustomerToDatabase(Customer * client, int idResource)
 {
-    QSqlQuery query(db);
+    QSqlQuery queryAddCustomer(db);
+    QSqlQuery queryCreateRdv(db);
 
-    query.prepare("INSERT INTO TClient(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite) VALUES (:NomAdd, :PrenomAdd, :AdresseAdd, :VilleAdd, :CPAdd, :CommentaireAdd, :TelAdd, :DateRdvAdd, :DureeRdvAdd, :PrioriteAdd)");
+    queryAddCustomer.prepare("INSERT INTO TClient(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite) VALUES (:NomAdd, :PrenomAdd, :AdresseAdd, :VilleAdd, :CPAdd, :CommentaireAdd, :TelAdd, :DateRdvAdd, :DureeRdvAdd, :PrioriteAdd)");
 
-    query.bindValue(":NomAdd", client->getName());
-    query.bindValue(":PrenomAdd", client->getFirstName());
-    query.bindValue(":AdresseAdd", client->getAddress());
-    query.bindValue(":VilleAdd", client->getCity());
-    query.bindValue(":CPAdd", client->getPostalCode());
-    query.bindValue(":CommentaireAdd", client->getComments());
-    query.bindValue(":TelAdd", client->getPhoneNumber());
-    query.bindValue(":DateRdvAdd", client->getConsultingDay());
-    query.bindValue(":DureeRdvAdd", client->getDureeRDV());
-    query.bindValue(":PrioriteAdd", client->getPriority());
+    queryAddCustomer.bindValue(":NomAdd", client->getName());
+    queryAddCustomer.bindValue(":PrenomAdd", client->getFirstName());
+    queryAddCustomer.bindValue(":AdresseAdd", client->getAddress());
+    queryAddCustomer.bindValue(":VilleAdd", client->getCity());
+    queryAddCustomer.bindValue(":CPAdd", client->getPostalCode());
+    queryAddCustomer.bindValue(":CommentaireAdd", client->getComments());
+    queryAddCustomer.bindValue(":TelAdd", client->getPhoneNumber());
+    queryAddCustomer.bindValue(":DateRdvAdd", client->getConsultingDay());
+    queryAddCustomer.bindValue(":DureeRdvAdd", client->getDureeRDV());
+    queryAddCustomer.bindValue(":PrioriteAdd", client->getPriority());
 
-    if(!query.exec())
-    {
-        qDebug() << db.lastError().text();
-        qDebug() << "Erreur à l'insersion de donnees client !\n";
-    }
+    queryCreateRdv.prepare("INSERT INTO TRdv(IdClient, IdRessource) VALUES (:customer, :resource)");
 
-    return query.lastInsertId().toInt();
+    queryCreateRdv.bindValue(":client", queryAddCustomer.lastInsertId().toInt());
+    queryCreateRdv.bindValue(":resource", idResource);
+
+    queryAddCustomer.exec();
+    queryCreateRdv.exec();
+
+    return queryAddCustomer.lastInsertId().toInt();
 }
 
 void DataBaseCommunicator::updateCustomer(Customer *customer)
 {
-    QSqlQuery query(db);
+    QSqlQuery queryUpdateCustomer(db);
+    QSqlQuery queryUpdateRdv(db);
 
-    query.prepare("UPDATE TClient SET Nom = :name, Prenom = :firstname, Adresse = :address, Ville = :city, CP = :postalCode, Commentaire = :comments, Tel = :phone, DateRdv = :dateRdv, DureeRdv = :consultingTime, Priorite = :priority WHERE Id == :id;");
+    queryUpdateCustomer.prepare("UPDATE TClient SET Nom = :name, Prenom = :firstname, Adresse = :address, Ville = :city, CP = :postalCode, Commentaire = :comments, Tel = :phone, DateRdv = :dateRdv, DureeRdv = :consultingTime, Priorite = :priority WHERE Id == :id;");
 
-    query.bindValue(":id", customer->getId());
-    query.bindValue(":name", customer->getName());
-    query.bindValue(":firstname", customer->getFirstName());
-    query.bindValue(":address", customer->getAddress());
-    query.bindValue(":city", customer->getCity());
-    query.bindValue(":postalCode", customer->getPostalCode());
-    query.bindValue(":comments", customer->getComments());
-    query.bindValue(":phone", customer->getPhoneNumber());
-    query.bindValue(":dateRdv", customer->getConsultingDay());
-    query.bindValue(":consultingTime", customer->getDureeRDV());
-    query.bindValue(":priority", customer->getPriority());
+    queryUpdateCustomer.bindValue(":id", customer->getId());
+    queryUpdateCustomer.bindValue(":name", customer->getName());
+    queryUpdateCustomer.bindValue(":firstname", customer->getFirstName());
+    queryUpdateCustomer.bindValue(":address", customer->getAddress());
+    queryUpdateCustomer.bindValue(":city", customer->getCity());
+    queryUpdateCustomer.bindValue(":postalCode", customer->getPostalCode());
+    queryUpdateCustomer.bindValue(":comments", customer->getComments());
+    queryUpdateCustomer.bindValue(":phone", customer->getPhoneNumber());
+    queryUpdateCustomer.bindValue(":dateRdv", customer->getConsultingDay());
+    queryUpdateCustomer.bindValue(":consultingTime", customer->getDureeRDV());
+    queryUpdateCustomer.bindValue(":priority", customer->getPriority());
 
-    query.exec();
+    queryUpdateCustomer.exec();
+
+    queryUpdateRdv.prepare("UPDATE TRdv SET IdRessource = :resource WHERE IdClient = :customer;");
+
+    queryUpdateRdv.bindValue(":customer", customer->getId());
+    queryUpdateRdv.bindValue(":resource", customer->getResource()->getType()->getId());
+
+    queryUpdateRdv.exec();
 }
 
 void DataBaseCommunicator::deleteCustomer(int id)
@@ -199,26 +210,30 @@ Customer DataBaseCommunicator::getCustomer(int index)
 {
     Customer customer;
 
-    QSqlQuery query(db);
+    QSqlQuery queryGetCustomer(db);
 
-    query.prepare("SELECT * FROM TClient WHERE Id == :id");
+    queryGetCustomer.prepare("SELECT C.*, R.* FROM TClient C, TRessource R, TRdv RDV WHERE C.Id == :id AND C.Id == RDV.IdClient AND R.Id == RDV.IdRessource");
 
-    query.bindValue(":id", index);
+    queryGetCustomer.bindValue(":id", index);
 
-    query.exec();
+    queryGetCustomer.exec();
 
-    query.next();
+    queryGetCustomer.next();
 
-    customer.setName(query.value(1).toString());
-    customer.setFirstName(query.value(2).toString());
-    customer.setAddress(query.value(3).toString());
-    customer.setCity(query.value(4).toString());
-    customer.setPostalCode(query.value(5).toString());
-    customer.setComments(query.value(6).toString());
-    customer.setPhoneNumber(query.value(7).toInt());
-    customer.setConsultingDay(query.value(8).toDate());
-    customer.setDureeRDV(query.value(9).toInt());
-    customer.setPriority(query.value(10).toInt());
+    customer.setName(queryGetCustomer.value(1).toString());
+    customer.setFirstName(queryGetCustomer.value(2).toString());
+    customer.setAddress(queryGetCustomer.value(3).toString());
+    customer.setCity(queryGetCustomer.value(4).toString());
+    customer.setPostalCode(queryGetCustomer.value(5).toString());
+    customer.setComments(queryGetCustomer.value(6).toString());
+    customer.setPhoneNumber(queryGetCustomer.value(7).toInt());
+    customer.setConsultingDay(queryGetCustomer.value(8).toDate());
+    customer.setDureeRDV(queryGetCustomer.value(9).toInt());
+    customer.setPriority(queryGetCustomer.value(10).toInt());
+
+    customer.getResource()->getType()->setId(queryGetCustomer.value(11).toInt());
+    customer.getResource()->setName(queryGetCustomer.value(12).toString());
+    customer.getResource()->setFirstName(queryGetCustomer.value(13).toString());
 
     return customer;
 }
@@ -247,7 +262,7 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     QSqlQuery query(db);
 
-    query.prepare("SELECT R.Id, Nom, Prenom, Label FROM TRessource R, TType T WHERE R.IdType == T.Id;");
+    query.prepare("SELECT T.Id, Nom, Prenom, Label FROM TRessource R, TType T WHERE R.IdType == T.Id;");
 
     query.exec();
 
@@ -270,26 +285,30 @@ void DataBaseCommunicator::editEmployee(Resource oldEmployee, Resource newEmploy
      query.bindValue("newType", newEmployee.getType()->getId());
      query.bindValue(":oldName", oldEmployee.getName());
 }
-Resource * DataBaseCommunicator::findEmployee(QString nomEmployee)
+
+Resource DataBaseCommunicator::findEmployee(int index)
 {
     QSqlQuery query(db);
     QSqlQuery queryType(db);
-    query.prepare("SELECT * FROM TRessource WHERE Nom LIKE :employeeName");
-    query.bindValue(":employeeName", nomEmployee);
+
+    queryType.prepare("SELECT * FROM TType WHERE Id == :id");
+    queryType.bindValue(":id", index);
+    queryType.exec();
+
+    query.prepare("SELECT * FROM TRessource WHERE IdType == :id");
+    query.bindValue(":id", index);
     query.exec();
     query.next();
-    queryType.prepare("SELECT * FROM TType WHERE Id == :id");
-    queryType.bindValue(":id", query.value(3));
-    queryType.exec();
-    queryType.next();
-    Resource * employeeEdited = new Resource();
-    Type * typeEmployee = new Type();
-    typeEmployee->setId(queryType.value(0).toInt());
-    typeEmployee->setLabel(queryType.value(1).toString());
 
-    employeeEdited->setFirstName(query.value(1).toString());
-    employeeEdited->setName(query.value(2).toString());
-    employeeEdited->setType(typeEmployee);
+    queryType.next();
+    Resource employeeEdited;
+    Type typeEmployee;
+    typeEmployee.setId(queryType.value(0).toInt());
+    typeEmployee.setLabel(queryType.value(1).toString());
+
+    employeeEdited.setName(query.value(1).toString());
+    employeeEdited.setFirstName(query.value(2).toString());
+    employeeEdited.setType(typeEmployee);
     return employeeEdited;
 }
 

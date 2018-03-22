@@ -40,7 +40,14 @@ CustomerController::CustomerController(Customer *customer, int id, QWidget *pare
     ui->editDate->setDate(customer->getConsultingDay());
     ui->editConsultingTime->setValue(customer->getDureeRDV());
     ui->editPhoneNumber->setText(QString::number(customer->getPhoneNumber()));
-    //ui->priorityList
+    ui->priorityList->setValue(customer->getPriority());
+
+    DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    ui->resourcesList->addItems(dtbc->getResourcesTypesList());
+
+    // We substract 1 because Id of Tables begin at 1 and Id of QCombobox begin at 0.
+    ui->resourcesList->setCurrentIndex(customer->getResource()->getType()->getId() - 1);
 
     ui->edit->setVisible(true);
     ui->add->setVisible(false);
@@ -86,16 +93,20 @@ void CustomerController::on_add_clicked()
         customer->setCity(ui->editCity->text());
         customer->setComments(ui->editComments->toPlainText());
         customer->setConsultingDay(ui->editDate->date());
-        customer->setDureeRDV(ui->editConsultingTime->text().toInt());
+        customer->setDureeRDV(ui->editConsultingTime->value());
         customer->setFirstName(ui->editFirstName->text());
         customer->setName(ui->editName->text());
         customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
         customer->setPostalCode(ui->editPostalCode->text());
-        customer->setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
+        customer->setPriority(ui->priorityList->value());
 
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
-        dtbc->addCustomerToDatabase(customer);
+        Resource resource = dtbc->findEmployee(ui->resourcesList->currentText()[1].digitValue());
+
+        customer->setResource(&resource);
+
+        dtbc->addCustomerToDatabase(customer, customer->getResource()->getType()->getId());
 
         emit addingSucceed("New customer added to the database.");
 
@@ -131,9 +142,14 @@ void CustomerController::on_edit_clicked()
         customer->setName(ui->editName->text());
         customer->setPhoneNumber(ui->editPhoneNumber->text().toInt());
         customer->setPostalCode(ui->editPostalCode->text());
-        customer->setPriority(ui->priorityList->itemData(ui->priorityList->currentIndex()).toInt());
+        customer->setPriority(ui->priorityList->value());
 
         DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+        Resource resource = dtbc->findEmployee(ui->resourcesList->currentText()[1].digitValue());
+
+        // We get the id of the resource.
+        customer->setResource(&resource);
 
         dtbc->updateCustomer(customer);
 

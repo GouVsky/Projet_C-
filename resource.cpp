@@ -1,8 +1,8 @@
 #include "resource.h"
 
-Resource::Resource(QObject *parent) : QObject(parent)
+Resource::Resource()
 {
-    type = new Type(this);
+    type = new Type();
 }
 
 QString Resource::getName() const
@@ -30,7 +30,17 @@ void Resource::setFirstName(const QString & value)
     firstName = value;
 }
 
-void Resource::setType(Type * value)
+void Resource::setType(Type value)
 {
-    type = value;
+    *type = value;
+}
+
+int Resource::getIndexInCombobox() const
+{
+    return indexInCombobox;
+}
+
+void Resource::setIndexInCombobox(int value)
+{
+    indexInCombobox = value;
 }

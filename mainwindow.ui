@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>666</width>
-    <height>557</height>
+    <width>736</width>
+    <height>596</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -26,14 +26,23 @@
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="maximumSize">
        <size>
-        <width>641</width>
-        <height>441</height>
+        <width>736</width>
+        <height>478</height>
        </size>
       </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="customerSearch">
        <attribute name="title">
@@ -42,8 +51,8 @@
        <widget class="QLabel" name="customerFirstName">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>90</y>
+          <x>315</x>
+          <y>20</y>
           <width>66</width>
           <height>16</height>
          </rect>
@@ -55,8 +64,8 @@
        <widget class="QLineEdit" name="customerIDSearch">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>30</y>
+          <x>25</x>
+          <y>46</y>
           <width>125</width>
           <height>21</height>
          </rect>
@@ -68,8 +77,8 @@
        <widget class="QPushButton" name="searchCustomerSearchButton">
         <property name="geometry">
          <rect>
-          <x>530</x>
-          <y>100</y>
+          <x>20</x>
+          <y>410</y>
           <width>85</width>
           <height>32</height>
          </rect>
@@ -81,8 +90,8 @@
        <widget class="QLineEdit" name="customerFirstNameSearch">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>90</y>
+          <x>314</x>
+          <y>46</y>
           <width>125</width>
           <height>21</height>
          </rect>
@@ -91,8 +100,8 @@
        <widget class="QLineEdit" name="customerNameSearch">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>60</y>
+          <x>170</x>
+          <y>46</y>
           <width>125</width>
           <height>21</height>
          </rect>
@@ -101,8 +110,8 @@
        <widget class="QDateEdit" name="dateBeginning">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>60</y>
+          <x>460</x>
+          <y>45</y>
           <width>100</width>
           <height>24</height>
          </rect>
@@ -111,8 +120,8 @@
        <widget class="QLabel" name="customerID">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>30</y>
+          <x>25</x>
+          <y>20</y>
           <width>76</width>
           <height>16</height>
          </rect>
@@ -124,8 +133,8 @@
        <widget class="QLabel" name="to">
         <property name="geometry">
          <rect>
-          <x>430</x>
-          <y>60</y>
+          <x>565</x>
+          <y>45</y>
           <width>16</width>
           <height>21</height>
          </rect>
@@ -137,8 +146,8 @@
        <widget class="QPushButton" name="searchCustomerDeleteButton">
         <property name="geometry">
          <rect>
-          <x>521</x>
-          <y>380</y>
+          <x>600</x>
+          <y>410</y>
           <width>91</width>
           <height>32</height>
          </rect>
@@ -150,8 +159,8 @@
        <widget class="QDateEdit" name="dateEnding">
         <property name="geometry">
          <rect>
-          <x>470</x>
-          <y>60</y>
+          <x>586</x>
+          <y>45</y>
           <width>100</width>
           <height>24</height>
          </rect>
@@ -160,8 +169,8 @@
        <widget class="QLabel" name="customerName">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>60</y>
+          <x>170</x>
+          <y>20</y>
           <width>36</width>
           <height>16</height>
          </rect>
@@ -173,10 +182,10 @@
        <widget class="QTableView" name="customerView">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>136</y>
-          <width>591</width>
-          <height>241</height>
+          <x>25</x>
+          <y>86</y>
+          <width>658</width>
+          <height>321</height>
          </rect>
         </property>
         <property name="selectionBehavior">
@@ -195,8 +204,8 @@
        <widget class="QLabel" name="datesInterval">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>30</y>
+          <x>460</x>
+          <y>20</y>
           <width>117</width>
           <height>16</height>
          </rect>
@@ -208,8 +217,8 @@
        <widget class="QPushButton" name="searchCustomerEditButton">
         <property name="geometry">
          <rect>
-          <x>420</x>
-          <y>380</y>
+          <x>500</x>
+          <y>410</y>
           <width>91</width>
           <height>32</height>
          </rect>
@@ -261,6 +270,29 @@
        <attribute name="title">
         <string>Schedule</string>
        </attribute>
+       <widget class="QDateEdit" name="dateEdit">
+        <property name="geometry">
+         <rect>
+          <x>24</x>
+          <y>45</y>
+          <width>110</width>
+          <height>24</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>25</x>
+          <y>20</y>
+          <width>81</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Planning Day</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -289,7 +321,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>666</width>
+     <width>736</width>
      <height>22</height>
     </rect>
    </property>
@@ -376,7 +408,6 @@
   <tabstop>customerView</tabstop>
   <tabstop>searchCustomerEditButton</tabstop>
   <tabstop>searchCustomerDeleteButton</tabstop>
-  <tabstop>tabWidget</tabstop>
   <tabstop>showEmployeesEditButton</tabstop>
   <tabstop>showEmployeesDeleteButton</tabstop>
   <tabstop>showEmployeesRefreshButton</tabstop>

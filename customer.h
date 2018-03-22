@@ -4,6 +4,8 @@
 #include <QString>
 #include <QDate>
 
+#include "resource.h"
+
 class Customer
 {
     public:
@@ -19,6 +21,7 @@ class Customer
         int getDureeRDV() const;
         QDate getConsultingDay() const;
         int getId() const;
+        Resource * getResource() const;
 
         void setName(const QString &value);
         void setFirstName(const QString &value);
@@ -31,6 +34,7 @@ class Customer
         void setDureeRDV(int value);
         void setConsultingDay(const QDate &value);
         void setId(int value);
+        void setResource(Resource * value);
 
     private:
         int id;
@@ -47,6 +51,8 @@ class Customer
             DureeRDV;
 
         QDate consultingDay;
+
+        Resource *resource;
 };
 
 #endif // CUSTOMER_H

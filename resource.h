@@ -1,26 +1,28 @@
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
-#include <QObject>
 #include <QString>
 
 #include "type.h"
 
-class Resource : public QObject
+class Resource
 {
-        Q_OBJECT
     public:
-        explicit Resource(QObject *parent = nullptr);
+        Resource();
 
         QString getName() const;
         QString getFirstName() const;
         Type * getType() const;
+        int getIndexInCombobox() const;
 
         void setName(const QString & value);
         void setFirstName(const QString & value);
-        void setType(Type * value);
+        void setType(Type value);
+        void setIndexInCombobox(int value);
 
     private:
+        int indexInCombobox;
+
         QString name,
                 firstName;
 
