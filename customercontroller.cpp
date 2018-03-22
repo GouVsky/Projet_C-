@@ -109,9 +109,9 @@ void CustomerController::setCustomerFields()
 
     for (int i = 0; i < selectedItemsNumber; i++)
     {
-        Resource resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
+        Resource * resource = dtbc->findEmployee(ui->resourcesList->selectedItems()[i]->text()[1].digitValue());
 
-        customer->setResource(resource);
+        customer->setResource(*resource);
     }
 }
 
