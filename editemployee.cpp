@@ -37,6 +37,9 @@ bool editemployee::checkRequiredInputs()
 {
     bool requiredInputs = true;
 
+    // Check if fields are correctly fill.
+    // If the resource is a computer scientist, we check if the login and the password are filled out.
+
     if (ui->NomInput->text().isEmpty() ||
         ui->PrenomInput->text().isEmpty() ||
         (ui->comboBox->currentText() == "Informaticien" &&
@@ -77,7 +80,7 @@ void editemployee::on_Buton_cancel_clicked()
 {
     this->close();
 }
-#include <iostream>
+
 void editemployee::on_Edit_buton_clicked()
 {
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();

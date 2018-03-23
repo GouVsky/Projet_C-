@@ -275,6 +275,8 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     while (query.next())
     {
+        // We display resources like "[id] name firstname - type".
+
         resources.append("[" + query.value(0).toString() + "]"
                          + " " + query.value(1).toString() + " " + query.value(2).toString()
                          + " - " + query.value(3).toString());
@@ -282,7 +284,7 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     return resources;
 }
-#include <iostream>
+
 void DataBaseCommunicator::editEmployee(Resource newEmployee, int idEmp)
 {
      QSqlQuery query(db);
