@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     utils->forbidNumericCaracteres(ui->customerFirstNameSearch);
 
     ui->customerView->setModel(model);
+
+    setFixedSize(size());
 }
 
 MainWindow::~MainWindow()
