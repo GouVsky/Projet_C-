@@ -52,10 +52,14 @@ int DataBaseCommunicator::addCustomer(Customer *customer, bool exists)
     QSqlQuery queryCustomer(db);
     QSqlQuery queryRdv(db);
 
+    // The request for an update of the customer.
+
     if (exists)
     {
          queryCustomer.prepare("UPDATE TClient SET Nom = :name, Prenom = :firstname, Adresse = :address, Ville = :city, CP = :postalCode, Commentaire = :comments, Tel = :phone, DateRdv = :dateRdv, DureeRdv = :consultingTime, Priorite = :priority WHERE Id == :id;");
     }
+
+    // The request if the user wants to add a new customer.
 
     else
     {
@@ -160,6 +164,8 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
     query.bindValue(":endingDate", endingDate);
 
     query.exec();
+
+    // The method returns a model containing the id fields, the name one, the first name and the date of rendez-vous.
 
     while (query.next())
     {
@@ -273,6 +279,8 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     while (query.next())
     {
+        // We display resources like "[id] name firstname - type".
+
         resources.append("[" + query.value(0).toString() + "]"
                          + " " + query.value(1).toString() + " " + query.value(2).toString()
                          + " - " + query.value(3).toString());
@@ -280,7 +288,7 @@ QStringList DataBaseCommunicator::getResourcesTypesList()
 
     return resources;
 }
-#include <iostream>
+
 void DataBaseCommunicator::editEmployee(Resource newEmployee, int idEmp)
 {
      QSqlQuery query(db);

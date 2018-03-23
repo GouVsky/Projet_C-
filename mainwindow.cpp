@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->customerView->setModel(model);
     ui->customerFirstNameSearch->setText("Son prénom");
+    setFixedSize(size());
 }
 
 MainWindow::~MainWindow()
@@ -65,7 +66,7 @@ void MainWindow::on_searchCustomerSearchButton_clicked()
 
     ui->customerView->horizontalHeader()->setStretchLastSection(true);
 }
-#include <iostream>
+
 void MainWindow::on_searchCustomerEditButton_clicked()
 {
     DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
@@ -74,13 +75,12 @@ void MainWindow::on_searchCustomerEditButton_clicked()
 
     if (selectedRow->model()->rowCount() > 0)
     {
-        // We get index of the customer to edit.
+        // We get index of the selected customer to edit him.
 
         int indexCustomer = selectedRow->model()->index(selectedRow->selectedRows().at(0).row(), 0).data().toInt();
 
         Customer customer = dtbc->getCustomer(indexCustomer);
 
-        //std::cout << customer.getId();
         CustomerController editCustomerDialog(&customer, indexCustomer);
 
         connect(&editCustomerDialog, SIGNAL(editingSucceed(QString)), this, SLOT(showMessageStatusBar(QString)));
@@ -123,7 +123,6 @@ void MainWindow::on_showEmployeesRefreshButton_clicked()
 {
      DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
      dtbc->displayEmployeeList(ui->treeView);
-
 }
 
 void MainWindow::showMessageStatusBar(QString message)
@@ -140,7 +139,7 @@ void MainWindow::on_customerFirstNameSearch_textChanged(const QString &arg1)
 {
     utils->capitalize(arg1, ui->customerFirstNameSearch);
 }
-#include <iostream>
+
 void MainWindow::on_showEmployeesEditButton_clicked()
 {
      QVariant data = ui->treeView->currentIndex().data(Qt::UserRole);
@@ -154,7 +153,6 @@ void MainWindow::on_showEmployeesEditButton_clicked()
          editemployee employeeEditDialog(idEmployee);
          employeeEditDialog.exec();
      }
-
 }
 
 void MainWindow::on_showEmployeesDeleteButton_clicked()
@@ -169,22 +167,16 @@ void MainWindow::on_showEmployeesDeleteButton_clicked()
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, "Warning", "Do you really want to delete this employee?",
                                         QMessageBox::Yes|QMessageBox::No);
-          if (reply == QMessageBox::Yes)
-          {
+        if (reply == QMessageBox::Yes)
+        {
             int idEmployee = data.toInt();
             DataBaseCommunicator *dtbc =DataBaseCommunicator::getInstance();
             dtbc->deleteEmployee(idEmployee);
             dtbc->displayEmployeeList(ui->treeView);
 
             showMessageStatusBar("You have deleted an employee.");
-
-          } else
-          {
-
-          }
+        }
     }
-
-
 }
 
 void MainWindow::on_actionDivers_triggered()

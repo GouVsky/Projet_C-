@@ -46,6 +46,8 @@ class MainWindow : public QMainWindow
 
         void on_showEmployeesRefreshButton_clicked();
 
+        // Display a message in the status bar when some actions are realized.
+        // The message is shown only for 5 seconds.
         void showMessageStatusBar(QString message);
 
         void on_customerNameSearch_textChanged(const QString &arg1);

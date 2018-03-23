@@ -39,6 +39,8 @@ class EmployeeController : public QDialog
         void addingSucceed(QString message);
 
     private:
+        // If the resource is an computer scientist, we enable the information concerning it.
+        // Else, we disable it.
         void enableOrDisableComputerScientistLayout(bool enabled);
 
         Ui::EmployeeController *ui;

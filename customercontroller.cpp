@@ -11,6 +11,9 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
 
     utils = new CustomizedString(this);
 
+    // We create edit text areas with constraints for the user
+    // instead of check after the inputs.
+
     utils->forbidAlphaCaracteres(ui->editPhoneNumber, 10);
     utils->forbidAlphaCaracteres(ui->editPostalCode, 5);
 
@@ -18,9 +21,13 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
     utils->forbidNumericCaracteres(ui->editFirstName);
     utils->forbidNumericCaracteres(ui->editCity);
 
+    // We create the list of resources with data of database.
+
     DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
     ui->resourcesList->addItems(dtbc->getResourcesTypesList());
+
+    // A button for adding and one for editing.
 
     ui->edit->setVisible(false);
     ui->add->setVisible(true);
@@ -31,6 +38,9 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
 CustomerController::CustomerController(Customer *customer, int id, QWidget *parent) : QDialog(parent), ui(new Ui::CustomerController)
 {
     ui->setupUi(this);
+
+    // When the user want to editing a customer,
+    // we fill fields and display the same window than the adding.
 
     ui->editName->setText(customer->getName());
     ui->editFirstName->setText(customer->getFirstName());
@@ -45,7 +55,11 @@ CustomerController::CustomerController(Customer *customer, int id, QWidget *pare
 
     DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
 
+    // We create the list of resources with data of database.
+
     ui->resourcesList->addItems(dtbc->getResourcesTypesList());
+
+    // The list is displaying with customer's resources selected.
 
     for (int i = 0; i < customer->getResourcesNumber(); i++)
     {
@@ -53,6 +67,8 @@ CustomerController::CustomerController(Customer *customer, int id, QWidget *pare
 
         ui->resourcesList->findItems(id ,Qt::MatchContains)[0]->setSelected(true);
     }
+
+    // A button for adding and one for editing.
 
     ui->edit->setVisible(true);
     ui->add->setVisible(false);
@@ -94,6 +110,8 @@ void CustomerController::on_cancel_clicked()
 void CustomerController::setCustomerFields()
 {
     DataBaseCommunicator * dtbc = DataBaseCommunicator::getInstance();
+
+    // We create or update a customer with inputs.
 
     customer->setAddress(ui->editAddress->text());
     customer->setCity(ui->editCity->text());

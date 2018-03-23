@@ -19,7 +19,6 @@ public:
     bool checkRequiredInputs();
 
 private slots:
-    void enableOrDisableComputerScientistLayout(bool enabled);
     void on_comboBox_currentTextChanged(const QString &arg1);
 
     void on_Buton_cancel_clicked();
@@ -27,6 +26,10 @@ private slots:
     void on_Edit_buton_clicked();
 
 private:
+    // If the resource is an computer scientist, we enable the information concerning it.
+    // Else, we disable it.
+    void enableOrDisableComputerScientistLayout(bool enabled);
+
     Ui::editemployee *ui;
     int idEmployee;
 };

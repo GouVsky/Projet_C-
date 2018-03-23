@@ -30,7 +30,11 @@ class DataBaseCommunicator : public QObject
     public:
         static DataBaseCommunicator *getInstance(QObject *parent = nullptr);
         bool checkLoginPassword(const QString &login, const QString &password);
+
+        // The method allows to add a customer if he doesn't exists in the database.
+        // If he already exists, the method will update him.
         int addCustomer(Customer *customer, bool exists = false);
+
         void deleteCustomer(int id);
         int addResourceToDatabase(Resource *resource);
         int addAccountToDatabase(Account *account, int resource);
