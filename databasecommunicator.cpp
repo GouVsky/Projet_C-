@@ -197,6 +197,7 @@ void DataBaseCommunicator::displayEmployeeList(QTreeView * treeView)
     }
 
     treeView->setModel(standardModel);
+    treeView->setColumnWidth(0,400);
     treeView->expandAll();
 }
 
