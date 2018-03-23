@@ -6,12 +6,15 @@
 #include <QTreeWidget>
 #include <QSqlQueryModel>
 #include <QStandardItemModel>
+#include <QFileDialog>
+
 #include "aboutcontroller.h"
 #include "customercontroller.h"
 #include "employeecontroller.h"
 #include "databasecommunicator.h"
 #include "editemployee.h"
 #include "customizedstring.h"
+#include "adddivers.h"
 
 namespace Ui
 {
@@ -52,6 +55,10 @@ class MainWindow : public QMainWindow
         void on_showEmployeesEditButton_clicked();
 
         void on_showEmployeesDeleteButton_clicked();
+
+        void on_actionDivers_triggered();
+
+        void on_Export_buton_clicked();
 
 private:
         Ui::MainWindow *ui;

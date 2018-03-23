@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     utils->forbidNumericCaracteres(ui->customerFirstNameSearch);
 
     ui->customerView->setModel(model);
+    ui->customerFirstNameSearch->setText("Son prénom");
 }
 
 MainWindow::~MainWindow()
@@ -184,4 +185,17 @@ void MainWindow::on_showEmployeesDeleteButton_clicked()
     }
 
 
+}
+
+void MainWindow::on_actionDivers_triggered()
+{
+    AddDivers * divers = new AddDivers(this);
+    divers->exec();
+}
+
+void MainWindow::on_Export_buton_clicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Resource"), ".", tr("Xml files (*.xml)"));
+    DataBaseCommunicator *dtbc = DataBaseCommunicator::getInstance();
+    dtbc->exportXML(fileName);
 }

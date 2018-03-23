@@ -16,6 +16,7 @@
 #include <QStringList>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QDomDocument>
 
 #include "account.h"
 #include "customer.h"
@@ -44,6 +45,9 @@ class DataBaseCommunicator : public QObject
         void deleteEmployee(int idEmployee);
         void deleteRdv(int index);
         void updateAccount(Account * acountToUpdate, int idEmployee);
+        static unsigned int getUiInsertCompteur();
+        void insertDivers(Resource employeeDivers);
+        void exportXML(QString fileName);
 
     private:
         explicit DataBaseCommunicator(QObject *parent = nullptr);
@@ -52,6 +56,7 @@ class DataBaseCommunicator : public QObject
         QSqlDatabase db;
         static DataBaseCommunicator *instance;
         QSqlQueryModel * model;
+        static unsigned int uiInsertCompteur;
 
     signals:
 

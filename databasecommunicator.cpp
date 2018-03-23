@@ -1,5 +1,5 @@
 #include "databasecommunicator.h"
-
+unsigned int DataBaseCommunicator::uiInsertCompteur=0;
 DataBaseCommunicator *DataBaseCommunicator::instance = nullptr;
 
 
@@ -60,6 +60,7 @@ int DataBaseCommunicator::addCustomer(Customer *customer, bool exists)
     else
     {
         queryCustomer.prepare("INSERT INTO TClient(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite) VALUES (:name, :firstname, :address, :city, :postalCode, :comments, :phone, :dateRdv, :consultingTime, :priority)");
+        uiInsertCompteur++;
     }
 
     queryCustomer.bindValue(":id", customer->getId());
@@ -85,6 +86,7 @@ int DataBaseCommunicator::addCustomer(Customer *customer, bool exists)
         queryRdv.bindValue(":resource", customer->getResource(i).getId());
 
         queryRdv.exec();
+        uiInsertCompteur++;
     }
 
     return queryCustomer.lastInsertId().toInt();
@@ -124,6 +126,7 @@ int DataBaseCommunicator::addResourceToDatabase(Resource *resource)
     queryResource.bindValue(":idType", queryType.value(0).toInt());
 
     queryResource.exec();
+    uiInsertCompteur++;
 
     return queryResource.lastInsertId().toInt();
 }
@@ -139,6 +142,7 @@ int DataBaseCommunicator::addAccountToDatabase(Account *account, int resource)
     query.bindValue(":mdp", account->getPassword());
 
     query.exec();
+    uiInsertCompteur++;
 
     return query.lastInsertId().toInt();
 }
@@ -147,7 +151,7 @@ QSqlQueryModel *DataBaseCommunicator::searchCustomerFromDatabase(const QString &
 {
     QSqlQuery query(db);
 
-    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE :name||'%' OR Prenom LIKE :firstname||'%' OR (DateRdv BETWEEN :beginningDate AND :endingDate);");
+    query.prepare("SELECT Id, Nom, Prenom, DateRdv FROM TClient WHERE Id == :id OR Nom LIKE :name||'%' OR Prenom LIKE :firstname||'%' OR (DateRdv BETWEEN :beginningDate AND :endingDate) ORDER BY Nom ASC;");
 
     query.bindValue(":id", id.isEmpty() ? nullptr : id);
     query.bindValue(":name", name.isEmpty() ? nullptr : name);
@@ -371,6 +375,70 @@ void DataBaseCommunicator::updateAccount(Account * acountToUpdate, int idEmploye
         query2.bindValue(":newMdp", acountToUpdate->getPassword());
         query2.bindValue(":idEmp", idEmployee);
         query2.exec();
+        uiInsertCompteur++;
     }
 
+}
+
+unsigned int DataBaseCommunicator::getUiInsertCompteur()
+{
+    return uiInsertCompteur;
+}
+
+void DataBaseCommunicator::insertDivers(Resource employeeDivers)
+{
+    QSqlQuery query(db);
+    QSqlQuery query2(db);
+    query.prepare("INSERT INTO TRessource (Nom, Prenom, IdType) VALUES (:name, :firstname, :idType)");
+    query2.prepare("SELECT Id FROM TType WHERE Label LIKE :nomType");
+    query2.bindValue(":nomType", employeeDivers.getType()->getLabel());
+    query2.exec();
+    query2.next();
+    query.bindValue(":name", employeeDivers.getName());
+    query.bindValue(":firstname", employeeDivers.getFirstName());
+    query.bindValue(":idType", query2.value(0).toInt());
+    query.exec();
+}
+
+void DataBaseCommunicator::exportXML(QString fileName)
+{
+    QFile file(fileName);
+
+    if (!file.open(QFile::WriteOnly | QFile::Text))
+    {
+        file.close();
+        return;
+    }
+
+    QDomDocument xml("TRessource");
+
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM TRessource");
+    query.exec();
+
+    QDomElement masterRoot = xml.createElement("TRessource");
+    xml.appendChild(masterRoot);
+
+    while(query.next())
+    {
+        QDomElement root = xml.createElement("Ressource");
+        root.setAttribute("id", query.value(0).toString());
+        masterRoot.appendChild(root);
+
+        QDomElement name = xml.createElement("Nom");
+        root.appendChild(name);
+        QDomText textName = xml.createTextNode(query.value(1).toString());
+        name.appendChild(textName);
+
+        QDomElement firstname = xml.createElement("Prenom");
+        root.appendChild(firstname);
+        QDomText textFirstName = xml.createTextNode(query.value(2).toString());
+        firstname.appendChild(textFirstName);
+    }
+
+    QTextStream output(&file);
+
+    output << xml.toString();
+
+    file.close();
 }

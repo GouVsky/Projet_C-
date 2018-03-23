@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,7 +38,8 @@ SOURCES += \
     account.cpp \
     customercontroller.cpp \
     employeecontroller.cpp \
-    planification.cpp
+    planification.cpp \
+    adddivers.cpp
 
 HEADERS += \
     identificationcontroller.h \
@@ -54,7 +55,8 @@ HEADERS += \
     account.h \
     customercontroller.h \
     employeecontroller.h \
-    planification.h
+    planification.h \
+    adddivers.h
 
 
 FORMS += \
@@ -63,7 +65,8 @@ FORMS += \
     editemployee.ui \
     about.ui \
     customer.ui \
-    employee.ui
+    employee.ui \
+    adddivers.ui
 
 RESOURCES += \
     resources.qrc

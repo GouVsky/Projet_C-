@@ -7,6 +7,7 @@ CustomerController::CustomerController(QWidget *parent) : QDialog(parent), ui(ne
 
     ui->editDate->setDate(QDate::currentDate());
     ui->editDate->setMinimumDate(QDate::currentDate());
+    ui->editDate->setMaximumDate(QDate::currentDate().addDays(30));
 
     utils = new CustomizedString(this);
 
@@ -96,7 +97,7 @@ void CustomerController::setCustomerFields()
 
     customer->setAddress(ui->editAddress->text());
     customer->setCity(ui->editCity->text());
-    customer->setComments(ui->editComments->toPlainText());
+    customer->setComments(ui->editComments->toPlainText() + "\n" + ui->remarquesEdit->toPlainText());
     customer->setConsultingDay(ui->editDate->date());
     customer->setDureeRDV(ui->editConsultingTime->value());
     customer->setFirstName(ui->editFirstName->text());
